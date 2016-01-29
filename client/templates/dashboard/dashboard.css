@@ -1,0 +1,82 @@
+.data-panel{
+	max-height:255px;
+	overflow: scroll;
+}
+
+.image-button{
+	position: absolute;
+	background-color:#ddd;
+	font-size:28px;
+	width:45px;
+	border-radius:45px;
+	visibility: hidden;
+	cursor: pointer;
+}
+
+.image-button:hover{
+	background-color:#bbb;
+}
+
+
+.image-button .glyphicon-ok{
+	margin-left:7px;
+	margin-top: 5px;
+}
+
+.image-button .glyphicon-remove{
+	margin-left:8px;
+	margin-top: 7px;
+}
+
+.glyphicon-ok{
+	color:#F37B21;
+}
+.glyphicon-remove{
+	color:white;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+	
+}
+
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+	li.list-group-item{
+		max-height:52px;
+		min-height:52px;
+		overflow: scroll;
+	}
+
+	.list-image{
+		max-height:200px;
+	}
+
+	.image-accept{
+		right:45px;
+		top:20px;
+	}
+	.image-decline{
+		right:45px;
+		bottom:40px;	
+	}
+
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  
+
+	.image-accept{
+		right:82px;
+		top:20px;
+	}
+	.image-decline{
+		right:82px;
+		bottom:40px;	
+	}
+
+
+}

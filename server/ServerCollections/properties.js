@@ -1,0 +1,1 @@
+PropertiesCollection = new Mongo.Collection("properties");
