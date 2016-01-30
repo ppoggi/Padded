@@ -9,7 +9,7 @@ PropertyActions = {
 		zip          : String,
 		neighborhood : String,
 		status       : String,
-		details      : String,
+		details      : Array,
 		img          : String,
 		urlName      : String,
 		urlLink      : String
@@ -27,11 +27,8 @@ PropertyActions = {
 
 	createProperty: function(options){		
 		var property = this.newProperty(options);
-
-		PropertiesCollection.insert
-
-
-		PropertiesCollection.insert(property, function(err){
+		
+		PropertiesCollection.upsert( property,  property, function(err){
 			if(err)
 				throw new Meteor.Error('PropertiesActions.createProperty', err);
 		});

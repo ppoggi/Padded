@@ -17,6 +17,19 @@
 	background-color:#bbb;
 }
 
+.search-row{
+	margin-bottom:-15px;
+}
+
+
+.image-accept{
+	right:37px;
+	top:17px;
+}
+.image-decline{
+	right:37px;
+	bottom:17px;	
+}
 
 .image-button .glyphicon-ok{
 	margin-left:7px;
@@ -32,12 +45,33 @@
 	color:#F37B21;
 }
 .glyphicon-remove{
-	color:white;
+	color:#337ab7;
 }
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
-	
+
+	.image-accept{
+		right:45px;
+		top:20px;
+	}
+	.image-decline{
+		right:45px;
+		bottom:40px;	
+	}
+
+
+	.image-button{
+
+		font-size:65px;
+		width:90px;
+		border-radius:65px;				
+	}
+
+	.image-button .glyphicon-remove {
+ 	   margin-left: 12px;
+    	margin-top: 2px;
+	}	
 }
 
 
@@ -51,7 +85,7 @@
 	}
 
 	.list-image{
-		max-height:200px;
+		/*max-height:200px;*/
 	}
 
 	.image-accept{
@@ -61,6 +95,12 @@
 	.image-decline{
 		right:45px;
 		bottom:40px;	
+	}
+
+	.image-button{
+		font-size:28px;
+		width:45px;
+		border-radius:45px;
 	}
 
 
@@ -77,6 +117,4 @@
 		right:82px;
 		bottom:40px;	
 	}
-
-
 }

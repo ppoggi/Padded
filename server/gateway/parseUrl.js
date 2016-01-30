@@ -8,10 +8,9 @@ Meteor.methods({
 
 		var scraper = LibHelpers.checkUrl(url);
 
-		if(!scraper){
-			callback('Invalid String');
-			return;
-		}
+		if(!scraper)
+			throw new Meteor.Error('Meteor.methods.parseUrl', 'Invalid Url')			
+		
 
 		HTTP.call("GET", url, (err, response) => {
 			

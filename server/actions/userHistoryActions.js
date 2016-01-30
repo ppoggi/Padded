@@ -2,6 +2,8 @@ UserHistoryActions = {
 
 	addToApproved: function(userId, propertyId){
 		
+		if(!propertyId)
+			return;
 		UserHistory.update(
 			{owner: userId},
 			{$push: {approved: propertyId }},
@@ -11,7 +13,10 @@ UserHistoryActions = {
 		});	
 
 	},
-	addToRemoved: function(user, propertyId){
+	addToRemoved: function(userId, propertyId){
+
+		if(!propertyId)
+			return;
 
 		UserHistory.update(
 			{owner: userId},

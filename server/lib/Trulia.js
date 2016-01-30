@@ -35,7 +35,20 @@ Trulia = {
 		if(!status)
 			throw new Meteor.Error('Error.scrapeResponse', 'Invalid status');
 		
-		var details = $('.listingDetails').text();
+		var details = $('.listingDetails li')
+
+		var detailText = [];
+
+
+		
+		for(detail in details){
+			if(details[detail]){	
+				if(details[detail].children)			
+				detailText.push(details[detail].children[0].data)
+			}			
+		}									
+		details = detailText;
+
 		if(!details)
 			throw new Meteor.Error('Error.scrapeResponse', 'Invalid detiails');		
 

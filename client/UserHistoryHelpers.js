@@ -1,6 +1,6 @@
-UserHistoryHelpers = {
+// UserHistoryHelpers = {
 
-	undoHistory = function(){},
-	acceptProperty = function(){},
-	declineProperty = function(){},
-}
+// 	undoHistory = function(){},
+// 	acceptProperty = function(){},
+// 	declineProperty = function(){},
+// }

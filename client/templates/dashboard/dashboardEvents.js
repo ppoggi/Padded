@@ -4,7 +4,13 @@ Template.dashboard.events({
         e.preventDefault();
         e.stopImmediatePropagation();
         //needs to be checked via regex
+
         var url = e.target.url_input.value;
+
+        if(!url)
+            return;
+
+        e.target.url_input.value = "";
 
         Meteor.call("parseUrl", url, function(err, response){
         
@@ -14,6 +20,30 @@ Template.dashboard.events({
                 console.log(response)
         });     
     },
+
+    // 'click .image-container': function(e){
+    //     e.stopImmediatePropagation();        
+
+    //     if(Session.get("isTablet") && Session.get("isMobile") ){
+            
+    //         var panels = $(e.target).closest('.row').find('.panel');
+                                
+    //         $(panels).toggleClass('hidden-xs').toggleClass('hidden-sm');
+
+    //         $('html, body').animate({
+    //                 scrollTop: offset.top
+    //         }, 1000,);    
+    //     }                        
+                  
+    //     // var offset = $(panels[0]).offset();
+        
+    //     // if(offset.top < 400)
+    //     //     return;
+
+    //     // console.log(offset)
+
+
+    // },
 
     'mouseenter .image-container': function(e){
         
@@ -49,3 +79,4 @@ Template.dashboard.events({
     }
 
 });
+
