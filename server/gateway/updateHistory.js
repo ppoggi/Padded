@@ -1,23 +1,15 @@
 Meteor.methods({
 
-	acceptProperty: function(id){
-		//get user id
-
-		//remove given document from their dashboard
-
-		//add the id to their history
-
-		//approved
+	acceptProperty: function(propertyId){
+				
+		var userId = Meteor.userId();		
+		UserActions.removeFromDash(userId, propertyId, true);		
 	},
 
-	declineProperty: function(id){
-		//get user id
+	declineProperty: function(propertyId){
 
-		//remove given document from their dashboard
-
-		//add the id to their history 
-
-		//removed
+		var userId = Meteor.userId();		
+		UserActions.removeFromDash(userId, propertyId, false);		
 	}
 
 })

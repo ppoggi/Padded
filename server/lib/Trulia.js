@@ -28,8 +28,8 @@ Trulia = {
 			throw new Meteor.Error('Error.scrapeResponse', 'Invalid Zip');
 		 
 		var neighborhood = $('.headlineDoubleSub span:nth-child(4)').text().trim();
-		if(!neighborhood)
-			throw new Meteor.Error('Error.scrapeResponse', 'Invalid neighborhood');		
+		// if(!neighborhood)
+		// 	throw new Meteor.Error('Error.scrapeResponse', 'Invalid neighborhood');		
 					
 		var status = $('.typeLowlight.h7 div a:nth-child(1)').text();	
 		if(!status)

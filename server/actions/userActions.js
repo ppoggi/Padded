@@ -60,6 +60,21 @@ UserActions = {
 			});
 
 		});				
-	}
+	},
+	
+	removeFromDash:function(userId, propertyId, historyUpdate){
+		
+		UserDash.update(
+			{owner:userId},
+			{$pull:{properties: { _id: propertyId}}},
+			(err) => {
+				if(err)
+					 throw new Meteor.Error('UpdateHistory.AcceptProperty', err);		
 
+			if(historyUpdate)
+				UserHistoryActions.addToApproved(userId, propertyId);
+			else
+				UserHistoryActions.addToRemoved(userId, propertyId);
+		});
+	}
 }

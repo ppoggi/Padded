@@ -34,12 +34,13 @@ Template.dashboard.events({
     },
 
     'click .image-accept':function(e){
-        e.stopImmediatePropagation();
-        console.log(this)        
+        e.stopImmediatePropagation();        
+        Meteor.call("acceptProperty", this._id);
 
     },
     'click .image-decline': function(e){
-        e.stopImmediatePropagation();
+        e.stopImmediatePropagation();        
+        Meteor.call("declineProperty", this._id);
 
     },
     'click .link-back':function(e){
