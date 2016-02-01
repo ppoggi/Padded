@@ -68,14 +68,37 @@ Template.dashboard.events({
         Meteor.call("acceptProperty", this._id);
 
     },
+    
     'click .image-decline': function(e){
         e.stopImmediatePropagation();        
         Meteor.call("declineProperty", this._id);
 
     },
+    
     'click .link-back':function(e){
         e.preventDefault();        
         window.open(this.urlLink)
+    },
+    'click .list-btn': function(e){
+        
+        Session.set('listView', true);
+        Session.set('imageTile', false);
+        Session.set('detailList', false);
+    },
+
+    'click .image-tile-btn': function(e){
+        
+        Session.set('listView', false);
+        Session.set('imageTile', true);
+        Session.set('detailList', false);
+    },
+
+    'click .detail-list-btn': function(){        
+        
+        Session.set('listView', false);
+        Session.set('imageTile', false);
+        Session.set('detailList', true);
+
     }
 
 });

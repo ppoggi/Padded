@@ -1,6 +1,33 @@
-.data-panel{
-	max-height:255px;
+.detail-panel{
+	max-height:295px;
 	overflow: scroll;
+}
+
+.list-btn.active-button,.image-tile-btn.active-button,.detail-list-btn.active-button{
+	color:orange;
+}
+
+.col-xs-2.image-col{
+	margin-top:15px;	
+}
+
+.list-view-container .col-xs-5{
+	max-height:146px;
+	overflow:scroll;	
+}
+
+.list-view-container{
+	text-align: center;	
+	margin-top: 20px;
+	border: thin solid #ddd;	
+}
+.group-select-button{
+	color:white;
+	background-color:#337ab7
+}
+
+.list-btn,.image-tile-btn,.detail-list-btn{
+	color:#777;
 }
 
 .image-button{
@@ -54,30 +81,34 @@
 	color:white;
 }
 
+.mobile-thumbnail {
+	max-height:200px;
+	max-width:200px;	
+}
+li.list-group-item{
+	overflow:scroll;
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
 
 	.image-accept{
-		right:45px;
+		right:82px;
 		top:20px;
 	}
 	.image-decline{
-		right:45px;
+		right:82px;
 		bottom:40px;	
-	}
-
-
-	.image-button{
-
-		font-size:65px;
-		width:90px;
-		border-radius:65px;				
 	}
 
 	.image-button .glyphicon-remove {
  	   margin-left: 12px;
     	margin-top: 2px;
 	}	
+
+	.list-view-container .col-xs-5,.list-view-container .col-xs-2{	
+		margin-top:48px;
+	}
 }
 
 
@@ -96,18 +127,17 @@
 	}
 
 	.image-accept{
-		right:45px;
+		right:82px;
 		top:20px;
 	}
 	.image-decline{
-		right:45px;
+		right:82px;
 		bottom:40px;	
 	}
 
-	.image-button{
-		font-size:28px;
-		width:45px;
-		border-radius:45px;
+
+	.list-view-container .col-xs-5,.list-view-container .col-xs-2{	
+		margin-top:85px;
 	}
 
 
@@ -124,4 +154,9 @@
 		right:82px;
 		bottom:40px;	
 	}
+
+/*	.list-view-div a img{
+		max-height:296px;
+		max-width:391px;
+	}*/
 }

@@ -12,5 +12,20 @@ Template.dashboard.helpers({
 
 		var properties =dash[0].properties;		
 		return properties;
-	}	
+	},
+	
+	listView: function(){
+
+		return Session.get("listView");
+	},
+
+	imageTile: function(){
+
+		return Session.get("imageTile");
+	},
+
+	detailList: function(){
+		
+		return Session.get("detailList");		
+	}
 });

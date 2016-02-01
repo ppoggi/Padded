@@ -1,6 +1,31 @@
+div,button,img{
+	border-radius: 0px !important;
+}
+
 em{
 	color:orange;
 	font-style: normal;
+}
+p{
+	margin:0 0 0px !important;	
+}
+
+.thumbnail{	
+	border:0 !important;
+	margin-bottom:0 !important;
+}
+
+.list-view-p{
+	text-align:center;
+}
+.list-view-p span{
+	margin-right:5px;
+	margin-left:5px;
+}
+
+
+.navbar.navbar-default.navbar-static-top,.navbar-fixed-bottom.padded-nav{
+	background-color:white;
 }
 .login-link-and-dropdown-list{
 	color:#777;

@@ -1,7 +1,7 @@
 <template name="dashboard">
 		
 	<div class="container">
-	
+		
 		<div class="container-fluid well well-sm">
 		<div class="row search-row">
 			<div class="col-lg-12">
@@ -19,9 +19,109 @@
 			</div>
 		</div>
 		</div>  
-		<div class="well">
+
+
+		<div class="row">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="btn-group">
+  							<button type="button" class="btn group-select-button">Untitled Group 1</button>
+  							<button type="button" class="btn group-select-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    							<span class="caret"></span>
+    							<span class="sr-only">Toggle Dropdown</span>
+  							</button>
+  							<ul class="dropdown-menu">
+    							<li><a href="#">Untitled Group 1</a></li>
+    							<li role="separator" class="divider"></li>
+    							<li><a href="#">Untitled Group 2</a></li>
+    							<li role="separator" class="divider"></li>
+    							<li><a href="#">Untitled Group 3</a></li>
+    							<li role="separator" class="divider"></li>
+    							<li><a href="#">Untitled Group 4</a></li>
+    							<li role="separator" class="divider"></li>
+    							<li><a href="#">Untitled Group 5</a></li>
+  							</ul>
+						</div>
+						<div class="btn-group">											
+	  					<button type="button" class="btn btn-default list-btn {{#if listView}} active-button {{/if}} "><span class="glyphicon glyphicon-align-justify"></span></button>
+	  					<button type="button" class="btn btn-default image-tile-btn {{#if imageTile}} active-button {{/if}} "><span class="glyphicon glyphicon-th"></span></button>
+	  					<button type="button" class="btn btn-default detail-list-btn {{#if detailList}} active-button {{/if}} "><span class="glyphicon glyphicon-th-list"></span></button>						
+	  					</div>
+					</div>					
+				</div>	
+			</div>			
+		</div>
+
+
+	{{#if listView}}
+		{{#each property dashboard}}
+		<div class="row">
+			<div class="col-md-12">
+								
+				<div class="container list-view-container">
+
+					{{#if isMobile}}
+
+					<div class="row">
+						<div class="cox-xs-12">
+							<a href="#" class="thumbnail">
+								<img class="img-thumbnail list-image img-responsive" src="{{img}}">																
+							</a>																								
+							<div>
+								<p class="list-view-p"> <span class="pull-left">{{city}} {{state}}</span> {{price}} <span class="pull-right">{{status}}</span></p>
+							</div>	
+						</div>																	
+					</div>
+					{{else}}
+					<div class="col-xs-3 image-col">
+						<a href="#" class="thumbnail">
+							<img class="img-thumbnail list-image img-responsive" src="{{img}}">	
+						</a>
+					</div>
+					<div class="col-xs-5">
+						{{street}} <span class="muted">{{neighborhood}}</span>, {{city}} {{state}} {{zip}}
+					</div>
+					<div class="col-xs-2">
+						{{price}}
+					</div>
+					<div class="col-xs-2">
+						{{status}}
+					</div>										
+					{{/if}}
+
+				</div>
+			</div>							
+		</div>
+		{{/each}}		
+		
+	{{/if}}
+
+	{{#if imageTile}}
+		<div class="row">
+		{{#each property dashboard}}
+			
+				<div class="col-sm-3 image-container">
+					<div class="image-button image-accept">
+						<span class="glyphicon glyphicon-ok"></span>
+					</div>
+					<div class="image-button image-decline">
+						<span class="glyphicon glyphicon-remove"></span>
+					</div>
+					<a href="#" class="thumbnail">
+						<img class="img-thumbnail list-image" src="{{img}}">	
+					</a>
+				</div>
+			
+		{{/each}}
+		</div>
+	{{/if}}
+
+	{{#if detailList}}
+			
 	{{#each property dashboard}}
 
+  			
 
 			<div class="row">
 				<div class="col-md-4 image-container">
@@ -43,7 +143,8 @@
 						<ul class="list-group">
 							<li class="list-group-item"><p class="text-left">URL: <span class="pull-right"><a class="link-back" href="{{urlLink}}">{{urlName}}</a></span></p></li>
 						  	<li class="list-group-item">							  		
-						  		<p>Area:<span class="pull-right">{{city}}, {{state}}, {{zip}}</span></p></li>
+						  		<p>Area:<span class="pull-right">{{city}}, {{state}}, {{zip}}</span></p>
+						  	</li>
 						    <li class="list-group-item">
 						    	<p>Address:<span class="pull-right">{{street}} <span class="text-muted">{{neighborhood}}</span></span></p>
 						    </li>
@@ -78,9 +179,11 @@
 			</div>
 		</div>
 
-					
+
 	{{/each}}
-	</div>
+
+	{{/if}}
+	
 	</div>
 		{{#if isMobile}}
 			{{> bottomNav}}
