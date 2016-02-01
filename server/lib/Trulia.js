@@ -11,7 +11,8 @@ Trulia = {
 		if(!street)
 			throw new Meteor.Error('Error.scrapeResponse', 'Invalid street');
 		
-		var price = $('.h2.typeReversed.typeDeemphasize.man.pan.noWrap').text();
+		var price = $('.priceModule .h2').text();
+		
 		if(!price)
 			throw new Meteor.Error('Error.scrapeResponse', 'Invalid price');
 			
@@ -31,7 +32,11 @@ Trulia = {
 		// if(!neighborhood)
 		// 	throw new Meteor.Error('Error.scrapeResponse', 'Invalid neighborhood');		
 					
-		var status = $('.typeLowlight.h7 div a:nth-child(1)').text();	
+		var status = $('.globalNavMenuItemCurrent .pam').text();	
+
+		if(!status)
+			status = $('.typeHighlight.typeCaps.h7.mtm.mbn').text();		
+		
 		if(!status)
 			throw new Meteor.Error('Error.scrapeResponse', 'Invalid status');
 		
@@ -43,8 +48,10 @@ Trulia = {
 		
 		for(detail in details){
 			if(details[detail]){	
-				if(details[detail].children)			
-				detailText.push(details[detail].children[0].data)
+				if(details[detail].children){			
+					if(typeof details[detail].children[0].data =="string")
+						detailText.push(details[detail].children[0].data)
+				}
 			}			
 		}									
 		details = detailText;

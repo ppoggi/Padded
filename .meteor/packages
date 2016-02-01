@@ -26,3 +26,4 @@ check
 msavin:mongol
 twbs:bootstrap
 kadira:blaze-layout
+kadira:flow-router
