@@ -9,14 +9,20 @@ UserActions = {
 
 	newDash: function(user){
 
-		var dash = {};
-		dash.owner = user._id;
-		dash.userName = user.username;		
-		dash.email = "";
-		dash.properties = [];
-		dash.realtors = [];
+		var dash         = {};
+		dash.owner 	     = user._id;
+		dash.userName    = user.username;		
+		dash.email       = "";
+		dash.list0       = [];
+		dash.list1       = [];
+		dash.list2       = [];
+		dash.list3       = [];
+		dash.list4       = [];
+		dash.listNames   = ["Untitled List 1", "Untitled List 2",
+		 "Untitled List 3", "Untitled List 4","Untitled List 5"];		
+		dash.realtors    = [];
 		dash.dateOfBirth = "";
-		dash.gender = "";
+		dash.gender      = "";
 
 		return dash;	
 	},
@@ -44,8 +50,15 @@ UserActions = {
 		this.createDash(user);
 		this.createHistory(user);
 	},
+	getListId: function(listId){
+		
+		return "list"+listId;
+	},
 
-	updateDash: function(userId, property){
+	updateDash: function(userId, property, listId){
+				
+		var operator;
+		var list = this.getListId(listId)
 		
 		PropertiesCollection.insert(property, (err,id)=>{
 
@@ -54,7 +67,7 @@ UserActions = {
 
 			property._id = id;
 
-			UserDash.upsert( {owner:userId}, {$push:{properties: property }} , function(err){
+			UserDash.update( {owner:userId}, {$push:{[list]:property}} , function(err){
 				if(err)
 					throw new Meteor.Error('UserActions.updateDash.upsertUserDash',err);
 			});

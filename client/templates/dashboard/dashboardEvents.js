@@ -12,7 +12,11 @@ Template.dashboard.events({
 
         e.target.url_input.value = "";
 
-        Meteor.call("parseUrl", url, function(err, response){
+
+        //todo list id
+        var currentList = Session.get("currentList");
+
+        Meteor.call("parseUrl", url, currentList, function(err, response){
         
             if(err)
                 console.log(err)
@@ -99,6 +103,11 @@ Template.dashboard.events({
         Session.set('imageTile', false);
         Session.set('detailList', true);
 
+    },
+
+    'click .list-name-li':function(e){
+        e.preventDefault();
+        Session.set("currentList",this.value)
     }
 
 });

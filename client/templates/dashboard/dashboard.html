@@ -26,21 +26,15 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="btn-group">
-  							<button type="button" class="btn group-select-button">Untitled Group 1</button>
+  							<button type="button" class="btn group-select-button">{{activeList dashboard currentList}}</button>
   							<button type="button" class="btn group-select-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     							<span class="caret"></span>
     							<span class="sr-only">Toggle Dropdown</span>
   							</button>
   							<ul class="dropdown-menu">
-    							<li><a href="#">Untitled Group 1</a></li>
-    							<li role="separator" class="divider"></li>
-    							<li><a href="#">Untitled Group 2</a></li>
-    							<li role="separator" class="divider"></li>
-    							<li><a href="#">Untitled Group 3</a></li>
-    							<li role="separator" class="divider"></li>
-    							<li><a href="#">Untitled Group 4</a></li>
-    							<li role="separator" class="divider"></li>
-    							<li><a href="#">Untitled Group 5</a></li>
+  							{{#each listName dashboard}}	
+    							<li class="list-name-li"><a>{{name}}</a></li>
+							{{/each}}    							
   							</ul>
 						</div>
 						<div class="btn-group">											
@@ -55,7 +49,7 @@
 
 
 	{{#if listView}}
-		{{#each property dashboard}}
+		{{#each property dashboard currentList}}
 		<div class="row">
 			<div class="col-md-12">
 								
@@ -99,7 +93,7 @@
 
 	{{#if imageTile}}
 		<div class="row">
-		{{#each property dashboard}}
+		{{#each property dashboard currentList}}
 			
 				<div class="col-sm-3 image-container">
 					<div class="image-button image-accept">
@@ -119,10 +113,8 @@
 
 	{{#if detailList}}
 			
-	{{#each property dashboard}}
-
+	{{#each property dashboard currentList}}
   			
-
 			<div class="row">
 				<div class="col-md-4 image-container">
 					<div class="image-button image-accept">

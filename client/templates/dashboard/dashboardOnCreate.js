@@ -8,6 +8,7 @@ Template.dashboard.onCreated(function(){
     Session.set('listView', true);
     Session.set('imageTile', false);
     Session.set('detailList', false);
+    Session.set("currentList", 0);           
 });
 
  Template.dashboard.rendered = function() {

@@ -1,6 +1,6 @@
 Meteor.methods({
-	parseUrl: function(url, callback){	
-
+	parseUrl: function(url, listId, callback){	
+		
 		var userId = Meteor.userId();
 		
 		if(!userId)
@@ -23,7 +23,7 @@ Meteor.methods({
 
 			var property = PropertyActions.checkProperty(scrapedListing);
 
-			UserActions.updateDash(userId, property);			
+			UserActions.updateDash(userId, property, listId);			
 		});
 
 	}

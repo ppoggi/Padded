@@ -89,6 +89,15 @@ li.list-group-item{
 	overflow:scroll;
 }
 
+.list-name-li{
+	/*border: thin solid #ddd;*/
+}
+.list-name-li:hover{
+	color:white;
+	background-color:#777;
+
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
 
