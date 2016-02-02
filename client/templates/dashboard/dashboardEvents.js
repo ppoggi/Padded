@@ -105,10 +105,9 @@ Template.dashboard.events({
 
     },
 
-    'click .list-name-li':function(e){
+    'click .list-name-li': function(e){
         e.preventDefault();
         Session.set("currentList",this.value)
     }
-
 });
 

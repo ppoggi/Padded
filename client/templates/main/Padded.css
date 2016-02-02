@@ -1,4 +1,8 @@
-div,button,img{
+
+body{
+	min-height:95vh;
+}
+div,button,img,textarea{
 	border-radius: 0px !important;
 }
 
@@ -8,6 +12,10 @@ em{
 }
 p{
 	margin:0 0 0px !important;	
+}
+
+textarea {
+    resize: none;
 }
 
 .thumbnail{	

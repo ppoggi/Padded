@@ -56,5 +56,22 @@ Template.dashboard.helpers({
 		}
 
 		return list;
+	},
+	detailLink: function(){
+		  	    	    	    	   
+	    var routeName = "detail/"+Session.get("currentList")+"/"+this._id;
+	    var path = FlowRouter.path(routeName);	    
+
+	    return path;
+
+	},
+
+	isDetail: function(){
+		var route = FlowRouter.getRouteName()		
+		if(route == "detail")
+			return true;
+		else 
+			return false;
+
 	}
 });

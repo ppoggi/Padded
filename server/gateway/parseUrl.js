@@ -1,5 +1,9 @@
 Meteor.methods({
 	parseUrl: function(url, listId, callback){	
+
+		//need to check list IDs for valid ids -top securty issue
+		 // if(listId != "0" || listId != "1" || listId !="2" || listId !="3" || listId!="4")
+			// throw new Meteor.Error('Meteor.methods.parseUrl','Invlid ListId');
 		
 		var userId = Meteor.userId();
 		

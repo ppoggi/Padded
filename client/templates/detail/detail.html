@@ -1,0 +1,73 @@
+<template name="detail">
+				
+			<div class="row">
+				<div class="col-md-4 image-container">
+					<div class="image-button image-accept">
+						<span class="glyphicon glyphicon-ok"></span>
+					</div>
+					<div class="image-button image-decline">
+						<span class="glyphicon glyphicon-remove"></span>
+					</div>
+					<a href="#" class="thumbnail">
+						<img class="img-thumbnail list-image" src="{{item.img}}">	
+					</a>
+				</div>
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-heading alt-panel-color">
+							<h3 class="panel-title">Listing</h3>
+						</div>
+						<ul class="list-group">
+							<li class="list-group-item"><p class="text-left">URL: <span class="pull-right"><a class="link-back" href="{{item.urlLink}}">{{item.urlName}}</a></span></p></li>
+						  	<li class="list-group-item">							  		
+						  		<p>Area:<span class="pull-right">{{item.city}}, {{item.state}}, {{item.zip}}</span></p>
+						  	</li>
+						    <li class="list-group-item">
+						    	<p>Address:<span class="pull-right">{{item.street}} <span class="text-muted">{{item.neighborhood}}</span></span></p>
+						    </li>
+						    <li class="list-group-item">
+						    	<p class="text-left">Price:<span class="pull-right">{{item.price}}</span></p>
+						    </li>
+						    <li class="list-group-item">
+						    	<p class="text-left">Status:<span class="pull-right">{{item.status}}</span></p>
+						    </li>							    
+						</ul>
+					</div>	
+				</div>
+				<div class="col-md-4">
+					<div class="panel panel-default detail-panel">
+						<div class="panel-heading">
+							<h3 class="panel-title">Details</h3>
+						</div>						 
+						 	<ul class="list-group">
+    							{{#each item.details}}
+    								<li class="list-group-item">
+							    		<p class="text-left">{{this}}</p>
+							    	</li>    								
+    							{{/each}}
+							</ul>  						
+					</div>	
+
+				</div>
+			</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading alt-panel-color">Comments</div>					
+					<div class="panel-body">					    
+
+							<label>Lily Diaz @ 1:22 p.m. 2/2/16</label>
+							<div class="well">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in tempus ut, vehicula eu diam. Pellentesque rhoncus aliquam mattis. Ut vulputate eros sed felis sodales nec vulputate justo hendrerit. Vivamus varius pretium ligula, a aliquam odio euismod sit amet. Quisque laoreet sem sit amet orci ullamcorper at ultricies metus viverra. Pellentesque arcu mauris, malesuada quis ornare accumsan, blandit sed diam.</div>
+
+
+							<form>
+								<div class="form-group comment-form">									
+									<textarea type="email" class="form-control comment-text-area" id="exampleInputEmail1" placeholder="Type..."></textarea>
+									<button type="submit" class="btn btn-default comment-submit-btn">Submit</button>
+								</div>							
+							</form>												    
+					</div>
+				</div>
+			</div>
+		</div>	
+</template>

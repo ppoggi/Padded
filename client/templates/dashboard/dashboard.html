@@ -1,6 +1,10 @@
 <template name="dashboard">
 		
-	<div class="container">
+	<div class="container main-container">
+
+		{{#if isDetail}}	
+			{{> detail dashboard}}
+		{{else}}
 		
 		<div class="container-fluid well well-sm">
 		<div class="row search-row">
@@ -63,7 +67,7 @@
 								<img class="img-thumbnail list-image img-responsive" src="{{img}}">																
 							</a>																								
 							<div>
-								<p class="list-view-p"> <span class="pull-left">{{city}} {{state}}</span> {{price}} <span class="pull-right">{{status}}</span></p>
+								<p class="list-view-p"> <span class="pull-left">{{city}} {{state}}</span> {{price}} <span class="pull-right"><a href="{{detailLink}}">{{status}}</a></span></p>
 							</div>	
 						</div>																	
 					</div>
@@ -80,7 +84,7 @@
 						{{price}}
 					</div>
 					<div class="col-xs-2">
-						{{status}}
+						<a href="{{detailLink}}">{{status}}</a>
 					</div>										
 					{{/if}}
 
@@ -175,8 +179,9 @@
 	{{/each}}
 
 	{{/if}}
-	
+	{{/if}}
 	</div>
+
 		{{#if isMobile}}
 			{{> bottomNav}}
 		{{/if}}

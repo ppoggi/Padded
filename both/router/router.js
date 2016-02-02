@@ -5,15 +5,10 @@ FlowRouter.route('/', {
 });
 
 
-FlowRouter.route('/saved', {    
-    action:function(){    	
-    	BlazeLayout.render('main', {content: 'history'});    	 
+FlowRouter.route('/detail/:listNumber/:id', {
+	name:"detail",
+    action:function(){    	    	
+    	BlazeLayout.render('main', {content: 'dashboard'});      	  	
     }    
 });
 
-
-FlowRouter.route('/removed', {    
-    action:function(){    	
-    	BlazeLayout.render('main', {content: 'history'});    	 
-    }    
-});
