@@ -16,6 +16,7 @@ PropertyActions = {
 	},
 
 	checkProperty: function(options){	
+
 		try{
 			check(options, this.property);
 		}catch(err){
@@ -26,6 +27,7 @@ PropertyActions = {
 	},
 
 	createProperty: function(options){		
+		
 		var property = this.newProperty(options);
 		
 		PropertiesCollection.upsert( property,  property, function(err){
