@@ -25,7 +25,8 @@ Template.detail.helpers({
 			{[commentList]: 
 				{$elemMatch:{propertyId: propertyId}}
 			},
-			projection);
+			projection
+		);
 
 		if(!comments)
 			return;
@@ -35,8 +36,7 @@ Template.detail.helpers({
 
 	time: function(timestamp){
 
-		var time = timestamp;
-		return time;
-		
+		var time = DateHelpers.dateString(timestamp)
+		return time;		
 	}
 });
