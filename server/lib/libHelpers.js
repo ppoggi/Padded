@@ -1,15 +1,16 @@
 LibHelpers = {
 
 	checkUrl : function(url){
-
-		//check for trulia		
-
+		
 		var isTrulia = url.search(new RegExp("trulia")); 
 
 		if(isTrulia != -1)
 			return  Trulia;
 
+		var isZillow = url.search(new RegExp("zillow"));
 
-		//needs more
+		if(isZillow != -1)
+			return  Zillow;			
+	
 	}
 }

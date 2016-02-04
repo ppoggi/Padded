@@ -13,6 +13,12 @@ Template.detail.events({
 			return;//TODO generate error
 
 		Meteor.call("insertComment", text, location);
-	}
+	},
+	'click .link-back-detail':function(e){
+        
+        e.preventDefault();         
+        
+        window.open(e.currentTarget.href)
+    },
 
 })

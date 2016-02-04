@@ -9,9 +9,8 @@ Template.dashboard.events({
 
         if(!url)
             return;
-        //for dev
-        //e.target.url_input.value = "";
-
+        
+        e.target.url_input.value = "";
 
         //todo list id
         var currentList = Session.get("currentList");
@@ -80,9 +79,10 @@ Template.dashboard.events({
     },
     
     'click .link-back':function(e){
-        e.preventDefault();        
+        e.preventDefault();          
         window.open(this.urlLink)
     },
+    
     'click .list-btn': function(e){
         
         Session.set('listView', true);

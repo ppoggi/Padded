@@ -13,6 +13,9 @@ Trulia = {
 		
 		var price = $('.priceModule .h2').text();
 		
+		if(price.search(new RegExp("[0-9]")) == -1 )
+			price = "Price Unknown"	
+
 		if(!price)
 			throw new Meteor.Error('Error.scrapeResponse', 'Invalid price');
 			

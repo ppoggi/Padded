@@ -28,7 +28,7 @@ Meteor.methods({
 			var property = PropertyActions.checkProperty(scrapedListing);
 
 			UserActions.updateDash(userId, property, listId);			
-		});
+		});	
 
 	}
 });
