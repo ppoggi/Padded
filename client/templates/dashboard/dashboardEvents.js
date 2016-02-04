@@ -9,8 +9,8 @@ Template.dashboard.events({
 
         if(!url)
             return;
-
-        e.target.url_input.value = "";
+        //for dev
+        //e.target.url_input.value = "";
 
 
         //todo list id

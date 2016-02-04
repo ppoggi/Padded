@@ -31,7 +31,12 @@ Template.detail.helpers({
 		if(!comments)
 			return;
 		
-		return comments[commentList][0].commentArray;
+		
+		
+
+		for(var i = 0; i < comments[commentList].length ; i++)			
+			if(comments[commentList][i].propertyId == propertyId)				
+				return comments[commentList][i].commentArray;						
 	},
 
 	time: function(timestamp){
