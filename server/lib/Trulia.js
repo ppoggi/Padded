@@ -31,7 +31,7 @@ Trulia = {
 		if(!zip)
 			throw new Meteor.Error('Error.scrapeResponse', 'Invalid Zip');
 		 
-		var neighborhood = $('.headlineDoubleSub span:nth-child(4)').text().trim();
+		// var neighborhood = $('.headlineDoubleSub span:nth-child(4)').text().trim();
 		// if(!neighborhood)
 		// 	throw new Meteor.Error('Error.scrapeResponse', 'Invalid neighborhood');		
 					
@@ -75,7 +75,7 @@ Trulia = {
 			city         : city,
 			state        : state,
 			zip          : zip,
-			neighborhood : neighborhood,
+			//neighborhood : neighborhood,
 			status       : status,
 			details      : details,
 			img          : img,

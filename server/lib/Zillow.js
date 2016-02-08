@@ -20,6 +20,9 @@ Zillow = {
 
 		else if (urlLink.search("/for_rent/") != -1)
 			return 4;
+
+		else 
+			return 3;
 	},
 
 	scrapeForRent: function($, urlLink){
@@ -358,12 +361,15 @@ Zillow = {
 			img          : img,
 			urlName      : this.name,
 			urlLink      : urlLink
-		}	
+		}				
 	},
 	
 	scrapeResponse : function(response, urlLink){
 	
 		var type = this.getTypeOfProperty(urlLink)
+
+		if(!type)
+			throw new Meteor.Error('Zillow.scrapeResponse','Invalid scraper');
 
 		$ = cheerio.load(response.content);	
 
@@ -377,7 +383,7 @@ Zillow = {
 			scrapeObj = this.scrapeForSale($,urlLink);
 		else if(type == 4)
 			scrapeObj = this.scrapeForRent($,urlLink);
-
+		
 		return scrapeObj;
 			
 	}

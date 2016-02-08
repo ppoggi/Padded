@@ -15,7 +15,7 @@ PropertyActions = {
 	},
 
 	checkProperty: function(options){	
-
+		
 		try{
 			check(options, this.property);
 		}catch(err){
