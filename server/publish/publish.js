@@ -9,3 +9,9 @@ Meteor.publish('comments', function(commentsListId, propertyId){
 
 	return UserComments.find({owner: this.userId}, {[commentsList]: {propertyId: propertyId}});
 });
+
+
+Meteor.publish('realtor', function(){
+
+	return Realtors.find({userId: this.userId});
+});

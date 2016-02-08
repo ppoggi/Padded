@@ -27,13 +27,13 @@ PropertyActions = {
 
 	createProperty: function(options){		
 		
-		var property = this.newProperty(options);
+		// var property = this.newProperty(options);
 		
-		PropertiesCollection.upsert( property,  property, function(err){
-			if(err)
-				throw new Meteor.Error('PropertiesActions.createProperty', err);
-		});
+		// PropertiesCollection.upsert( property,  property, function(err){
+		// 	if(err)
+		// 		throw new Meteor.Error('PropertiesActions.createProperty', err);
+		// });
 
-		return property;
+		// return property;
 	},
 }

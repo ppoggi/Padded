@@ -12,3 +12,18 @@ FlowRouter.route('/detail/:listNumber/:id', {
     }    
 });
 
+
+FlowRouter.route('/realtor', {
+	name:"realtor",
+    action:function(){    	    	
+    	BlazeLayout.render('main', {content: 'realtor'});      	  	
+    }    
+});
+
+
+FlowRouter.route('/:listId', {
+    name:"genericList",
+    action:function(){              
+        BlazeLayout.render('open', {content: 'genericList'});           
+    }    
+});

@@ -1,0 +1,1 @@
+GenericLists = new Mongo.Collection('genericlists');

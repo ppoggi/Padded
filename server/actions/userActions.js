@@ -83,10 +83,7 @@ UserActions = {
 
 		var listNumber = this.getCommentsListId(location.listNumber);
 		
-		this.insertComment(user, commentObject, listNumber, location.propertyId)
-
-		
-
+		this.insertComment(user, commentObject, listNumber, location.propertyId)	
 	},
 
 	createUserComments: function(user){

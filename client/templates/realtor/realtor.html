@@ -1,0 +1,80 @@
+<template name="realtor">
+	
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-sm-6">				
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Manage Client Lists</h3>
+					</div>
+
+					<div class="panel-body">
+													
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="Search for...">
+										<span class="input-group-btn">
+											<button class="btn btn-default" type="button">Go!</button>
+										</span>
+									</div>
+								</div>
+							</div>
+						
+							<div class="row">	
+								<div class="col-sm-12">
+
+									<ul class="list-group">
+										{{#each profile.clients}}
+											<li class="list-group-item">Cras justo odio</li>
+										{{/each}}
+									</ul>
+
+								</div>
+							</div>
+						
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="col-sm-6">				
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Manage Generic Lists</h3>
+					</div>
+					<div class="panel-body">
+						
+						<div class="row">
+							<div class="col-sm-12">
+								<form id="create-generic-form">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="Enter List Name" name="text">
+										<span class="input-group-btn">
+											<button class="btn btn-default" type="submit">Create New List</button>
+										</span>
+									</div>
+								</form>
+							</div>																			
+						</div>
+
+						<div class="row">
+							<div class="col-sm-12">
+							<ul class="list-group">
+								{{#each genericList profile.genericLists}}
+									<li class="list-group-item">{{listName}} <a href="/{{listId}}"><span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>								
+								{{/each}}
+							</ul>
+							</div>						
+						</div>
+					</div>
+				</div>
+			</div>								
+		</div>
+	</div>
+
+</template>
