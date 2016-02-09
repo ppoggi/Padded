@@ -5,7 +5,7 @@ UserActions = {
 		var dash         = {};
 		dash.owner 	     = user._id;
 		dash.userName    = user.username;		
-		dash.email       = "";
+		dash.email       = user.emails[0].address;
 		dash.list0       = [];
 		dash.list1       = [];
 		dash.list2       = [];
@@ -14,8 +14,7 @@ UserActions = {
 		dash.listNames   = ["Untitled List 1", "Untitled List 2",
 		 "Untitled List 3", "Untitled List 4","Untitled List 5"];		
 		dash.realtors    = [];
-		dash.dateOfBirth = "";
-		dash.gender      = "";
+		dash.alerts      = [];
 
 		return dash;	
 	},

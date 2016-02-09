@@ -5,13 +5,32 @@ Template.dashboard.helpers({
 		return UserDash.find({});
 	},
 
+	alerts: function(dashboard){
+		var dash = dashboard.fetch();
+
+		if(!dash[0])
+			return;
+
+		var alerts = dash[0].alerts;
+
+		return alerts;
+	},
+	alertText: function(messageType, messengerEmail, messengerUserName){
+				
+		//create helper for this
+		if(messageType =="realtor.invite"){
+			var message = messengerUserName +"("+messengerEmail+") would like to add you as a client"			
+			return message;
+		}		
+	},
+
 	property: function(dashboard, list){	
 		
 		var dash = dashboard.fetch();
 		if(!dash[0])
 			return;
 		
-		var properties =dash[0]["list"+list];
+		var properties = dash[0]["list"+list];
 		
 		return properties;
 	},

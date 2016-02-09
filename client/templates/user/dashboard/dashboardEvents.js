@@ -108,6 +108,19 @@ Template.dashboard.events({
     'click .list-name-li': function(e){
         e.preventDefault();
         Session.set("currentList",this.value)
+    },
+
+    'click .alert-accept': function(e){
+        
+        e.stopImmediatePropagation(e);                
+        
+        Meteor.call("clientAccept", this);
+    },
+    'click .alert-decline': function(e){
+        
+        e.stopImmediatePropagation(e);        
+                
+        Meteor.call("clientDecline", this);
     }
 });
 

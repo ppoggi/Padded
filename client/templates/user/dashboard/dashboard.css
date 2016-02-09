@@ -3,6 +3,14 @@
 	overflow: scroll;
 }
 
+body .alert{
+	width:100%;
+	position:fixed;
+	z-index: 1000;
+	text-align:center;
+	top:0px;
+}
+
 .list-btn.active-button,.image-tile-btn.active-button,.detail-list-btn.active-button{
 	color:orange;
 }

@@ -1,7 +1,13 @@
 <template name="dashboard">
+
+		{{#each alerts dashboard}}
+
+			<div class="alert alert-info" role="alert"><span class='glyphicon glyphicon-remove pull-left alert-decline'></span><span class='glyphicon glyphicon-ok pull-right alert-accept'></span><span class="alert-text">{{alertText messageType messengerEmail messengerUserName}}</span></div>
+		{{/each}}
 		
 	<div class="container main-container">
 
+		
 		{{#if isDetail}}	
 			{{> detail dashboard}}
 		{{else}}

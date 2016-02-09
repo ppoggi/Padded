@@ -9,7 +9,7 @@ RealtorActions = {
 
 	newRealtor: function(user){
 		
-		var realtor = {};
+		var realtor           = {};
 		realtor.userId        = user._id;
 		realtor.personalInfo  = {};
 		realtor.genericLists  = [];
@@ -31,11 +31,10 @@ RealtorActions = {
 	},
 
 	newGenericList: function(user, listName){
-		
-		var genericList = {};
-		
+				
 		var uri = this.generateRandomId();
 
+		var genericList        = {};
 		genericList.owner      = user._id;
 		genericList.properties = [];
 		genericList.recipients = [];
@@ -83,4 +82,62 @@ RealtorActions = {
 
 	},
 
+	createAddClientAlertObj: function(user, clientEmail){
+
+		var alert               = {};
+		alert.messengerId       = user._id;
+		alert.messengerEmail    = user.emails[0].address;
+		alert.messengerUserName = user.username;
+		alert.messageType       = "realtor.invite";
+		alert.timestamp         = Date.now();
+		return alert;
+	},
+
+	addClient: function(user, clientEmail){
+
+		var alert = this.createAddClientAlertObj(user, clientEmail);
+		
+		UserDash.update({email:clientEmail},{$push:{alerts: alert}}, function(err, status){
+			if(err)
+				throw new Meteor.Error('RealtorActions.addClient', err);
+
+			if(status == 0)
+				//error
+				console.log("couldn't find recipient")
+		});
+
+	},
+	createClientObject: function(user){
+		
+		var client      = {};
+		client.username = user.username;
+		client.email    = user.emails[0].address;
+		client.clientId = user._id;
+		return client;
+
+	},
+
+	acceptClient: function(user, message){
+
+		var clientObj = this.createClientObject(user);
+
+		Realtors.update({userId: message.messengerId}, {$push: {clients:clientObj}}, (err, status) => {
+			if(err)
+				throw new Meteor.Error("RealtorActions.acceptClient.Realtors.update", err);
+			
+			if(status != 0)
+				UserDash.update({owner:user._id}, {$pull: {alerts:message}}, function(err){
+					if(err)
+						throw new Meteor.Error("RealtorsActions.acceptClient.UserDash.update", err)
+				});
+		});			
+	},
+
+	declineClient: function(user, message){
+
+		UserDash.update({owner:user._id}, {$pull: {alerts:message}}, function(err){
+			if(err)
+				throw new Meteor.Error("RealtorsActions.acceptClient.UserDash.update", err)
+		});
+	}
 }
