@@ -14,3 +14,15 @@ Template.realtor.events({
 		Meteor.call('createGenericList', name);		
 	}
 });
+
+//for Development
+
+Template.realtor.events({
+
+	'click #createRealtor': function(e){
+
+		e.preventDefault();
+		
+		Meteor.call('createRealtor');		
+	}
+});

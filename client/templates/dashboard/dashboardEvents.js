@@ -15,7 +15,7 @@ Template.dashboard.events({
         //todo list id
         var currentList = Session.get("currentList");
 
-        Meteor.call("parseUrl", url, currentList, function(err, response){
+        Meteor.call("parseUrl", url, currentList, 1, function(err, response){
         
             if(err)
                 console.log(err)

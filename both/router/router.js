@@ -4,7 +4,6 @@ FlowRouter.route('/', {
     }    
 });
 
-
 FlowRouter.route('/detail/:listNumber/:id', {
 	name:"detail",
     action:function(){    	    	
@@ -12,13 +11,20 @@ FlowRouter.route('/detail/:listNumber/:id', {
     }    
 });
 
-
 FlowRouter.route('/realtor', {
 	name:"realtor",
     action:function(){    	    	
     	BlazeLayout.render('main', {content: 'realtor'});      	  	
     }    
 });
+
+FlowRouter.route('/realtor/generic/:listId', {
+    name:"realtor",
+    action:function(){              
+        BlazeLayout.render('main', {content: 'realtorGeneric'});           
+    }    
+});
+
 
 
 FlowRouter.route('/:listId', {

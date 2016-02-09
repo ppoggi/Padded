@@ -3,6 +3,12 @@
 	<div class="container">
 
 		<div class="row">
+			<div class="col-sm-12">				
+				 <button id="createRealtor" class="btn btn-default ">Create Realtor</button>
+			</div>
+		</div>
+
+		<div class="row">
 
 			<div class="col-sm-6">				
 				<div class="panel panel-default">
@@ -15,7 +21,7 @@
 							<div class="row">
 								<div class="col-sm-12">
 									<div class="input-group">
-										<input type="text" class="form-control" placeholder="Search for...">
+										<input type="text" class="form-control" placeholder="Add Client phone or email">
 										<span class="input-group-btn">
 											<button class="btn btn-default" type="button">Go!</button>
 										</span>
@@ -66,7 +72,7 @@
 							<div class="col-sm-12">
 							<ul class="list-group">
 								{{#each genericList profile.genericLists}}
-									<li class="list-group-item">{{listName}} <a href="/{{listId}}"><span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>								
+									<li class="list-group-item">{{listName}} <a href="/realtor/generic/{{uri}}"><span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>								
 								{{/each}}
 							</ul>
 							</div>						

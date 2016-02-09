@@ -1,5 +1,5 @@
 Meteor.methods({
-	parseUrl: function(url, listId, callback){	
+	parseUrl: function(url, listId, method, callback){	
 
 		//need to check list IDs for valid ids -top securty issue
 		 // if(listId != "0" || listId != "1" || listId !="2" || listId !="3" || listId!="4")
@@ -26,8 +26,13 @@ Meteor.methods({
 			var scrapedListing = scraper.scrapeResponse(response, url);
 
 			var property = PropertyActions.checkProperty(scrapedListing);
-
-			UserActions.updateDash(userId, property, listId);			
+			
+			if(method == 1)
+				UserActions.updateDash(userId, property, listId);			
+			else if(method == 2){
+				//TODO check if realtor
+				RealtorActions.updateGenericListProperty(userId, property, listId);
+			}
 		});	
 
 	}

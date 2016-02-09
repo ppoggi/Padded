@@ -4,7 +4,7 @@ RealtorActions = {
 	realtorPaymentStates : ["goodStanding", "paymentProcessing", "paymentDeclined"],
 	
 	generateRandomId:function(){
-		return Random.hexString(40);
+		return Random.id(40);
 	},  
 
 	newRealtor: function(user){
@@ -46,12 +46,13 @@ RealtorActions = {
 		return genericList;
 	},
 
-	newRealtorGenericObj: function(listId, listName, timestamp){
+	newRealtorGenericObj: function(listId, listName, timestamp, uri){
 		
-		var genObj = {};
-		genObj.listId = listId;
-		genObj.listName = listName;
+		var genObj       = {};
+		genObj.listId    = listId;
+		genObj.listName  = listName;
 		genObj.timestamp = timestamp;
+		genObj.uri       = uri;
 		
 		return genObj;
 	}, 
@@ -64,13 +65,22 @@ RealtorActions = {
 			if(err)
 				throw new Meteor.Error('RealtorActions.createGenericList.GenericLIsts.insert',err);
 
-			var realtorObj = this.newRealtorGenericObj(listId, listName, genericList.timestamp);
+			var realtorObj = this.newRealtorGenericObj(listId, listName, genericList.timestamp, genericList.uri);
 			
 			Realtors.update({userId:user._id}, {$push: {genericLists: realtorObj}}, function(err){
 				if(err)
 					throw new Meteor.Error('RealtorActions.createGenericList.Realtors.update', err);
 			});	
 		});
+	},
+
+	updateGenericListProperty: function(userId, property, listId){
+		
+		GenericLists.update({owner:userId,uri:listId},{$push:{properties:property}}, function(err){
+			if(err)
+				throw new Meteor.Error('RealtorActions.updateGenericListProperty.update', err);
+		})
+
 	},
 
 }
