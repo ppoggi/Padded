@@ -25,6 +25,18 @@ FlowRouter.route('/realtor/generic/:listId', {
     }    
 });
 
+FlowRouter.route('/realtor/dashboard/:email', {
+    action: function(){
+        BlazeLayout.render('main', {content: 'realtorDash'});
+    }
+});
+
+FlowRouter.route('/realtor/dashboard/:email/detail/:listNumber/:id', {
+    action: function(){
+        name:"realtorDetail",
+        BlazeLayout.render('main', {content: 'realtorDash'});
+    }
+});
 
 
 FlowRouter.route('/:listId', {

@@ -11,6 +11,11 @@
 		{{#if isDetail}}	
 			{{> detail dashboard}}
 		{{else}}
+
+		<ol class="breadcrumb">
+			<li class="active">Home</li>  				
+		</ol>					
+
 		
 		<div class="container-fluid well well-sm">
 		<div class="row search-row">
@@ -42,7 +47,7 @@
     							<span class="sr-only">Toggle Dropdown</span>
   							</button>
   							<ul class="dropdown-menu">
-  							{{#each listName dashboard}}	
+  							{{#each  listName dashboard.listNames}}	
     							<li class="list-name-li"><a>{{name}}</a></li>
 							{{/each}}    							
   							</ul>
@@ -59,7 +64,7 @@
 
 
 	{{#if listView}}
-		{{#each property dashboard currentList}}
+		{{#each property dashboard}}
 		<div class="row">
 			<div class="col-md-12">
 								
@@ -103,7 +108,7 @@
 
 	{{#if imageTile}}
 		<div class="row">
-		{{#each property dashboard currentList}}
+		{{#each property dashboard}}
 			
 				<div class="col-sm-3 image-container">
 					<div class="image-button image-accept">
@@ -123,7 +128,7 @@
 
 	{{#if detailList}}
 			
-	{{#each property dashboard currentList}}
+	{{#each property dashboard}}
   			
 			<div class="row">
 				<div class="col-md-4 image-container">

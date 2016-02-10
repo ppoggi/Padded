@@ -1,9 +1,13 @@
-Template.dashboard.events({
-    'submit #url_form': function (e) {
+Template.realtorDash.events({
+
+	    'submit #url_form': function (e) {
         
         e.preventDefault();
         e.stopImmediatePropagation();
         //needs to be checked via regex
+
+        console.log('realtor dash submit url working')
+        return;
 
         var url = e.target.url_input.value;
 
@@ -15,7 +19,7 @@ Template.dashboard.events({
         //todo list id
         var currentList = Session.get("currentList");
 
-        Meteor.call("parseUrl", url, currentList, 1, function(err, response){
+        Meteor.call("parseUrl", url, currentList, 3, function(err, response){
         
             if(err)
                 console.log(err)
@@ -45,36 +49,6 @@ Template.dashboard.events({
 
     //     // console.log(offset)
 
-
-    // },
-
-    'mouseenter .image-container': function(e){
-        
-        e.stopImmediatePropagation();        
-        $(e.target).find('.image-button').each(function(){            
-            $(this).css({visibility:'visible'});  
-        })
-        
-    },
-    'mouseleave .image-container': function(e){  
-
-        e.stopImmediatePropagation();        
-        
-        $(e.target).find('.image-button').each(function(){            
-            $(this).css({visibility:'hidden'});  
-        })
-
-    },
-
-    // 'click .image-accept':function(e){
-    //     e.stopImmediatePropagation();        
-    //     Meteor.call("acceptProperty", this._id);
-
-    // },
-    
-    // 'click .image-decline': function(e){
-    //     e.stopImmediatePropagation();        
-    //     Meteor.call("declineProperty", this._id);
 
     // },
     
@@ -110,19 +84,5 @@ Template.dashboard.events({
         e.preventDefault();
         
         Session.set("currentList",this.value)
-    },
-
-    'click .alert-accept': function(e){
-        
-        e.stopImmediatePropagation(e);                
-                
-         Meteor.call("clientAccept", this);
-    },
-    'click .alert-decline': function(e){
-        
-        e.stopImmediatePropagation(e);        
-                
-         Meteor.call("clientDecline", this);
     }
 });
-

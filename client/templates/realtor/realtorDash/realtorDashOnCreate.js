@@ -1,9 +1,11 @@
-Template.dashboard.onCreated(function(){
+Template.realtorDash.onCreated(function(){
 	
-		this.autorun( ()=>{    			    	    	    
-				
-			this.subscribe('dashboard');		
-		});  
+	var email = FlowRouter.getParam("email");
+		
+	this.autorun( ()=>{    			    	    	    
+			
+		this.subscribe('realtorDash', email);		
+	});  
 	
 
     Session.set('listView', true);

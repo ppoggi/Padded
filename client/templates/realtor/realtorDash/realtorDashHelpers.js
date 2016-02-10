@@ -1,4 +1,4 @@
-Template.dashboard.helpers({
+Template.realtorDash.helpers({
 
 	dashboard: function(){
 		
@@ -84,19 +84,23 @@ Template.dashboard.helpers({
 
 	detailLink: function(){
 		  	    	    	    	   
-	    var routeName = "detail/"+Session.get("currentList")+"/"+this._id;
-	    var path = FlowRouter.path(routeName);	    
+	    var path = "/realtor/dashboard/"+FlowRouter.getParam("email")+"/detail/"+Session.get("currentList")+"/"+this._id;
 
 	    return path;
 	},
 
 	isDetail: function(){
 
-		var route = FlowRouter.getRouteName()		
-		if(route == "detail")
+		var route = FlowRouter.getParam("id");
+
+		if(route)
 			return true;
 		else 
 			return false;
 
+	},
+
+	currentPerson: function(){
+		return FlowRouter.getParam("email");
 	}
 });

@@ -107,6 +107,7 @@ RealtorActions = {
 		});
 
 	},
+
 	createClientObject: function(user){
 		
 		var client      = {};
@@ -121,15 +122,29 @@ RealtorActions = {
 
 		var clientObj = this.createClientObject(user);
 
-		Realtors.update({userId: message.messengerId}, {$push: {clients:clientObj}}, (err, status) => {
+		UserDash.update( {owner:user._id},{$push:{realtors: message.messengerId}},(err,status)=>{
+
 			if(err)
-				throw new Meteor.Error("RealtorActions.acceptClient.Realtors.update", err);
+				throw new Meteor.Error("Realtor.Actions.Userdash.update.realtors", err);
 			
-			if(status != 0)
-				UserDash.update({owner:user._id}, {$pull: {alerts:message}}, function(err){
+			if(status == 0)
+				throw new Meteor.Error("Realtor.Actions.Userdash.update.realtors", "Couldnt update User Dash");
+
+			Realtors.update({userId: message.messengerId}, {$push: {clients:clientObj}}, (err, status) => {
+				if(err)
+					throw new Meteor.Error("RealtorActions.acceptClient.Realtors.update", err);
+				if(status == 0)
+					throw new Meteor.Error("RealtorActions.acceptClient.Realtors.update", "Couldnt update realtor");
+				
+				UserDash.update({owner:user._id}, {$pull: {alerts:message}}, function(err, status){
 					if(err)
-						throw new Meteor.Error("RealtorsActions.acceptClient.UserDash.update", err)
+						throw new Meteor.Error("RealtorsActions.acceptClient.UserDash.update.alerts", err)
+					if(status == 0)
+						throw new Meteor.Error("RealtorsActions.acceptClient.UserDash.update.alerts", "Not updated")
+
 				});
+			});	
+			
 		});			
 	},
 

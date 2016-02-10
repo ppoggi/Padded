@@ -1,4 +1,4 @@
-Template.dashboard.onCreated(function(){
+Template.detail.onCreated(function(){
 	
 
 	var commentListId = FlowRouter.getParam("listNumber");

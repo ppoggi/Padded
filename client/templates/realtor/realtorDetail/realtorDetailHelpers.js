@@ -1,5 +1,4 @@
-Template.detail.helpers({
-	
+Template.realtorDetail.helpers({
 	item: function(){
 
 		var list = "list" + FlowRouter.getParam("listNumber");
@@ -42,5 +41,10 @@ Template.detail.helpers({
 
 		var time = DateHelpers.dateString(timestamp)
 		return time;		
+	},
+	
+	currentPerson: function(){
+
+		return FlowRouter.getParam("email");
 	}
 });
