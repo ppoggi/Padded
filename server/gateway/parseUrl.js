@@ -1,10 +1,6 @@
 Meteor.methods({
-	parseUrl: function(url, listId, method, callback){	
-
-		//need to check list IDs for valid ids -top securty issue
-		 // if(listId != "0" || listId != "1" || listId !="2" || listId !="3" || listId!="4")
-			// throw new Meteor.Error('Meteor.methods.parseUrl','Invlid ListId');
-		
+	parseUrl: function(url, listId, method, email){	
+			
 		var userId = Meteor.userId();
 		
 		if(!userId)
@@ -27,12 +23,14 @@ Meteor.methods({
 
 			var property = PropertyActions.checkProperty(scrapedListing);
 			
-			if(method == 1)
+			if(method == 1)				
 				UserActions.updateDash(userId, property, listId);			
-			else if(method == 2){
-				//TODO check if realtor
+
+			else if(method == 2)
 				RealtorActions.updateGenericListProperty(userId, property, listId);
-			}
+			
+			else if (method == 3)
+				RealtorActions.updateClientDash(userId, property, email, listId);
 		});	
 
 	}

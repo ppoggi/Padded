@@ -13,12 +13,6 @@ Template.realtorGeneric.events({
         
         var listId = FlowRouter.getParam("listId");
 
-        Meteor.call("parseUrl", url, listId, 2, function(err, response){
-        
-            if(err)
-                console.log(err)
-            else if(response)
-                console.log(response)
-        });     
+        Meteor.call("parseUrl", url, listId, 2)        
     }
 });

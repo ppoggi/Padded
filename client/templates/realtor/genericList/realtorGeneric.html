@@ -1,7 +1,12 @@
 <template name="realtorGeneric">
 	<div class="container main-container">
 
+		<ol class="breadcrumb">
+			<li><a href="/realtor">Home</a></li>			
+			<li class="active">Generic List</li>
+		</ol>
 		<div class="row">
+			<div class="col-sm-12">
 			<div class="input-group">
   				<span class="input-group-addon">Add Recipient</span>
   				<input type="text" class="form-control" aria-label="">
@@ -10,14 +15,14 @@
 		  		</span>	
 			</div>
 		</div>
+		</div>
 
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="panel panel-default">
 					<div class="panel-body">						
 						<ul class="list-inline">
-							<li>Recipients:</li>
-							<li>7862392476</li>
+							<li>Recipients:</li>							
 						</ul>
 					</div>
 				</div>				
@@ -95,7 +100,6 @@
     							{{/each}}
 							</ul>  						
 					</div>	
-
 				</div>
 			</div>
 		<div class="row">
@@ -103,12 +107,6 @@
 			
 			</div>
 		</div>
-
-
 	{{/each}}
-
-
-
-
 	</div>
 </template>

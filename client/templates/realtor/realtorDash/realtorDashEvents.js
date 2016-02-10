@@ -3,54 +3,21 @@ Template.realtorDash.events({
 	    'submit #url_form': function (e) {
         
         e.preventDefault();
-        e.stopImmediatePropagation();
-        //needs to be checked via regex
-
-        console.log('realtor dash submit url working')
-        return;
-
+        e.stopImmediatePropagation();        
+    
         var url = e.target.url_input.value;
 
         if(!url)
             return;
         
         e.target.url_input.value = "";
-
-        //todo list id
+        
         var currentList = Session.get("currentList");
-
-        Meteor.call("parseUrl", url, currentList, 3, function(err, response){
         
-            if(err)
-                console.log(err)
-            else if(response)
-                console.log(response)
-        });     
+        var email = FlowRouter.getParam("email")
+
+        Meteor.call("parseUrl", url, currentList, 3, email);
     },
-
-    // 'click .image-container': function(e){
-    //     e.stopImmediatePropagation();        
-
-    //     if(Session.get("isTablet") && Session.get("isMobile") ){
-            
-    //         var panels = $(e.target).closest('.row').find('.panel');
-                                
-    //         $(panels).toggleClass('hidden-xs').toggleClass('hidden-sm');
-
-    //         $('html, body').animate({
-    //                 scrollTop: offset.top
-    //         }, 1000,);    
-    //     }                        
-                  
-    //     // var offset = $(panels[0]).offset();
-        
-    //     // if(offset.top < 400)
-    //     //     return;
-
-    //     // console.log(offset)
-
-
-    // },
     
     'click .link-back':function(e){
         e.preventDefault();          

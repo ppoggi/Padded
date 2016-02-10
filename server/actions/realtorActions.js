@@ -154,5 +154,23 @@ RealtorActions = {
 			if(err)
 				throw new Meteor.Error("RealtorsActions.acceptClient.UserDash.update", err)
 		});
+	},
+
+	updateClientDash: function(userId, property, email, listId){
+
+		property.listId = listId;
+
+		var query = {email:email, realtors:userId};
+
+		var modifier = {$push: {list:property}}
+
+		UserDash.update(query, modifier, function(err, status){
+			if(err)
+				throw new Meteor.Error('RealtorActions.updateClientDash.UserDash.update', err);
+			if(status == 0)
+				throw new Meteor.Error('RealtorActions.updateClientDash.UserDash.update', 'UserDash did not update');
+		});
+
+
 	}
 }
