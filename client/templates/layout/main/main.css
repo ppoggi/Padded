@@ -31,6 +31,9 @@ textarea {
 	margin-left:5px;
 }
 
+.nav-tabs{
+	border-style:none !important;
+}
 
 .navbar.navbar-default.navbar-static-top,.navbar-fixed-bottom.padded-nav{
 	background-color:white;

@@ -6,7 +6,7 @@ Template.main.helpers({
 		if(!user)
 			return;
 
-		if(user.profile.type == "pro")
+		if(user.profile.type == 'pro')
 			return true;
 		else 
 			return false;
@@ -14,10 +14,19 @@ Template.main.helpers({
 
 	isHome: function(){
 
-		return !!FlowRouter.getRouteName('home');
+		if(FlowRouter.getRouteName() == 'home')
+			return true;		
+		else 
+			return false;
 	},
+
 	isRealtor: function(){
 		
-		return !!FlowRouter.getRouteName('realtor');
+		
+
+		if(FlowRouter.getRouteName() == 'realtor')
+			return true;
+		else 
+			return false;
 	}
 })
