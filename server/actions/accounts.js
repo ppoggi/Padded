@@ -1,6 +1,12 @@
 Accounts.onCreateUser(function(options, user){
 	
-	UserActions.initialize(user, options);
+	var user = UserActions.initialize(user, options);
 
 	return user;
+});
+
+Meteor.users.deny({
+  update: function() {
+    return true;
+  }
 });

@@ -19,9 +19,9 @@ Meteor.methods({
 				throw new Meteor.Error('Meteor.methods.parseUrl','err');							
 			}									
 
-			var scrapedListing = scraper.scrapeResponse(response, url);
+			var scrapedListing = scraper.scrapeResponse(response, url);			
 
-			var property = PropertyActions.checkProperty(scrapedListing);
+			var property = PropertyActions.checkProperty(scrapedListing);			
 			
 			if(method == 1)				
 				UserActions.updateDash(userId, property, listId);			

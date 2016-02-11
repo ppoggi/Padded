@@ -35,6 +35,7 @@ UserActions = {
 	},
 
 	createHistory: function(user){
+
 		var history = this.newHistory(user);
 
 		UserHistory.insert(history, function(err){
@@ -43,11 +44,33 @@ UserActions = {
 		})
 	},
 
+	addUserProperties: function(user){
+
+		var properties = {
+			age:null,
+			gender: null,			
+			type: "consumer",
+			version: "free",
+			subscriptionStatus:null
+		}
+
+		var data = {
+			avgPropertyPrice:null,
+			state: null,
+			city: null,
+		}
+
+		user.properties = properties;
+		user.userData = data;
+		return user;
+	},
+
 	initialize: function(user, options){
 		
 		this.createDash(user);
 		this.createHistory(user);
 		CommentActions.createUserComments(user);
+		return this.addUserProperties(user);
 	},
 
 	updateDash: function(userId, property, listId){

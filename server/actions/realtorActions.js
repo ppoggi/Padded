@@ -159,17 +159,38 @@ RealtorActions = {
 	updateClientDash: function(userId, property, email, listId){
 
 		property.listId = listId;
-
+		
 		var query = {email:email, realtors:userId};
 
-		var modifier = {$push: {list:property}}
+		var modifier = {$push: {list:property}}				
+				
+		property.listId = listId;
+		
+		PropertiesCollection.insert(property,
+			(err,id) => {
 
-		UserDash.update(query, modifier, function(err, status){
 			if(err)
-				throw new Meteor.Error('RealtorActions.updateClientDash.UserDash.update', err);
-			if(status == 0)
-				throw new Meteor.Error('RealtorActions.updateClientDash.UserDash.update', 'UserDash did not update');
-		});
+				throw new Meteor.Error('UserActions.updateDash.insertProperty',err);			
+
+			property._id = id;
+
+			UserDash.update( query, modifier,
+				(err) =>{
+				
+					if(err)
+						throw new Meteor.Error('RealtroActions.updateClientDash.pushUserDash',err);
+					
+					var commentContainer = CommentActions.createCommentContainer(id);
+					
+					UserComments.update({ownerEmail : email},
+					 {$push:{ commentsList : commentContainer } },
+					 function(err){
+					 	if(err)
+					 		throw new Meteor.Error('RealtorACtions.updateClientDash.pushUserComments');
+					 });
+			});
+
+		});	
 
 
 	}
