@@ -1,14 +1,10 @@
 
-
 @media (max-width: 767px) { 
 
 	.btn.btn-default.comment-submit-btn{
 		width:100%;
 	}
-
 }
-
-
 @media (min-width: 768px) { 
 
 	.btn.btn-default.comment-submit-btn{

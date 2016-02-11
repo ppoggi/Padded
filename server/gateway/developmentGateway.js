@@ -5,7 +5,6 @@ Meteor.methods({
 		var user = Meteor.user();
 
 		RealtorActions.createRealtor(user);
-
 	}
 
 });

@@ -39,7 +39,7 @@ textarea {
 	color:#777;
 	position: relative;
 	border-style:solid;
-	border-width: 2px;
+	border-width: 1px;
 	border-color:#ddd;
 	padding: 5px;	
 }
@@ -97,7 +97,43 @@ textarea {
 	top: 8px; 
 }
 
+.try-pro-cta{
+    position: absolute;
+    top: 15px;
+    right: 100px;
+    color: orange;
+}
+
+.try-pro-window{
+
+	position: absolute;
+	top: 60px;
+	left:10px;
+	background-color:white;	
+	color:#777;	
+	border-style:solid;
+	border-width: 1px;
+	border-color:#ddd;
+	padding: 5px;	
+}
+
 .foot{
 	color:#777;
 	text-align: center;	
+}
+
+
+@media (max-width: 375px) { 
+
+	.try-pro-window{
+		left:0px;
+	}
+
+}
+@media (min-width: 376px) { 
+
+	.try-pro-window{
+		right:0px;
+	}
+
 }

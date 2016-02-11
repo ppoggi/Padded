@@ -28,15 +28,3 @@ Template.realtor.events({
 		Meteor.call("inviteClient", email)
 	}
 });
-
-//for Development
-
-Template.realtor.events({
-
-	'click #createRealtor': function(e){
-
-		e.preventDefault();
-		
-		Meteor.call('createRealtor');		
-	}
-});

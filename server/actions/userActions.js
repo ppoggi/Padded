@@ -60,7 +60,7 @@ UserActions = {
 			city: null,
 		}
 
-		user.properties = properties;
+		user.profile = properties;
 		user.userData = data;
 		return user;
 	},

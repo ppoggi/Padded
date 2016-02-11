@@ -22,11 +22,18 @@ RealtorActions = {
 	},
 
 	createRealtor: function(user){
-		
+			
 		realtor = this.newRealtor(user);
-		Realtors.insert(realtor, function(err){
+		Realtors.insert(realtor, function(err, id){
 			if(err)
-				throw new Meteor.Error('RealtorActions.createRealtor', err);
+				throw new Meteor.Error('RealtorActions.createRealtor', err);			
+						
+			Meteor.users.update( {_id: user._id} , {$set:{'profile.type': "pro"}}, function(err, status){
+				if(err)
+					throw new Meteor.Error('RealtorActions.createRealtor.users.update', err);			
+				if(status == 0)
+					throw new Meteor.Error('RealtorActions.createRealtor.users.update', 'Could not update');
+			});			
 		});
 	},
 
