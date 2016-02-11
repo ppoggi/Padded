@@ -36,7 +36,7 @@
           <div class="row">
               <div class="col-sm-12">
                   <ul class="nav nav-tabs">
-                      <li role="presentation" class="{{#if isHome}}active{{/if}}"><a href="/">Home</a></li>
+                      <li role="presentation" class="{{#unless isRealtor}}active{{/unless}}"><a href="/">Personal</a></li>
                       <li role="presentation" class="{{#if isRealtor}}active{{/if}}"><a href="/realtor">Client Management</a></li>          
                   </ul>
               </div>

@@ -12,19 +12,9 @@ Template.main.helpers({
 			return false;
 	},
 
-	isHome: function(){
-
-		if(FlowRouter.getRouteName() == 'home')
-			return true;		
-		else 
-			return false;
-	},
-
 	isRealtor: function(){
-		
-		
-
-		if(FlowRouter.getRouteName() == 'realtor')
+				
+		if(FlowRouter.getRouteName().find('realtor') != -1);
 			return true;
 		else 
 			return false;

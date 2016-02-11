@@ -69,12 +69,17 @@
 
 					<div class="row">
 						<div class="cox-xs-12">
-							<a href="#" class="thumbnail">
-								<img class="img-thumbnail list-image img-responsive" src="{{img}}">																
-							</a>																								
-							<div>
-								<p class="list-view-p"> <span class="pull-left">{{city}} {{state}}</span> {{price}} <span class="pull-right"><a href="{{detailLink}}">{{status}}</a></span></p>
+							
+						<div class="thumbnail">
+							<img class="img-thumbnail list-image img-responsive" src="{{img}}">																					
+							<div class="caption">
+								<h3> <a href="{{detailLink}}">{{status}}</a></h3>
+								<p class="list-view-p"> <span class="pull-left">{{city}} {{state}}</span> {{price}}</p>
 							</div>	
+
+						</div>
+
+
 						</div>																	
 					</div>
 					{{else}}
