@@ -27,22 +27,31 @@ FlowRouter.route('/realtor/generic/:listId', {
 });
 
 FlowRouter.route('/realtor/dashboard/:email', {
+    name: "realtorDashboard",
     action: function(){
         BlazeLayout.render('main', {content: 'realtorDash'});
     }
 });
 
 FlowRouter.route('/realtor/dashboard/:email/detail/:listNumber/:id', {
-    action: function(){
-        name:"realtorDetail",
+    name:"realtorDetail",
+    action: function(){        
         BlazeLayout.render('main', {content: 'realtorDash'});
     }
 });
 
+FlowRouter.route('/profile', {
+    name:"profile",
+    action:function(){              
+        BlazeLayout.render('main', {content: 'profile'});           
+    }    
+});
 
+//open
 FlowRouter.route('/:listId', {
     name:"genericList",
     action:function(){              
         BlazeLayout.render('open', {content: 'genericList'});           
     }    
 });
+

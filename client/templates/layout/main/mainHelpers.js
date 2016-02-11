@@ -13,10 +13,22 @@ Template.main.helpers({
 	},
 
 	isRealtor: function(){
-				
-		if(FlowRouter.getRouteName().find('realtor') != -1);
+		
+		var route = FlowRouter.getRouteName();				
+
+		if( route.search('realtor') != -1 )
 			return true;
 		else 
 			return false;
+	},
+
+	isProfile: function(){
+
+		var route = FlowRouter.getRouteName();				
+
+		if( route.search('profile') != -1 )
+			return true;
+		else 
+			return false;	
 	}
 })

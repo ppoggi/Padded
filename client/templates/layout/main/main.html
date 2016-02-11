@@ -8,42 +8,38 @@
 <body>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container nav-container">
-		<!-- Brand and toggle get grouped for better mobile display -->
+		
 			<div class="navbar-header padded-nav">				
       			<a class="navbar-brand" href="/">P<em>a</em>dded</a>      			
     		</div>				    						                              
           {{#unless isPro}}
-            <div class="try-pro-cta hdn">Try Pro</div>
-            <div class="try-pro-window hidden">
-          
+          <div class="try-pro-cta hdn">Try Pro</div>            
+            <div class="try-pro-window hidden">          
             <div class="page-header">
             <h1>Padded Pro <small>Manage client's listings</small></h1>
-            </div>
-              
-              
-            <button id="createRealtor" class="btn btn-default ">Get Pro</button>
-              
-            
+            </div>                        
+            <button id="createRealtor" class="btn btn-default ">Get Pro</button>                        
             </div>
         {{/unless}}
 
     		<div class="login-cta"> {{> loginButtons}} </div>						
 		</div>		
 	</nav>
-  {{#if isPro}}
 
-      <div class="container">
-          <div class="row">
-              <div class="col-sm-12">
-                  <ul class="nav nav-tabs">
-                      <li role="presentation" class="{{#unless isRealtor}}active{{/unless}}"><a href="/">Personal</a></li>
-                      <li role="presentation" class="{{#if isRealtor}}active{{/if}}"><a href="/realtor">Client Management</a></li>          
-                  </ul>
-              </div>
-          </div>
-      </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="nav nav-tabs">
+                        {{#if isPro}}
+                        <li class="{{#unless isRealtor}}active{{/unless}}"><a href="/">Personal</a></li>
+                        <li class="{{#if isRealtor}}active{{/if}}"><a href="/realtor">Client Management</a></li>
+                        {{/if}}
+                        <li class="{{#if isProfile}}active{{/if}} pull-right"><a class="gear-icon" href="/profile"><span class="glyphicon glyphicon-cog"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-  {{/if}}
   {{#if authInProcess}}
     <p>loading ...</p>
   {{else}}

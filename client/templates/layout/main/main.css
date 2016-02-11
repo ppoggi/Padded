@@ -103,7 +103,7 @@ textarea {
 .try-pro-cta{
     position: absolute;
     top: 15px;
-    right: 100px;
+    left: 100px;
     color: orange;
 }
 
@@ -123,6 +123,14 @@ textarea {
 .foot{
 	color:#777;
 	text-align: center;	
+}
+
+ul.nav.nav-tabs li.pull-right a.gear-icon{
+	padding-top: 5px;
+    font-size: 20px;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 0px;
 }
 
 
