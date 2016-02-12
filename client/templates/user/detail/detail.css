@@ -1,10 +1,45 @@
 
+.thumbnail div .row .btn-group{
+	width:100%;	
+}
+
+.image-button-column{
+	padding-right:0px;
+	padding-left:0px;
+	width: 50%;
+}
+
+.image-button-column button{	
+	width:100%;		
+}
+
+.image-button-column.accept button{
+	border-left:0;		
+}
+
+
 @media (max-width: 767px) { 
 
 	.btn.btn-default.comment-submit-btn{
 		width:100%;
 	}
 }
+
+
+@media (min-width: 768px) and (max-width: 992px) { 	
+	.detail-image{
+		margin-left: 6%;
+		border-bottom:0;
+	}
+	.detail-image-row{		
+		border-color:#ccc;
+		border-width:1px;
+	}
+}
+
+
+/* Medium devices (desktops, 992px and up) */
+
 @media (min-width: 768px) { 
 
 	.btn.btn-default.comment-submit-btn{
@@ -13,6 +48,12 @@
 		float:right;
 	}
 
+}
+
+@media(min-width: 992px){
+	.detail-image{
+		border-bottom:0;
+	}
 }
 
 .comment-form .comment-text-area{

@@ -105,6 +105,11 @@ textarea {
     top: 15px;
     left: 100px;
     color: orange;
+    cursor: pointer;
+}
+
+.try-pro-cta:hover{
+	color:#D69C32;
 }
 
 .try-pro-window{
