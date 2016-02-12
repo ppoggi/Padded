@@ -64,11 +64,26 @@ Template.dashboard.events({
                 
          Meteor.call("clientAccept", this);
     },
+
     'click .alert-decline': function(e){
         
         e.stopImmediatePropagation(e);        
                 
          Meteor.call("clientDecline", this);
+    },
+
+    'click .edit-current-group': function(e){
+        
+        var newName = $('.new-list-name').val();
+        $('.new-list-name').val("");
+        
+        if(!newName || newName== "")
+            return;
+
+        //todo check for bad stuff
+        var currentList = Session.get("currentList");
+        
+        Meteor.call('updateListName', newName, currentList)
     }
 });
 

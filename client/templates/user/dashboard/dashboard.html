@@ -36,21 +36,35 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="btn-group">
-  							<button type="button" class="btn group-select-button">{{activeList dashboard currentList}}</button>
-  							<button type="button" class="btn group-select-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    							<span class="caret"></span>
-    							<span class="sr-only">Toggle Dropdown</span>
-  							</button>
-  							<ul class="dropdown-menu">
+						<div class="btn-group">
+  							
+  							<button type="button" class="btn group-select-button list-name-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{activeList dashboard currentList}}</button> 
+  							 <ul class="dropdown-menu">
   							{{#each  listName dashboard.listNames}}	
     							<li class="list-name-li"><a>{{name}}</a></li>
 							{{/each}}    							
   							</ul>
+
+  						</div>
+  						
+  							<button type="button" class="btn group-select-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">    							
+    							<span class="glyphicon glyphicon-pencil"></span>
+    							<span class="sr-only">Toggle Dropdown</span>
+  							</button>
+  							
+  							 <ul class="dropdown-menu">  							
+    							<li class="list-name-edit-li">
+    								<div class="input-group">    									
+  										<input type="text" class="form-control new-list-name" placeholder="{{activeList dashboard currentList}}">
+  										<span class="input-group-addon edit-current-group">Edit</span>
+									</div>									
+								</li>							    						
+  							</ul>
 						</div>
 						<div class="btn-group">											
-	  					<button type="button" class="btn btn-default list-btn {{#if listView}} active-button {{/if}} "><span class="glyphicon glyphicon-align-justify"></span></button>
-	  					<button type="button" class="btn btn-default image-tile-btn {{#if imageTile}} active-button {{/if}} "><span class="glyphicon glyphicon-th"></span></button>
-	  					<button type="button" class="btn btn-default detail-list-btn {{#if detailList}} active-button {{/if}} "><span class="glyphicon glyphicon-th-list"></span></button>						
+	  						<button type="button" class="btn btn-default list-btn {{#if listView}} active-button {{/if}} "><span class="glyphicon glyphicon-align-justify"></span></button>
+	  						<button type="button" class="btn btn-default image-tile-btn {{#if imageTile}} active-button {{/if}} "><span class="glyphicon glyphicon-th"></span></button>
+	  						<button type="button" class="btn btn-default detail-list-btn {{#if detailList}} active-button {{/if}} "><span class="glyphicon glyphicon-th-list"></span></button>						
 	  					</div>
 					</div>					
 				</div>	
