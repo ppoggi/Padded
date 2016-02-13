@@ -34,11 +34,7 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<div class="btn-group">
-								<button type="button" class="btn group-select-button">{{activeList dashboard currentList}}</button>
-								<button type="button" class="btn group-select-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span class="caret"></span>
-									<span class="sr-only">Toggle Dropdown</span>
-								</button>	
+								<button type="button" class="btn group-select-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{activeList dashboard currentList}} <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
 								<ul class="dropdown-menu">
 									{{#each  listName dashboard.listNames}}	
 										<li class="list-name-li"><a>{{name}}</a></li>
