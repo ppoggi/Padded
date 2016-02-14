@@ -1,4 +1,4 @@
-Template.main.helpers({
+Template.actionBar.helpers({
 	isPro: function(){
 				
 		var user = Meteor.user()
