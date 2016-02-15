@@ -2,12 +2,12 @@
 body{
 	min-height:95vh;
 }
-div,button,img,textarea,span,input{
+div,button,img,textarea,span,input,li{
 	border-radius: 0px !important;
 }
 
 em{
-	color:orange;
+	color:orangered;
 	font-style: normal;
 }
 p{
@@ -16,6 +16,13 @@ p{
 
 textarea {
     resize: none;
+}
+.row.head-row{
+	position: relative;
+}
+
+.nav-tabs{
+	margin-top:5px;
 }
 
 .thumbnail{	
@@ -38,13 +45,27 @@ textarea {
 .navbar.navbar-default.navbar-static-top,.navbar-fixed-bottom.padded-nav{
 	background-color:white;
 }
+
+.login-link-and-dropdown-list.login-form-sign-in{
+	width: 375px;
+	float: right;
+}
+
+.accounts-dialog{
+	position: absolute;
+	background-color:white;
+	border-style: solid;
+	border-width: thin;
+	border-color:rgba(40, 47, 57, 0.8);
+	right:0px;
+	z-index: 1000;
+}
+
 .login-link-and-dropdown-list{
 	color:#777;
 	position: relative;
-	border-style:solid;
-	border-width: 1px;
-	border-color:#ddd;
 	padding: 5px;	
+	text-align: right;
 }
 .login-link-and-dropdown-list a{
 	color:#777;
@@ -62,7 +83,7 @@ textarea {
 	text-align: center;
 	border-width: 1px;
 	border-style: solid;
-	color:orange;
+	color:orangered;
 	cursor: pointer;
 }
 
@@ -71,9 +92,6 @@ textarea {
 }
 
 .login-close-text{
-	position: absolute;
-	top:2px;
-	right:2px;
 }
 
 #login-username-label-and-input{
@@ -85,7 +103,7 @@ textarea {
 }
 
 .additional-link-container{
-	text-align: center;
+	text-align: right;
 	margin:5px;
 	cursor: pointer;
 }
@@ -102,18 +120,18 @@ textarea {
 
 .try-pro-cta{
     position: absolute;
-    top: 15px;
-    left: 100px;
-    color: orange;
+    top: 30px;
+    left: 170px;
+    color: orangered;
     cursor: pointer;
+    z-index:1000;
 }
 
 .try-pro-cta:hover{
 	color:#D69C32;
 }
 
-.try-pro-window{
-
+.try-pro-window{	
 	position: absolute;
 	top: 60px;
 	left:10px;
@@ -123,6 +141,7 @@ textarea {
 	border-width: 1px;
 	border-color:#ddd;
 	padding: 5px;	
+	z-index: 1000;
 }
 
 .foot{

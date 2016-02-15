@@ -14,5 +14,10 @@ Template.realtorGeneric.events({
         var listId = FlowRouter.getParam("listId");
 
         Meteor.call("parseUrl", url, listId, 2)        
+    },
+
+    'click #generic-url-form-submit': function(){
+
+        $('#url_form').submit();
     }
 });

@@ -5,7 +5,7 @@
 			<li><a href="/realtor">Home</a></li>			
 			<li class="active">Generic List</li>
 		</ol>
-		<div class="row">
+<!-- 		<div class="row">
 			<div class="col-sm-12">
 			<div class="input-group">
   				<span class="input-group-addon">Add Recipient</span>
@@ -15,9 +15,9 @@
 		  		</span>	
 			</div>
 		</div>
-		</div>
+		</div> -->
 
-		<div class="row">
+<!-- 		<div class="row">
 			<div class="col-sm-12">
 				<div class="panel panel-default">
 					<div class="panel-body">						
@@ -27,29 +27,23 @@
 					</div>
 				</div>				
 			</div>
-		</div>
+		</div> -->
 
-		<div class="row">
-
-		<div class="well well-sm">
-
-		
+		<div class="row">		
 			<div class="row search-row">
 				<div class="col-lg-12">
 					<form id="url_form">
 						<div class="form-group">						
 							<div class="input-group">										
 								<input name="text" class="form-control" placeholder="Paste your listing URL hereto add it to your Generic List">
-								<span class="input-group-btn">		
-		  							<button class="btn btn-default" type="submit" name="url_submit">Submit</button>
-		  						</span>								  					
+		  						<span id="generic-url-form-submit" class="input-group-addon enter" type="submit" name="url_submit">Submit</span>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-		</div> 
+		
 
 	{{#each list.properties}}
   			

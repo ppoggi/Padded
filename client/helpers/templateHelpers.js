@@ -35,3 +35,35 @@ Template.registerHelper('canShow', function(){
 	return !!Meteor.user();
 });
 
+Template.registerHelper('isPro', function(){
+				
+	var user = Meteor.user()
+	
+	if(!user)
+		true;
+
+	if(user.profile.type == 'pro')
+		return true;
+	else 
+		return false;
+});
+
+Template.registerHelper('isRealtor', function(){	
+	
+	var route = FlowRouter.getRouteName();				
+
+	if( route.search('realtor') != -1 )
+		return true;
+	else 
+		return false;
+});
+
+Template.registerHelper('isProfile', function(){
+
+	var route = FlowRouter.getRouteName();				
+
+	if( route.search('profile') != -1 )
+		return true;
+	else 
+		return false;	
+});

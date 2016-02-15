@@ -11,9 +11,3 @@ Template.dashboard.onCreated(function(){
     Session.set('detailList', false);
     Session.set("currentList", 0);           
 });
-
- Template.dashboard.rendered = function() {
- 	
-
-
- };

@@ -51,5 +51,10 @@ Template.realtorDash.events({
         e.preventDefault();
         
         Session.set("currentList",this.value)
+    },
+
+    'click #realtor-add-property-input': function(){
+        $('#url_form').submit();
     }
+
 });

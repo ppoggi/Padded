@@ -84,7 +84,13 @@ Template.dashboard.events({
         var currentList = Session.get("currentList");
         
         Meteor.call('updateListName', newName, currentList)
+    },
+
+    'click #url-form-submit': function(e){
+        
+        $('#url_form').submit();
     }
+
 });
 
 

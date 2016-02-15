@@ -12,7 +12,7 @@ body .alert{
 }
 
 .list-btn.active-button,.image-tile-btn.active-button,.detail-list-btn.active-button{
-	color:orange;
+	color:orangered !important;
 }
 
 .col-xs-2.image-col{
@@ -31,7 +31,7 @@ body .alert{
 }
 .group-select-button{
 	color:white;
-	background-color:#337ab7
+	background-color:orangered
 }
 
 .list-btn,.image-tile-btn,.detail-list-btn{
@@ -80,14 +80,14 @@ body .alert{
 	color:#F37B21;
 }
 .glyphicon-remove{
-	color:#337ab7;
+	color:orangered;
 }
 
 .col-md-4 .panel.panel-default .alt-panel-color,
 .col-md-12 .panel.panel-default .alt-panel-color,
 .col-md-4 .panel.panel-default.detail-panel .panel-heading{
-	background-color:#337ab7;
-	color:white;
+	background-color:white;
+	color: rgba(0, 0, 0, 0.7);
 }
 
 .mobile-thumbnail {
@@ -108,6 +108,13 @@ li.list-group-item{
 }
 .main-container{
 	margin-bottom:40px;
+}
+.list-name-edit-li{
+	width: 200px;
+}
+
+.list-organizer-buttons{
+	margin-top:10px;	
 }
 
 /* Small devices (tablets, 768px and up) */
@@ -160,8 +167,6 @@ li.list-group-item{
 	.list-view-container .col-xs-5,.list-view-container .col-xs-2{	
 		margin-top:85px;
 	}
-
-
 }
 
 /* Large devices (large desktops, 1200px and up) */
