@@ -78,6 +78,9 @@ UserActions = {
 		var operator;
 				
 		property.listId = listId;
+		property.fromRealtor = false;
+		property.isLiked = true;
+		property.realtorId = null;
 		
 		PropertiesCollection.insert(property,
 			(err,id) => {
@@ -107,19 +110,19 @@ UserActions = {
 		});				
 	},
 	
-	removeFromDash:function(userId, propertyId, historyUpdate){
-		
-		UserDash.update(
-			{owner:userId},
-			{$pull:{properties: { _id: propertyId}}},
-			(err) => {
-				if(err)
-					 throw new Meteor.Error('UpdateHistory.AcceptProperty', err);		
+	removeFromDash:function(user, property){
 
-			if(historyUpdate)
-				UserHistoryActions.addToApproved(userId, propertyId);
-			else
-				UserHistoryActions.addToRemoved(userId, propertyId);
-		});
+		//preliminary version
+		//needs to be updated to do the right things
+		
+		var query  = {owner: user._id};
+		var update = {$pull: {list: { _id : property._id}}};
+
+		UserDash.update(query, update, function(err, status){
+			if(err)
+				throw new Meteor.Error('UserActions.removeFromDash.update', err);
+			if(status ==0)
+				throw new Meteor.Error('UserActions.removeFromDash.update', 'Could not remove');
+		}); 	
 	}
 }

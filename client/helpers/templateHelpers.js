@@ -40,7 +40,7 @@ Template.registerHelper('isPro', function(){
 	var user = Meteor.user()
 	
 	if(!user)
-		true;
+		return true;
 
 	if(user.profile.type == 'pro')
 		return true;

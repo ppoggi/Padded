@@ -12,7 +12,6 @@ Template.dashboard.events({
         
         e.target.url_input.value = "";
 
-        //todo list id
         var currentList = Session.get("currentList");
 
         Meteor.call("parseUrl", url, currentList, 1, function(err, response){

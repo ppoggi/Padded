@@ -14,6 +14,7 @@ Template.detail.events({
 
 		Meteor.call("insertComment", text, location);
 	},
+
 	'click .link-back-detail':function(e){
         
         e.preventDefault();         
@@ -21,4 +22,16 @@ Template.detail.events({
         window.open(e.currentTarget.href)
     },
 
+    'click #accept-property': function(e){
+    	
+    	Meteor.call('likeProperty', this);
+    },
+
+    'click .image-button-column.decline li a.decline': function(e){
+    	
+    	e.preventDefault();
+    	
+    	Meteor.call('declineProperty', this);
+
+    }
 })

@@ -166,6 +166,9 @@ RealtorActions = {
 	updateClientDash: function(userId, property, email, listId){
 
 		property.listId = listId;
+		property.fromRealtor = true;
+		property.isLiked = false;
+		property.realtorId = userId;
 		
 		var query = {email:email, realtors:userId};
 

@@ -4,24 +4,33 @@
 			<li><a href="/">Home</a></li>
 			<li class="active">Property Details</li>  				
 		</ol>					
-				
+			{{#each item}}	
 			<div class="row">
 				<div class="col-md-4 image-container">
 					<div  class="thumbnail">
 						<div>
 							<div class="row">
-								<img class="img-thumbnail list-image detail-image" src="{{item.img}}">	
+								<img class="img-thumbnail list-image detail-image" src="{{img}}">	
 							</div>
+							{{#unless isLiked}}
 							<div class="row detail-image-row">
 								<div class="btn-group" role="group" aria-label="...">							
 									<div class="col-xs-6 image-button-column decline">
-										<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
+										<div class="btn-group">
+											<button id="remove-property" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-remove"></span></button>
+											<ul class="dropdown-menu">
+      											<li><a class="decline" href="#">Too expensive</a></li>
+      											<li><a class="decline " href="#">Location</a></li>
+      											<li><a class="decline" href="#">Other</a></li>
+    										</ul>
+										</div>
 									</div>
 									<div class="col-xs-6 image-button-column accept">
-										<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span></button>
+										<button id="accept-property" type="button" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span></button>
 									</div>
 								</div>
 							</div>
+							{{/unless}}
 						</div>
 					</div>					
 				</div>
@@ -31,18 +40,18 @@
 							<h3 class="panel-title">Listing</h3>
 						</div>
 						<ul class="list-group">
-							<li class="list-group-item"><p class="text-left">URL: <span class="pull-right"><a class="link-back-detail" href="{{item.urlLink}}">{{item.urlName}}</a></span></p></li>
+							<li class="list-group-item"><p class="text-left">URL: <span class="pull-right"><a class="link-back-detail" href="{{urlLink}}">{{urlName}}</a></span></p></li>
 						  	<li class="list-group-item">							  		
-						  		<p>Area:<span class="pull-right">{{item.city}}, {{item.state}}, {{item.zip}}</span></p>
+						  		<p>Area:<span class="pull-right">{{city}}, {{state}}, {{zip}}</span></p>
 						  	</li>
 						    <li class="list-group-item">
-						    	<p>Address:<span class="pull-right">{{item.street}} <span class="text-muted">{{item.neighborhood}}</span></span></p>
+						    	<p>Address:<span class="pull-right">{{street}} <span class="text-muted">{{neighborhood}}</span></span></p>
 						    </li>
 						    <li class="list-group-item">
-						    	<p class="text-left">Price:<span class="pull-right">{{item.price}}</span></p>
+						    	<p class="text-left">Price:<span class="pull-right">{{price}}</span></p>
 						    </li>
 						    <li class="list-group-item">
-						    	<p class="text-left">Status:<span class="pull-right">{{item.status}}</span></p>
+						    	<p class="text-left">Status:<span class="pull-right">{{status}}</span></p>
 						    </li>							    
 						</ul>
 					</div>	
@@ -53,7 +62,7 @@
 							<h3 class="panel-title">Details</h3>
 						</div>						 
 						 	<ul class="list-group">
-    							{{#each item.details}}
+    							{{#each details}}
     								<li class="list-group-item">
 							    		<p class="text-left">{{this}}</p>
 							    	</li>    								
@@ -67,13 +76,11 @@
 			<div class="col-md-12">
 				<div class="panel panel-default">
 					<div class="panel-heading alt-panel-color">Comments</div>					
-					<div class="panel-body">					    
-						
+					<div class="panel-body">					    						
 						{{#each comments}}
 							<label>{{ownerName}} @ {{time timestamp}}</label>
 							<div class="well">{{commentText}}</div>
-						{{/each}}
-						
+						{{/each}}						
 						<form>
 							<div class="form-group comment-form">									
 								<textarea type="email" class="form-control comment-text-area" id="exampleInputEmail1" placeholder="Type..." name="comment"></textarea>
@@ -84,4 +91,5 @@
 				</div>
 			</div>
 		</div>	
+		{{/each}}
 </template>

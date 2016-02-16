@@ -15,7 +15,7 @@ Template.detail.helpers({
 	
 		for(var i =0; i< places.length; i++)			
 			if(places[i]._id == id)
-				return places[i];		
+				return [places[i]];		
 	},
 
 	comments: function(){

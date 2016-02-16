@@ -72,31 +72,31 @@
 	{{#if listView}}
 		{{#each property dashboard}}
 		<div class="row">
-			<div class="col-md-12">
-								
+			<div class="col-md-12">								
 				<div class="container list-view-container">
-
 					{{#if isMobile}}
-
 					<div class="row">
 						<div class="cox-xs-12">
 							
 						<div class="thumbnail">
-							<img class="img-thumbnail list-image img-responsive" src="{{img}}">																					
+							<img class="img-thumbnail list-image img-responsive" src="{{img}}">													
+							{{#unless isLiked}}
+							<i class="fa fa-certificate">New</i>								
+							{{/unless}}
 							<div class="caption">
 								<h3> <a href="{{detailLink}}">{{status}}</a></h3>
 								<p class="list-view-p"> <span class="pull-left">{{city}} {{state}}</span> {{price}}</p>
 							</div>	
-
 						</div>
-
-
 						</div>																	
 					</div>
 					{{else}}
 					<div class="col-xs-3 image-col">
-						<a href="#" class="thumbnail">
-							<img class="img-thumbnail list-image img-responsive" src="{{img}}">	
+						<a href="{{detailLink}}" class="thumbnail">
+							<img class="img-thumbnail list-image img-responsive" src="{{img}}">
+							{{#unless isLiked}}
+							<i class="fa fa-certificate">New</i>								
+							{{/unless}}
 						</a>
 					</div>
 					<div class="col-xs-5">
@@ -128,8 +128,11 @@
 					<div class="image-button image-decline">
 						<span class="glyphicon glyphicon-remove"></span>
 					</div>
-					<a href="#" class="thumbnail">
-						<img class="img-thumbnail list-image" src="{{img}}">	
+					<a href="{{detailLink}}" class="thumbnail">
+						<img class="img-thumbnail list-image" src="{{img}}">
+						{{#unless isLiked}}
+							<i class="fa fa-certificate">New</i>								
+						{{/unless}}	
 					</a>
 				</div>
 			
@@ -149,8 +152,11 @@
 					<div class="image-button image-decline">
 						<span class="glyphicon glyphicon-remove"></span>
 					</div>
-					<a href="#" class="thumbnail">
+					<a href="{{detailLink}}" class="thumbnail">
 						<img class="img-thumbnail list-image" src="{{img}}">	
+						{{#unless isLiked}}
+							<i class="fa fa-certificate">New</i>								
+						{{/unless}}			
 					</a>
 				</div>
 				<div class="col-md-4">
@@ -196,10 +202,7 @@
 			
 			</div>
 		</div>
-
-
 	{{/each}}
-
 	{{/if}}
 	{{/if}}
 	</div>		

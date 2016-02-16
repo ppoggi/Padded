@@ -53,8 +53,11 @@
 								{{#if isMobile}}
 									<div class="row">
 										<div class="cox-xs-12">
-											<a href="#" class="thumbnail">
-												<img class="img-thumbnail list-image img-responsive" src="{{img}}">						
+											<a href="{{detailLink}}" class="thumbnail">
+												<img class="img-thumbnail list-image img-responsive" src="{{img}}">
+												{{#if isLiked}}
+													<i class="fa fa-certificate">Liked</i>								
+												{{/if}}
 											</a>																								
 											<div>
 												<p class="list-view-p"> <span class="pull-left">{{city}} {{state}}</span> {{price}} <span class="pull-right"><a href="{{detailLink}}">{{status}}</a></span></p>
@@ -65,6 +68,9 @@
 									<div class="col-xs-3 image-col">
 										<a href="#" class="thumbnail">
 											<img class="img-thumbnail list-image img-responsive" src="{{img}}">	
+											{{#if isLiked}}
+												<i class="fa fa-certificate">Liked</i>								
+											{{/if}}
 										</a>
 									</div>
 									<div class="col-xs-5">
@@ -94,8 +100,11 @@
 							<div class="image-button image-decline">
 								<span class="glyphicon glyphicon-remove"></span>
 							</div>
-							<a href="#" class="thumbnail">
-								<img class="img-thumbnail list-image" src="{{img}}">	
+							<a href="{{detailLink}}" class="thumbnail">
+								<img class="img-thumbnail list-image" src="{{img}}">
+								{{#if isLiked}}
+									<i class="fa fa-certificate">Liked</i>								
+								{{/if}}	
 							</a>
 						</div>
 
@@ -112,8 +121,11 @@
 							<div class="image-button image-decline">
 								<span class="glyphicon glyphicon-remove"></span>
 							</div>
-							<a href="#" class="thumbnail">
-								<img class="img-thumbnail list-image" src="{{img}}">	
+							<a href="{{detailLink}}" class="thumbnail">
+								<img class="img-thumbnail list-image" src="{{img}}">
+								{{#if isLiked}}
+									<i class="fa fa-certificate">Liked</i>								
+								{{/if}}
 							</a>
 						</div>
 						<div class="col-md-4">

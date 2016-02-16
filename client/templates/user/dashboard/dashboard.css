@@ -117,6 +117,14 @@ li.list-group-item{
 	margin-top:10px;	
 }
 
+.fa.fa-certificate{
+	position: absolute;
+	top:20px;
+	left:20px;
+	color: orangered;
+	font-size: 20px;
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
 
