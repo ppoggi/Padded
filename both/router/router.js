@@ -40,10 +40,10 @@ FlowRouter.route('/realtor/dashboard/:email/detail/:listNumber/:id', {
     }
 });
 
-FlowRouter.route('/profile', {
-    name:"profile",
+FlowRouter.route('/settings', {
+    name:"settings",
     action:function(){              
-        BlazeLayout.render('main', {content: 'profile'});           
+        BlazeLayout.render('main', {content: 'settings'});           
     }    
 });
 

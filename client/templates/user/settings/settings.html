@@ -1,0 +1,51 @@
+<template name="settings">
+	
+	<div class="container">		
+		<ol class="breadcrumb">
+	  		<li><a href="/">Home</a></li>  	
+	  		<li class="active">Settings</li>
+		</ol>		
+		<div class="row">
+			<div class="col-md-12">
+
+		<div id="tabs5">
+          <ul class="left-tabulus">
+            <li class="tab-1 active"><a class="tab-link" href="tab-1-data"><i class="fa fa-user"></i>Profile</a></li>
+            <li class="tab-2"><a class="tab-link" href="tab-2-data"><i class="fa fa-map"></i>Home Guide</a></li>
+            <li class="tab-2"><a class="tab-link" href="tab-3-data"><i class="fa fa-calendar"></i>Calendar</a></li>
+            <li class="tab-3"><a class="tab-link" href="tab-4-data"><i class="fa fa-users"></i>Network</a></li>
+            <li class="tab-4"><a class="tab-link" href="tab-5-data"><i class="fa fa-credit-card"></i>Plan</a></li>            
+          </ul>
+          <div class="tabs_container">
+            <div id="tab-1-data" class="show">
+        				<p>Username:<span class="pull-right">{{username}}</span></p>
+        				
+        				<p>Age:<span class="pull-right">{{profile.age}}</span></p>
+        				
+        				<p>Gender:<span class="pull-right">{{profile.gender}}</span></p>		
+        		
+        				<p>Plan:<span class="pull-right">{{profile.type}}</span></p>		
+        		
+        				<p>Payment:<span class="pull-right">{{profile.version}}</span></p>
+            </div>
+            <div id="tab-2-data" class="hidden">
+                {{> homeGuide}}
+            </div>
+            <div id="tab-3-data" class="hidden">
+                {{> calendar}}
+            </div>
+            <div id="tab-4-data" class="hidden">
+                {{> network}}
+            </div>
+            <div id="tab-5-data" class="hidden">
+              <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem.</p>
+              <p> Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales.</p>
+            </div>
+          </div>
+          <!--End tabs container-->
+        </div>
+		</div>
+		</div>		
+	</div>
+
+</template>

@@ -1,4 +1,4 @@
-Template.profile.helpers({
+Template.settings.helpers({
 
 	profile: function(){
 
