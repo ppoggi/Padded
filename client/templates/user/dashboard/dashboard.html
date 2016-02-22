@@ -1,17 +1,10 @@
 <template name="dashboard">
-
-		{{#each alerts dashboard}}
-
-			<div class="alert alert-info" role="alert">
-				<span class='glyphicon glyphicon-remove pull-left alert-decline'></span>
-				<span class='glyphicon glyphicon-ok pull-right alert-accept'></span>
-				<span class="alert-text">{{alertText messageType messengerEmail messengerUserName}}</span></div>
-		{{/each}}
 		
-	<div class="container main-container">
-
 		
-		{{#if isDetail}}	
+	<div class="container main-container">		
+		
+		
+			{{#if isDetail}}	
 			{{> detail dashboard}}
 		{{else}}
 		
@@ -36,7 +29,7 @@
 						<div class="btn-group">
   							
   							<button type="button" class="btn group-select-button list-name-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{activeList dashboard currentList}}</button> 
-  							 <ul class="dropdown-menu">
+  							 <ul class="dropdown-menu">  							
   							{{#each  listName dashboard.listNames}}	
     							<li class="list-name-li"><a>{{name}}</a></li>
 							{{/each}}    							
@@ -68,9 +61,22 @@
 			</div>			
 		</div>
 
+		{{#each alerts dashboard}}
+			<div class="row">
+			
+				<div class="col-sm-12">
+					<div class="alert alert-info" role="alert">
+						<span class='glyphicon glyphicon-remove pull-left alert-decline'></span>
+						<span class='glyphicon glyphicon-ok pull-right alert-accept'></span>
+						<span class="alert-text">{{alertText messageType messengerEmail messengerUserName}}</span>
+					</div>
+				</div>
+			</div>	
+			{{/each}}
 
 	{{#if listView}}
-		{{#each property dashboard}}
+		{{#each property dashboard}}				
+		
 		<div class="row">
 			<div class="col-md-12">								
 				<div class="container list-view-container">

@@ -67,7 +67,7 @@ Trulia = {
 		img = img.slice(0,-3);
 				
 		if(!img)
-			throw new Meteor.Error('Error.scrapeResponse', 'Invalid img');
+			img = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png";
 
 		return {
 			street       : street,
