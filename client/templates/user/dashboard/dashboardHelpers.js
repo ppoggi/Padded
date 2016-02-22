@@ -97,6 +97,5 @@ Template.dashboard.helpers({
 			return true;
 		else 
 			return false;
-
 	}
 });

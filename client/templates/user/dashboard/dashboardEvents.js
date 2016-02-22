@@ -12,15 +12,11 @@ Template.dashboard.events({
         
         e.target.url_input.value = "";
 
-        var currentList = Session.get("currentList");
+        Session.set('loading', true);
 
-        Meteor.call("parseUrl", url, currentList, 1, function(err, response){
-        
-            if(err)
-                console.log(err)
-            else if(response)
-                console.log(response)
-        });     
+        var currentList = Session.get('currentList');
+
+        Meteor.call('parseUrl', url, currentList, 1, null); 
     },
     
     'click .link-back':function(e){

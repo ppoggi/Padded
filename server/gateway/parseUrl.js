@@ -30,7 +30,7 @@ Meteor.methods({
 				RealtorActions.updateGenericListProperty(userId, property, listId);
 			
 			else if (method == 3)
-				RealtorActions.updateClientDash(userId, property, email, listId);
+				RealtorActions.updateClientDash(userId, property, email, listId);	
 		});	
 
 	}
