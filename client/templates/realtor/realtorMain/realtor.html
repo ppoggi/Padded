@@ -27,7 +27,7 @@
 								<div class="col-sm-12">
 
 									<ul class="list-group">
-										{{#each profile.clients}}
+										{{#each clients}}
 											<li class="list-group-item">{{username}} ({{email}}) <a href="/realtor/dashboard/{{email}}"><span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
 										{{/each}}
 									</ul>
@@ -63,7 +63,7 @@
 						<div class="row">
 							<div class="col-sm-12">
 							<ul class="list-group">
-								{{#each genericList profile.genericLists}}
+								{{#each genericLists}}
 									<li class="list-group-item">{{listName}} <a href="/realtor/generic/{{uri}}"><span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>								
 								{{/each}}
 							</ul>

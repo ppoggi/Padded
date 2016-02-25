@@ -72,7 +72,7 @@ RealtorActions = {
 
 			var realtorObj = this.newRealtorGenericObj(listId, listName, genericList.timestamp, genericList.uri);
 			
-			Meteor.users.update({userId:user._id}, {$push: {'realtorData.genericLists': realtorObj}}, function(err){
+			Meteor.users.update(user, {$push: {'realtorData.genericLists': realtorObj}}, function(err){
 				if(err)
 					throw new Meteor.Error('RealtorActions.createGenericList.Realtors.update', err);
 			});	
@@ -114,9 +114,6 @@ RealtorActions = {
 	acceptClient: function(user, message){
 
 		var clientObj = this.createClientObject(user);	
-
-		console.log(message)
-		console.log(user.profile.alerts)	
 
 		Meteor.users.update(user, {$push:{'profile.realtors': message.messengerId}},(err,status)=>{
 
