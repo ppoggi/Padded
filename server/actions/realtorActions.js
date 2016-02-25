@@ -113,7 +113,10 @@ RealtorActions = {
 
 	acceptClient: function(user, message){
 
-		var clientObj = this.createClientObject(user);		
+		var clientObj = this.createClientObject(user);	
+
+		console.log(message)
+		console.log(user.profile.alerts)	
 
 		Meteor.users.update(user, {$push:{'profile.realtors': message.messengerId}},(err,status)=>{
 
@@ -128,8 +131,8 @@ RealtorActions = {
 					throw new Meteor.Error("RealtorActions.acceptClient.RealtorData.update", err);
 				if(status == 0)
 					throw new Meteor.Error("RealtorActions.acceptClient.RealtorData.update", "Couldnt update realtor");
-				
-				this.removeClientMessage(user, message);
+
+				this.removeClientMessage(Meteor.user(), message);		
 			});				
 		});			
 	},
