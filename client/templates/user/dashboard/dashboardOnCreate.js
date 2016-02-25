@@ -2,12 +2,11 @@ Template.dashboard.onCreated(function(){
 	
 		this.autorun( ()=>{    			    	    	    
 				
-			this.subscribe('dashboard');		
+			this.subscribe('UserLists');		
 		});  
 	
-
     Session.set('listView', true);
     Session.set('imageTile', false);
     Session.set('detailList', false);
-    Session.set("currentList", 0);           
+    Session.set("currentList", null);          
 });

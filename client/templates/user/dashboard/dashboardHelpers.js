@@ -1,43 +1,18 @@
 Template.dashboard.helpers({
 
-	dashboard: function(){
+	isDetail: function(){
+
+		var routeName = FlowRouter.getRouteName();
+		if(routeName == "detail")
+			
+			return true
 		
-		return UserDash.findOne({});
+		return false;
 	},
 
-	alerts: function(dashboard){
-
-		if(!dashboard)
-			return;
-
-		var alerts = dashboard.alerts;
-
-		return alerts;
-	},
-
-	alertText: function(messageType, messengerEmail, messengerUserName){
+	property: function(){	
 				
-		//create helper for this
-		if(messageType =="realtor.invite"){
-			var message = messengerUserName +"("+messengerEmail+") would like to add you as a client"			
-			return message;
-		}		
-	},
-
-	property: function(dashboard){	
-				
-		if(!dashboard)
-			return;
-		
-		var properties = dashboard.list;		
-
-		var propertiesList = [];
-
-		for(var i=0; i < properties.length; i++)
-			if(properties[i].listId == Session.get("currentList"))
-				propertiesList.push(properties[i]);
-		
-		return propertiesList.reverse();
+		return null;
 	},
 	
 	listView: function(){
@@ -55,31 +30,44 @@ Template.dashboard.helpers({
 		return Session.get("detailList");		
 	},
 
-	currentList: function(){
+	activeList: function(lists){
+		
+		var currentList = Session.get('currentList');		
 
-		return Session.get("currentList");
+		if(!lists && !currentList)
+			return "Loading..."
+
+
+		if(!lists )
+			return "Loading.."
+
+		lists = lists.fetch();
+		
+ 		if(!lists[0])
+ 			return "Loading."
+
+		var name;
+		
+		if(!currentList){
+			name = lists[0].name;
+			Session.set('currentList', name);
+			Session.set('currentListId', lists[0]._id);
+			
+		}else
+			name= currentList;			
+		
+		return name;
 	},
 
-	activeList: function(dashboard, currentList){
-				
-		 if(!dashboard)
-			return "Loading...";
+	list: function(){
+		
+		var currentListId = Session.get('currentListId');
 
-		return dashboard.listNames[currentList];		
+		return UserLists.findOne({_id:currentListId, owners: Meteor.userId()});
 	},
 
-	listName: function(list){
-		
-		if(!list)
-			return;
-		
-		var listName = [];
-		
-		for(var i = 0; i < list.length; i++){
-
-			listName.push({value:i, name:list[i]})
-		}
-		return listName
+	lists: function(){
+		return UserLists.find();
 	},
 
 	detailLink: function(){
@@ -88,14 +76,5 @@ Template.dashboard.helpers({
 	    var path = FlowRouter.path(routeName);	    
 
 	    return path;
-	},
-
-	isDetail: function(){
-
-		var route = FlowRouter.getRouteName()		
-		if(route == "detail")
-			return true;
-		else 
-			return false;
 	}
 });

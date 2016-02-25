@@ -1,0 +1,13 @@
+<template name="alerts">
+		{{#each alerts}}
+			<div class="row">			
+				<div class="col-sm-12">
+					<div class="alert alert-info" role="alert">
+						<span class='glyphicon glyphicon-remove pull-left alert-decline'></span>
+						<span class='glyphicon glyphicon-ok pull-right alert-accept'></span>
+						<span class="alert-text">{{alertText messageType messengerEmail messengerUserName}}</span>
+					</div>
+				</div>
+			</div>	
+		{{/each}}
+</template>

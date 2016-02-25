@@ -1,57 +1,68 @@
 UserActions = {
 
-	newDash: function(user){
-
-		var dash         = {};
-		dash.owner 	     = user._id;
-		dash.userName    = user.username;		
-		dash.email       = user.emails[0].address;
-		dash.list        = [];      
-		dash.listNames   = ["Untitled List 1", "Untitled List 2",
-		 "Untitled List 3", "Untitled List 4","Untitled List 5"];		
-		dash.realtors    = [];
-		dash.alerts      = [];
-
-		return dash;	
-	},
-
-	newHistory: function(user){
+	newUserList: function(user){
 		
-		var history      = {};
-		history.owner    = user._id
-		history.removed  = [];
-		history.approved = [];
-		return history;
+		var list = {};
+		list.name      = "untitled list";
+		list.owners    = [user._id];
+		list.roommates = [];
+		list.properties= [];
+
+		return list;
 	},
 
-	createDash: function(user){
+	createUserList: function(user){
 
-		var dash = this.newDash(user);
-
-		UserDash.insert(dash,function(err){
+		var list = this.newUserList(user);
+		
+		UserLists.insert(list, function(err, status){
 			if(err)
-				throw new Meteor.Error('UserActions.createDash', err)
-		});			
+				throw new Meteor.Error('UserActions.createUserList.insert', err);
+			if(status == 0)
+				throw new Meteor.Error('UserActions.createUserList.insert', 'Could not insert');
+		});
 	},
+	insertPropertyToList: function(userId, property, listId){
 
-	createHistory: function(user){
-
-		var history = this.newHistory(user);
-
-		UserHistory.insert(history, function(err){
+		var query = {_id: listId, owners:userId};
+		var action = {$push: {properties:property}}
+		UserLists.update(query, action, function(err, status){
+	
 			if(err)
-				throw new Meteor.Error('UserActions.createHistory', err);
-		})
+				throw new Meteor.Error('UserActions.addPropertyToList.update', err);
+			if(status == 0)
+				throw new Meteor.Error('UserActions.addPropertyToList.update', 'Could not update');
+		});	
 	},
 
-	addUserProperties: function(user){
+	addPropertyToList: function(userId, property, listId){
+
+		PropertyActions.createProperty(userId, property, listId, property, this.insertPropertyToList);
+	},
+
+	updateListName: function(user, listId, newListName){
+						
+		var query = {_id: listId, owners: user._id};
+		var action = {$set: {name: newListName}}
+
+		UserLists.update(query, action, function(err, status){
+			if(err)
+				throw new Meteor.Error('UserActions.updateListName.update', err);
+			if(status == 0)
+				throw new Meteor.Error('UserActions.updateListName.update', 'Could not update');
+		});
+	},
+
+	addUserData: function(user){
 
 		var properties = {
-			age:null,
-			gender: null,			
-			type: "consumer",
-			version: "free",
-			subscriptionStatus:null
+			age      		  : null,
+			gender   		  : null,			
+			type              : "consumer",			
+			subscriptionStatus: null,
+			realtors          : [],
+			roommates         : [],
+			alerts            : [],
 		}
 
 		var data = {
@@ -66,63 +77,9 @@ UserActions = {
 	},
 
 	initialize: function(user, options){
-		
-		this.createDash(user);
-		this.createHistory(user);
-		CommentActions.createUserComments(user);
-		return this.addUserProperties(user);
-	},
-
-	updateDash: function(userId, property, listId){
 				
-		var operator;
-				
-		property.listId = listId;
-		property.fromRealtor = false;
-		property.isLiked = true;
-		property.realtorId = null;
-		
-		PropertiesCollection.insert(property,
-			(err,id) => {
-
-			if(err)
-				throw new Meteor.Error('UserActions.updateDash.insertProperty',err);			
-
-			property._id = id;
-
-			UserDash.update( {owner:userId},
-				{$push:{list : property}},
-				(err) =>{
-				
-					if(err)
-						throw new Meteor.Error('UserActions.updateDash.pushUserDash',err);
-					
-					var commentContainer = CommentActions.createCommentContainer(id);
-					
-					UserComments.update({owner : userId},
-					 {$push:{ commentsList : commentContainer } },
-					 function(err){
-					 	if(err)
-					 		throw new Meteor.Error('UserAction.updateDash.pushUserComments');
-					 });
-			});
-
-		});				
-	},
-	
-	removeFromDash:function(user, property){
-
-		//preliminary version
-		//needs to be updated to do the right things
-		
-		var query  = {owner: user._id};
-		var update = {$pull: {list: { _id : property._id}}};
-
-		UserDash.update(query, update, function(err, status){
-			if(err)
-				throw new Meteor.Error('UserActions.removeFromDash.update', err);
-			if(status ==0)
-				throw new Meteor.Error('UserActions.removeFromDash.update', 'Could not remove');
-		}); 	
+		UserHistoryActions.createHistory(user);
+		this.createUserList(user);		
+		return this.addUserData(user);
 	}
 }

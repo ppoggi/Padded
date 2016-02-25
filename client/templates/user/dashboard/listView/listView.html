@@ -1,0 +1,45 @@
+<template name="listViewTemplate">
+	{{#each properties list}}
+			<div class="row">
+			<div class="col-md-12">								
+				<div class="container list-view-container">
+					{{#if isMobile}}
+					<div class="row">
+						<div class="cox-xs-12">
+							
+						<div class="thumbnail">
+							<img class="img-thumbnail list-image img-responsive" src="{{img}}">													
+							{{#unless isLiked}}
+							<i class="fa fa-certificate">New</i>								
+							{{/unless}}
+							<div class="caption">
+								<h3> <a href="{{detailLink}}">{{status}}</a></h3>
+								<p class="list-view-p"> <span class="pull-left">{{city}} {{state}}</span> {{price}}</p>
+							</div>	
+						</div>
+						</div>																	
+					</div>
+					{{else}}
+					<div class="col-xs-3 image-col">
+						<a href="{{detailLink}}" class="thumbnail">
+							<img class="img-thumbnail list-image img-responsive" src="{{img}}">
+							{{#unless isLiked}}
+							<i class="fa fa-certificate">New</i>								
+							{{/unless}}
+						</a>
+					</div>
+					<div class="col-xs-5">
+						{{street}} <span class="muted">{{neighborhood}}</span>, {{city}} {{state}} {{zip}}
+					</div>
+					<div class="col-xs-2">
+						{{price}}
+					</div>
+					<div class="col-xs-2">
+						<a href="{{detailLink}}">{{status}}</a>
+					</div>										
+					{{/if}}
+				</div>
+			</div>							
+		</div>
+	{{/each}}
+</template>

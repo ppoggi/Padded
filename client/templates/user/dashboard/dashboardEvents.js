@@ -3,8 +3,7 @@ Template.dashboard.events({
         
         e.preventDefault();
         e.stopImmediatePropagation();
-        //needs to be checked via regex
-
+        
         var url = e.target.url_input.value;
 
         if(!url)
@@ -12,10 +11,8 @@ Template.dashboard.events({
         
         e.target.url_input.value = "";
 
-        Session.set('loading', true);
-
-        var currentList = Session.get('currentList');
-
+        var currentList = Session.get('currentListId');
+        
         Meteor.call('parseUrl', url, currentList, 1, null); 
     },
     
@@ -48,23 +45,14 @@ Template.dashboard.events({
 
     'click .list-name-li': function(e){
         
-        e.preventDefault();
-        
-        Session.set("currentList",this.value)
+        e.preventDefault();    
+        Session.set('currentList',this.name);        
+        Session.set('currentListId', this._id);
     },
 
-    'click .alert-accept': function(e){
-        
-        e.stopImmediatePropagation(e);                
-                
-         Meteor.call("clientAccept", this);
-    },
+    'click #add-new-list': function(e){
 
-    'click .alert-decline': function(e){
-        
-        e.stopImmediatePropagation(e);        
-                
-         Meteor.call("clientDecline", this);
+        Meteor.call('createUserList');
     },
 
     'click .edit-current-group': function(e){
@@ -74,11 +62,11 @@ Template.dashboard.events({
         
         if(!newName || newName== "")
             return;
-
-        //todo check for bad stuff
-        var currentList = Session.get("currentList");
+    
+        var currentListId = Session.get("currentListId");
+        Session.set("currentList", newName);
         
-        Meteor.call('updateListName', newName, currentList)
+        Meteor.call('updateListName', currentListId, newName)
     },
 
     'click #url-form-submit': function(e){

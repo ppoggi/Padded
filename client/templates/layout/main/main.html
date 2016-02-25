@@ -1,41 +1,37 @@
 <template name="main">
-
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-	<title>Padded</title>	
-</head>
-<body>  
-    <div class="container">
-      <div class="row head-row">
-        {{#unless isPro}}
-
-          <div class="try-pro-cta hdn">Try Pro</div>            
-            <div class="try-pro-window hidden">          
-            <div class="page-header">
-            <h1>Padded Pro <small>Manage clients' listings</small></h1>
-            </div>                        
-            <button id="createRealtor" class="btn btn-default ">Get Pro</button>                        
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>Padded</title>	
+    </head>
+    <body>  
+        <div class="container">
+            <div class="row head-row">
+                {{#unless isPro}}
+                    <div class="try-pro-cta hdn">Try Pro</div>            
+                    <div class="try-pro-window hidden">          
+                        <div class="page-header">
+                            <h1>Padded Pro <small>Manage clients' listings</small></h1>
+                        </div>                        
+                        <button id="createRealtor" class="btn btn-default ">Get Pro</button>                        
+                    </div>
+                {{/unless}}
+                {{> topNav}}
             </div>
-        {{/unless}}
-      {{> topNav}}
-    </div>
-  {{#if authInProcess}}
-    <p>loading ...</p>
-  {{else}}
-    {{#if canShow}}
-    <div class="row">
-      {{> actionBar}}
-    </div>
-    <div class="row">
-    	{{>Template.dynamic template=content}}  
-    </div>
-    {{else}}
-      {{> landingPage}}
-    {{/if}}
-  {{/if}}
-</div>
-
-</body>
-
-{{> foot}}
+            {{#if authInProcess}}
+                <p>loading ...</p>
+            {{else}}
+                {{#if canShow}}
+                    <div class="row">
+                        {{> actionBar}}
+                    </div>
+                    <div class="row">
+                        {{>Template.dynamic template=content}}  
+                    </div>
+                {{else}}
+                    {{> landingPage}}
+                {{/if}}
+            {{/if}}
+        </div>
+    </body>
+    {{> foot}}
 </template>

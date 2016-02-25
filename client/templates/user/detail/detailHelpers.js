@@ -1,41 +1,30 @@
 Template.detail.helpers({
 	
-	item: function(){
-
-		var list = "list" + FlowRouter.getParam("listNumber");
+	property: function(){
+		
 		var id = FlowRouter.getParam("id");
 
-		if(!this)
-			return;		
+		var currentListId = Session.get('currentListId');
+
+		var list = UserLists.findOne({_id:currentListId}, {fields: {properties:1}});
 		
-		var places = this.list;	
-		
-		if( !places)
+		if(!list)
 			return;
-	
-		for(var i =0; i< places.length; i++)			
-			if(places[i]._id == id)
-				return [places[i]];		
+
+		var properties = list.properties;
+
+		for(var i = 0; i <properties.length; i++){
+			if(properties[i]._id == id)
+				return properties[i];
+		}
 	},
 
-	comments: function(){
-
-		var commentListId = FlowRouter.getParam("listNumber");		
-		var propertyId = FlowRouter.getParam("id");		
-
-		var commentsObject = UserComments.findOne({});
-
-		if(!commentsObject)
+	comments: function(property){
+		
+		if(!property)
 			return;
 
-		var commentsList = commentsObject.commentsList;		
-
-		for(var i = 0; i < commentsList.length; i++){
-			if(commentsList[i].propertyId == propertyId)		
-				return commentsList[i].commentArray;							
-		}
-
-		return [];		
+		return property.comments;
 	},
 
 	time: function(timestamp){

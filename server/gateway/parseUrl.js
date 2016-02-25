@@ -24,7 +24,7 @@ Meteor.methods({
 			var property = PropertyActions.checkProperty(scrapedListing);			
 			
 			if(method == 1)				
-				UserActions.updateDash(userId, property, listId);			
+				UserActions.addPropertyToList(userId, property, listId);			
 
 			else if(method == 2)
 				RealtorActions.updateGenericListProperty(userId, property, listId);

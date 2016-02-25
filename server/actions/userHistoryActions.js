@@ -1,18 +1,5 @@
 UserHistoryActions = {
 
-	// addToApproved: function(userId, propertyId){
-		
-	// 	if(!propertyId)
-	// 		return;
-	// 	UserHistory.update(
-	// 		{owner: userId},
-	// 		{$push: {approved: propertyId }},
-	// 		function(err){
-	// 			if(err)
-	// 				throw new Meteor.Error('UpdateHistroy.AcceptProperty', err);
-	// 	});	
-
-	// },
 	addToRemoved: function(userId, propertyId){
 
 		if(!propertyId)
@@ -41,5 +28,23 @@ UserHistoryActions = {
 				throw new Meteor.Error('UserHistoryActions.likeProperty.update','Property did not update');
 		});
 
-	}
+	},
+		newHistory: function(user){
+		
+		var history      = {};
+		history.owner    = user._id
+		history.removed  = [];
+		history.approved = [];
+		return history;
+	},
+
+	createHistory: function(user){
+
+		var history = this.newHistory(user);
+
+		UserHistory.insert(history, function(err){
+			if(err)
+				throw new Meteor.Error('UserActions.createHistory', err);
+		})
+	},
 }

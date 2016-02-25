@@ -5,7 +5,7 @@ FlowRouter.route('/', {
     }    
 });
 
-FlowRouter.route('/detail/:listNumber/:id', {
+FlowRouter.route('/detail/:id', {
 	name:"detail",
     action:function(){    	    	
     	BlazeLayout.render('main', {content: 'dashboard'});      	  	

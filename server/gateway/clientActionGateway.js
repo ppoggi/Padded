@@ -4,8 +4,11 @@ Meteor.methods({
 
 		var user = Meteor.user();
 
-		if(!user)
-			throw new Meteor.Error("ClientActionGateway.inviteClient", "must be logged in to invite client");
+		if(!user )
+			throw new Meteor.Error("ClientActionGateway.inviteClient", "Must be logged in to invite client");
+
+		if(user.profile.type !== "pro" )
+			throw new Meteor.Error("ClientActionGateway.inviteClient", "Must be Pro in to invite client");
 
 		RealtorActions.addClient(user, email);
 	},
@@ -15,7 +18,7 @@ Meteor.methods({
 		var user = Meteor.user();
 
 		if(!user)
-			throw new Meteor.Error("ClientActionGateway.clientAccept", "must be logged in to accept");
+			throw new Meteor.Error("ClientActionGateway.clientAccept", "Must be logged in to accept");
 
 		RealtorActions.acceptClient(user, message);
 	},
@@ -25,8 +28,8 @@ Meteor.methods({
 		var user = Meteor.user();
 
 		if(!user)
-			throw new Meteor.Error("ClientActionGateway.clientDecline", "must be logged in to decline");
+			throw new Meteor.Error("ClientActionGateway.clientDecline", "Must be logged in to decline");
 
-		RealtorActions.declineClient(user, message);
+		RealtorActions.removeClientMessage(user, message);
 	}
 });

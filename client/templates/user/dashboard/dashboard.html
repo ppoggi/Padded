@@ -1,216 +1,88 @@
 <template name="dashboard">
 		
-		
-	<div class="container main-container">		
-		
-		
-			{{#if isDetail}}	
-			{{> detail dashboard}}
+	<div class="container main-container">	
+
+		{{> alerts}}			
+
+		{{#if isDetail}}
+			{{> detail}}
 		{{else}}
-		
-		<div class="row search-row">
-			<div class="col-lg-12">
-				<form id="url_form">
-					<div class="form-group">						
-						<div class="input-group">				
-							<input name="url_input" class="form-control" placeholder="Paste your listing URL in the form bellow to add it to your Padded list:">
-	  						<span id="url-form-submit" class="input-group-addon enter" type="submit" name="url_submit">Submit</span>
+			<div class="row search-row">
+				<div class="col-lg-12">
+					<form id="url_form">
+						<div class="form-group">						
+							<div class="input-group">				
+								<input name="url_input" class="form-control" placeholder="Paste your listing URL in the form bellow to add it to your Padded list:">
+		  						<span id="url-form-submit" class="input-group-addon enter" type="submit" name="url_submit">Submit</span>
+							</div>
 						</div>
-					</div>
-				</form>
-			</div>
-		</div>		
-
-		<div class="row">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-xs-12 list-organizer-buttons">
-						<div class="btn-group">
-						<div class="btn-group">
-  							
-  							<button type="button" class="btn group-select-button list-name-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{activeList dashboard currentList}}</button> 
-  							 <ul class="dropdown-menu">  							
-  							{{#each  listName dashboard.listNames}}	
-    							<li class="list-name-li"><a>{{name}}</a></li>
-							{{/each}}    							
-  							</ul>
-
-  						</div>
-  						
-  							<button type="button" class="btn group-select-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">    							
-    							<span class="glyphicon glyphicon-pencil"></span>
-    							<span class="sr-only">Toggle Dropdown</span>
-  							</button>
-  							
-  							 <ul class="dropdown-menu">  							
-    							<li class="list-name-edit-li">
-    								<div class="input-group">    									
-  										<input type="text" class="form-control new-list-name" placeholder="{{activeList dashboard currentList}}">
-  										<span class="input-group-addon edit-current-group">Edit</span>
-									</div>									
-								</li>							    						
-  							</ul>
-						</div>
-						<div class="btn-group">											
-	  						<button type="button" class="btn btn-default list-btn {{#if listView}} active-button {{/if}} "><span class="glyphicon glyphicon-align-justify"></span></button>
-	  						<button type="button" class="btn btn-default image-tile-btn {{#if imageTile}} active-button {{/if}} "><span class="glyphicon glyphicon-th"></span></button>
-	  						<button type="button" class="btn btn-default detail-list-btn {{#if detailList}} active-button {{/if}} "><span class="glyphicon glyphicon-th-list"></span></button>						
-	  					</div>
-					</div>					
-				</div>	
-			</div>			
-		</div>
-
-		{{#each alerts dashboard}}
-			<div class="row">
-			
-				<div class="col-sm-12">
-					<div class="alert alert-info" role="alert">
-						<span class='glyphicon glyphicon-remove pull-left alert-decline'></span>
-						<span class='glyphicon glyphicon-ok pull-right alert-accept'></span>
-						<span class="alert-text">{{alertText messageType messengerEmail messengerUserName}}</span>
-					</div>
+					</form>
 				</div>
-			</div>	
-			{{/each}}
-
-	{{#if listView}}
-		{{#each property dashboard}}				
-		
-		<div class="row">
-			<div class="col-md-12">								
-				<div class="container list-view-container">
-					{{#if isMobile}}
+			</div>		
+			<div class="row">
+				<div class="container-fluid">
 					<div class="row">
-						<div class="cox-xs-12">
-							
-						<div class="thumbnail">
-							<img class="img-thumbnail list-image img-responsive" src="{{img}}">													
-							{{#unless isLiked}}
-							<i class="fa fa-certificate">New</i>								
-							{{/unless}}
-							<div class="caption">
-								<h3> <a href="{{detailLink}}">{{status}}</a></h3>
-								<p class="list-view-p"> <span class="pull-left">{{city}} {{state}}</span> {{price}}</p>
-							</div>	
+						<div class="col-sm-3 list-organizer-buttons">
+							<div class="btn-group">
+								<div class="btn-group">	  							
+		  							<button type="button" class="btn group-select-button list-name-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{activeList lists}}</button> 
+		  							 <ul class="dropdown-menu">  							
+		  							{{#each lists}}	
+		    							<li class="list-name-li"><a>{{name}}</a></li>
+									{{/each}}
+										<li><span id="add-new-list" class="input-group-addon enter">Add New List</span></li>
+		  							</ul>
+		  						</div>	  						
+	  							<button type="button" class="btn group-select-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">    							
+	    							<span class="glyphicon glyphicon-pencil"></span>
+	    							<span class="sr-only">Toggle Dropdown</span>
+	  							</button>  						
+	  							 <ul class="dropdown-menu">  							
+	    							<li class="list-name-edit-li">
+	    								<div class="input-group">    									
+	  										<input type="text" class="form-control new-list-name" placeholder="{{activeList dashboard currentList}}">
+	  										<span class="input-group-addon edit-current-group">Edit</span>
+										</div>									
+									</li>							    						
+	  							</ul>
+							</div>
 						</div>
-						</div>																	
-					</div>
-					{{else}}
-					<div class="col-xs-3 image-col">
-						<a href="{{detailLink}}" class="thumbnail">
-							<img class="img-thumbnail list-image img-responsive" src="{{img}}">
-							{{#unless isLiked}}
-							<i class="fa fa-certificate">New</i>								
-							{{/unless}}
-						</a>
-					</div>
-					<div class="col-xs-5">
-						{{street}} <span class="muted">{{neighborhood}}</span>, {{city}} {{state}} {{zip}}
-					</div>
-					<div class="col-xs-2">
-						{{price}}
-					</div>
-					<div class="col-xs-2">
-						<a href="{{detailLink}}">{{status}}</a>
-					</div>										
-					{{/if}}
-
-				</div>
-			</div>							
-		</div>
-		{{/each}}		
-		
-	{{/if}}
-
-	{{#if imageTile}}
-		<div class="row">
-		{{#each property dashboard}}
-			
-				<div class="col-sm-3 image-container">
-					<div class="image-button image-accept">
-						<span class="glyphicon glyphicon-ok"></span>
-					</div>
-					<div class="image-button image-decline">
-						<span class="glyphicon glyphicon-remove"></span>
-					</div>
-					<a href="{{detailLink}}" class="thumbnail">
-						<img class="img-thumbnail list-image" src="{{img}}">
-						{{#unless isLiked}}
-							<i class="fa fa-certificate">New</i>								
-						{{/unless}}	
-					</a>
-				</div>
-			
-		{{/each}}
-		</div>
-	{{/if}}
-
-	{{#if detailList}}
-			
-	{{#each property dashboard}}
-  			
-			<div class="row">
-				<div class="col-md-4 image-container">
-					<div class="image-button image-accept">
-						<span class="glyphicon glyphicon-ok"></span>
-					</div>
-					<div class="image-button image-decline">
-						<span class="glyphicon glyphicon-remove"></span>
-					</div>
-					<a href="{{detailLink}}" class="thumbnail">
-						<img class="img-thumbnail list-image" src="{{img}}">	
-						{{#unless isLiked}}
-							<i class="fa fa-certificate">New</i>								
-						{{/unless}}			
-					</a>
-				</div>
-				<div class="col-md-4">
-					<div class="panel panel-default">
-						<div class="panel-heading alt-panel-color">
-							<h3 class="panel-title">Listing</h3>
+						<div class="col-sm-3 list-organizer-buttons">
+							<div class="btn-group">											
+		  						<button type="button" class="btn btn-default list-btn {{#if listView}} active-button {{/if}} "><span class="glyphicon glyphicon-align-justify"></span></button>
+		  						<button type="button" class="btn btn-default image-tile-btn {{#if imageTile}} active-button {{/if}} "><span class="glyphicon glyphicon-th"></span></button>
+		  						<button type="button" class="btn btn-default detail-list-btn {{#if detailList}} active-button {{/if}} "><span class="glyphicon glyphicon-th-list"></span></button>						
+		  					</div>
 						</div>
-						<ul class="list-group">
-							<li class="list-group-item"><p class="text-left">URL: <span class="pull-right"><a class="link-back" href="{{urlLink}}">{{urlName}}</a></span></p></li>
-						  	<li class="list-group-item">							  		
-						  		<p>Area:<span class="pull-right">{{city}}, {{state}}, {{zip}}</span></p>
-						  	</li>
-						    <li class="list-group-item">
-						    	<p>Address:<span class="pull-right">{{street}} <span class="text-muted">{{neighborhood}}</span></span></p>
-						    </li>
-						    <li class="list-group-item">
-						    	<p class="text-left">Price:<span class="pull-right">{{price}}</span></p>
-						    </li>
-						    <li class="list-group-item">
-						    	<p class="text-left">Status:<span class="pull-right">{{status}}</span></p>
-						    </li>							    
-						</ul>
-					</div>	
-				</div>
-				<div class="col-md-4">
-					<div class="panel panel-default detail-panel">
-						<div class="panel-heading">
-							<h3 class="panel-title">Details</h3>
-						</div>						 
-						 	<ul class="list-group">
-    							{{#each details}}
-    								<li class="list-group-item">
-							    		<p class="text-left">{{this}}</p>
-							    	</li>    								
-    							{{/each}}
-							</ul>  						
-					</div>	
+						<div class="col-sm-3 list-organizer-buttons">
+							<div class="btn-group">
+		  						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-plus"></i> Add Roommate</button>
+		  						<ul class="dropdown-menu">  							
+	    							<li class="list-name-edit-li">
+	    								<div class="input-group">    									
+	  										<input type="text" class="form-control new-roommate" placeholder="Roommate Email">
+	  										<span class="input-group-addon edit-current-group">Add</span>
+										</div>									
+									</li>							    						
+	  							</ul>					
+		  					</div>
+						</div>					
+					</div>				
+				</div>			
+			</div>		
 
-				</div>
-			</div>
-		<div class="row">
-			<div class="col-md-6">
-			
-			</div>
-		</div>
-	{{/each}}
-	{{/if}}
-	{{/if}}
+			{{#if listView}}
+				{{> listViewTemplate list=list}}			
+			{{/if}}
+
+			{{#if imageTile}}
+				{{> gridView list=list}}
+			{{/if}}
+
+			{{#if detailList}}
+				{{> detailListView list=list}}			
+			{{/if}}
+
+		{{/if}}
 	</div>		
 </template>
-

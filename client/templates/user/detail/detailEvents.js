@@ -2,17 +2,17 @@ Template.detail.events({
 	'submit form': function(e){
 				
 		e.preventDefault();
-
-		var listnumber = FlowRouter.getParam("listNumber");
-		var propertyId = FlowRouter.getParam("id");
-
-		var location = {listNumber: listnumber, propertyId: propertyId}
-		var text = e.target.comment.value;
+		
+		var propertyId = FlowRouter.getParam('id');
+		
+        var currentList = Session.get('currentListId');
+        
+        var text = e.target.comment.value;
 
 		if(text == "" ||  text.search("{") != -1)
-			return;//TODO generate error
+			return;
 
-		Meteor.call("insertComment", text, location);
+		Meteor.call("insertComment", currentList, propertyId, text);
 	},
 
 	'click .link-back-detail':function(e){

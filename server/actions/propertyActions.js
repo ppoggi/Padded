@@ -1,6 +1,5 @@
 PropertyActions = {
-
-	//lots of more stuff to add	
+	
 	property : {
 		street       : String,
 		price        : String,
@@ -21,19 +20,21 @@ PropertyActions = {
 		}catch(err){
 			throw new Meteor.Error('PropertyActions.newProperty', 'Invalid property Check');
 		}
-			
+
+		options.comments = [];
+
 		return options;		
 	},
 
-	createProperty: function(options){		
-		
-		// var property = this.newProperty(options);
-		
-		// PropertiesCollection.upsert( property,  property, function(err){
-		// 	if(err)
-		// 		throw new Meteor.Error('PropertiesActions.createProperty', err);
-		// });
+	createProperty: function(userId, property, listId, property, callback){
 
-		// return property;
+		PropertiesCollection.insert(property, (err, id) => {
+			if(err)
+				throw new Meteor.Error('PropertyActions.createProperty', err);
+		
+			property._id = id;
+			
+			callback(userId, property, listId);
+		})
 	},
 }

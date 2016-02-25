@@ -1,0 +1,23 @@
+<template name="gridView">
+
+	<div class="row">
+	{{#each properties list}}
+		
+			<div class="col-sm-3 image-container">
+				<div class="image-button image-accept">
+					<span class="glyphicon glyphicon-ok"></span>
+				</div>
+				<div class="image-button image-decline">
+					<span class="glyphicon glyphicon-remove"></span>
+				</div>
+				<a href="{{detailLink}}" class="thumbnail">
+					<img class="img-thumbnail list-image" src="{{img}}">
+					{{#unless isLiked}}
+						<i class="fa fa-certificate">New</i>								
+					{{/unless}}	
+				</a>
+			</div>
+		
+	{{/each}}
+	</div>
+</template>

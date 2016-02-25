@@ -1,0 +1,58 @@
+<template name="detailListView">
+{{#each properties list}}
+	
+	<div class="row">
+	<div class="col-md-4 image-container">
+		<div class="image-button image-accept">
+			<span class="glyphicon glyphicon-ok"></span>
+		</div>
+		<div class="image-button image-decline">
+			<span class="glyphicon glyphicon-remove"></span>
+		</div>
+		<a href="{{detailLink}}" class="thumbnail">
+			<img class="img-thumbnail list-image" src="{{img}}">	
+			{{#unless isLiked}}
+				<i class="fa fa-certificate">New</i>								
+			{{/unless}}			
+		</a>
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-heading alt-panel-color">
+				<h3 class="panel-title">Listing</h3>
+			</div>
+			<ul class="list-group">
+				<li class="list-group-item"><p class="text-left">URL: <span class="pull-right"><a class="link-back" href="{{urlLink}}">{{urlName}}</a></span></p></li>
+			  	<li class="list-group-item">							  		
+			  		<p>Area:<span class="pull-right">{{city}}, {{state}}, {{zip}}</span></p>
+			  	</li>
+			    <li class="list-group-item">
+			    	<p>Address:<span class="pull-right">{{street}} <span class="text-muted">{{neighborhood}}</span></span></p>
+			    </li>
+			    <li class="list-group-item">
+			    	<p class="text-left">Price:<span class="pull-right">{{price}}</span></p>
+			    </li>
+			    <li class="list-group-item">
+			    	<p class="text-left">Status:<span class="pull-right">{{status}}</span></p>
+			    </li>							    
+			</ul>
+		</div>	
+	</div>
+	<div class="col-md-4">
+		<div class="panel panel-default detail-panel">
+			<div class="panel-heading">
+				<h3 class="panel-title">Details</h3>
+			</div>						 
+			 	<ul class="list-group">
+					{{#each details}}
+						<li class="list-group-item">
+				    		<p class="text-left">{{this}}</p>
+				    	</li>    								
+					{{/each}}
+				</ul>  						
+		</div>	
+
+	</div>
+</div>
+{{/each}}
+</template>
