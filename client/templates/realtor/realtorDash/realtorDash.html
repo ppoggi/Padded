@@ -1,16 +1,12 @@
 <template name="realtorDash">
 	<div class="container main-container">
 		{{#if isDetail}}	
-			{{> realtorDetail dashboard}}
+			{{> realtorDetail}}
 		{{else}}
-
-							
 			<ol class="breadcrumb">
-					<li><a href="/realtor">Home</a></li>
+					<li><a href="/realtor">Client Management</a></li>
 					<li class="active">{{currentPerson}}</li>  				
 			</ol>					
-		
-
 			<div class="row search-row">
 				<div class="col-lg-12">
 					<form id="url_form">
@@ -29,12 +25,12 @@
 					<div class="row">
 						<div class="col-xs-12 list-organizer-buttons">
 							<div class="btn-group">
-								<button type="button" class="btn group-select-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{activeList dashboard currentList}} <span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
-								<ul class="dropdown-menu">
-									{{#each  listName dashboard.listNames}}	
-										<li class="list-name-li"><a>{{name}}</a></li>
-									{{/each}}    							
-								</ul>
+	  							<button type="button" class="btn group-select-button list-name-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{activeList lists}}</button> 
+	  							 <ul class="dropdown-menu">  							
+	  							{{#each lists}}	
+	    							<li class="list-name-li"><a>{{name}}</a></li>
+								{{/each}}									
+	  							</ul>
 							</div>
 							<div class="btn-group">											
 								<button type="button" class="btn btn-default list-btn {{#if listView}} active-button {{/if}} "><span class="glyphicon glyphicon-align-justify"></span></button>
@@ -46,131 +42,17 @@
 				</div>			
 			</div>
 			{{#if listView}}
-				{{#each property dashboard}}
-					<div class="row">
-						<div class="col-md-12">
-							<div class="container list-view-container">
-								{{#if isMobile}}
-									<div class="row">
-										<div class="cox-xs-12">
-											<a href="{{detailLink}}" class="thumbnail">
-												<img class="img-thumbnail list-image img-responsive" src="{{img}}">
-												{{#if isLiked}}
-													<i class="fa fa-certificate">Liked</i>								
-												{{/if}}
-											</a>																								
-											<div>
-												<p class="list-view-p"> <span class="pull-left">{{city}} {{state}}</span> {{price}} <span class="pull-right"><a href="{{detailLink}}">{{status}}</a></span></p>
-											</div>	
-										</div>																	
-									</div>
-								{{else}}
-									<div class="col-xs-3 image-col">
-										<a href="#" class="thumbnail">
-											<img class="img-thumbnail list-image img-responsive" src="{{img}}">	
-											{{#if isLiked}}
-												<i class="fa fa-certificate">Liked</i>								
-											{{/if}}
-										</a>
-									</div>
-									<div class="col-xs-5">
-										{{street}} <span class="muted">{{neighborhood}}</span>, {{city}} {{state}} {{zip}}
-									</div>
-									<div class="col-xs-2">
-										{{price}}
-									</div>
-									<div class="col-xs-2">
-										<a href="{{detailLink}}">{{status}}</a>
-									</div>										
-								{{/if}}
-
-							</div>
-						</div>							
-					</div>
-				{{/each}}		
+				{{> listViewTemplate list=list}}
 			{{/if}}
+
 			{{#if imageTile}}
-				<div class="row">
-					{{#each property dashboard}}
-
-						<div class="col-sm-3 image-container">
-							<div class="image-button image-accept">
-								<span class="glyphicon glyphicon-ok"></span>
-							</div>
-							<div class="image-button image-decline">
-								<span class="glyphicon glyphicon-remove"></span>
-							</div>
-							<a href="{{detailLink}}" class="thumbnail">
-								<img class="img-thumbnail list-image" src="{{img}}">
-								{{#if isLiked}}
-									<i class="fa fa-certificate">Liked</i>								
-								{{/if}}	
-							</a>
-						</div>
-
-					{{/each}}
-				</div>
+				{{> gridView list=list}}
 			{{/if}}
+
 			{{#if detailList}}
-				{{#each property dashboard}}
-					<div class="row">
-						<div class="col-md-4 image-container">
-							<div class="image-button image-accept">
-								<span class="glyphicon glyphicon-ok"></span>
-							</div>
-							<div class="image-button image-decline">
-								<span class="glyphicon glyphicon-remove"></span>
-							</div>
-							<a href="{{detailLink}}" class="thumbnail">
-								<img class="img-thumbnail list-image" src="{{img}}">
-								{{#if isLiked}}
-									<i class="fa fa-certificate">Liked</i>								
-								{{/if}}
-							</a>
-						</div>
-						<div class="col-md-4">
-							<div class="panel panel-default">
-								<div class="panel-heading alt-panel-color">
-									<h3 class="panel-title">Listing</h3>
-								</div>
-								<ul class="list-group realtor">
-									<li class="list-group-item"><p class="text-left">URL: <span class="pull-right"><a class="link-back" href="{{urlLink}}">{{urlName}}</a></span></p></li>
-									<li class="list-group-item">							  		
-										<p>Area:<span class="pull-right">{{city}}, {{state}}, {{zip}}</span></p>
-									</li>
-									<li class="list-group-item">
-										<p>Address:<span class="pull-right">{{street}} <span class="text-muted">{{neighborhood}}</span></span></p>
-									</li>
-									<li class="list-group-item">
-										<p class="text-left">Price:<span class="pull-right">{{price}}</span></p>
-									</li>
-									<li class="list-group-item">
-										<p class="text-left">Status:<span class="pull-right">{{status}}</span></p>
-									</li>							    
-								</ul>
-							</div>	
-						</div>
-						<div class="col-md-4">
-							<div class="panel panel-default detail-panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">Details</h3>
-								</div>						 
-							<ul class="list-group">
-								{{#each details}}
-									<li class="list-group-item">
-										<p class="text-left">{{this}}</p>
-									</li>    								
-								{{/each}}
-							</ul>  						
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-						</div>
-					</div>
-				{{/each}}	
+				{{> detailListView list=list}}	
 			{{/if}}
+
 		{{/if}}
 	</div>
 </template>

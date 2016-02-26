@@ -1,12 +1,12 @@
 UserActions = {
 
-	newUserList: function(user){
-		
+	newUserList: function(user){		
 		var list = {};
-		list.name      = "untitled list";
-		list.owners    = [user._id];
-		list.roommates = [];
-		list.properties= [];
+		list.name       = "untitled list";
+		list.owners     = [user._id];
+		list.realtors   = user.profile.realtors;
+		list.roommates  = [];
+		list.properties = [];
 
 		return list;
 	},

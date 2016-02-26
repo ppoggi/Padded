@@ -13,8 +13,12 @@ Meteor.publish('userInfo', function(){
 	return Meteor.users.find({ _id:this.userId}, {fields:{properties:1}});
 });
 
-
 Meteor.publish('realtorData', function(){
 
 	return Meteor.users.find({ _id:this.userId}, {fields:{realtorData:1}});
+});
+
+Meteor.publish('realtorDash', function(clientId){
+
+	return UserLists.find({ owners:clientId});
 });

@@ -1,45 +1,15 @@
 Template.realtorDash.helpers({
 
-	dashboard: function(){
-		
-		return UserDash.findOne({});
+	isDetail: function(){
+
+		var route = FlowRouter.getParam("id");
+
+		if(route)
+			return true;
+		else 
+			return false;
 	},
 
-	alerts: function(dashboard){
-
-		if(!dashboard)
-			return;
-
-		var alerts = dashboard.alerts;
-
-		return alerts;
-	},
-
-	alertText: function(messageType, messengerEmail, messengerUserName){
-				
-		//create helper for this
-		if(messageType =="realtor.invite"){
-			var message = messengerUserName +"("+messengerEmail+") would like to add you as a client"			
-			return message;
-		}		
-	},
-
-	property: function(dashboard){	
-				
-		if(!dashboard)
-			return;
-		
-		var properties = dashboard.list;		
-
-		var propertiesList = [];
-
-		for(var i=0; i < properties.length; i++)
-			if(properties[i].listId == Session.get("currentList"))
-				propertiesList.push(properties[i]);
-		
-		return propertiesList.reverse();
-	},
-	
 	listView: function(){
 
 		return Session.get("listView");
@@ -60,44 +30,51 @@ Template.realtorDash.helpers({
 		return Session.get("currentList");
 	},
 
-	activeList: function(dashboard, currentList){
-				
-		 if(!dashboard)
-			return "Loading...";
+	activeList: function(lists){
+		
+		var currentList = Session.get('currentList');		
 
-		return dashboard.listNames[currentList];		
+		if(!lists && !currentList)
+			return "Loading..."
+
+
+		if(!lists )
+			return "Loading.."
+
+		lists = lists.fetch();
+		
+ 		if(!lists[0])
+ 			return "Loading."
+
+		var name;
+		
+		if(!currentList){
+			name = lists[0].name;
+			Session.set('currentList', name);
+			Session.set('currentListId', lists[0]._id);
+			
+		}else
+			name= currentList;			
+		
+		return name;
 	},
 
-	listName: function(list){
+	list: function(){
 		
-		if(!list)
-			return;
-		
-		var listName = [];
-		
-		for(var i = 0; i < list.length; i++){
+		var currentListId = Session.get('currentListId');
 
-			listName.push({value:i, name:list[i]})
-		}
-		return listName
+		return UserLists.findOne({_id:currentListId});
+	},
+
+	lists: function(){
+		return UserLists.find();
 	},
 
 	detailLink: function(){
 		  	    	    	    	   
-	    var path = "/realtor/dashboard/"+FlowRouter.getParam("email")+"/detail/"+Session.get("currentList")+"/"+this._id;
+	    //var path = "/realtor/dashboard/"+FlowRouter.getParam("email")+"/detail/"+Session.get("currentList")+"/"+this._id;
 
 	    return path;
-	},
-
-	isDetail: function(){
-
-		var route = FlowRouter.getParam("id");
-
-		if(route)
-			return true;
-		else 
-			return false;
-
 	},
 
 	currentPerson: function(){

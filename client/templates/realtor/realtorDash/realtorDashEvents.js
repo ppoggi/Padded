@@ -12,10 +12,9 @@ Template.realtorDash.events({
         
         e.target.url_input.value = "";
         
-        var currentList = Session.get("currentList");
+        var currentListId = Session.get("currentListId");
+        var currentListName = Session.get("currentList");
         
-        var email = FlowRouter.getParam("email")
-
         Meteor.call("parseUrl", url, currentList, 3, email);
     },
     

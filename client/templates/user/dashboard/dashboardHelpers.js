@@ -9,11 +9,6 @@ Template.dashboard.helpers({
 		
 		return false;
 	},
-
-	property: function(){	
-				
-		return null;
-	},
 	
 	listView: function(){
 
@@ -68,13 +63,5 @@ Template.dashboard.helpers({
 
 	lists: function(){
 		return UserLists.find();
-	},
-
-	detailLink: function(){
-		  	    	    	    	   
-	    var routeName = "detail/"+Session.get("currentList")+"/"+this._id;
-	    var path = FlowRouter.path(routeName);	    
-
-	    return path;
 	}
 });
