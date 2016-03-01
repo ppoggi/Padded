@@ -69,8 +69,29 @@
 						</div>					
 					</div>				
 				</div>			
-			</div>		
+			</div>
 
+			{{#with roommate list}}
+				<div class="row">
+					<label class="col-sm-2">Roommates:</label>				
+					{{#each roommate list}}
+						<div class="col-md-4">
+							<div class="btn-group">
+								<button type="button" class="btn btn-default" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{username}}({{email}})</button>
+								<ul class="dropdown-menu">  							
+	    							<li>
+	    								<span>Profile</span>    								
+									</li>
+									<li>
+										<span>Remove</span>							    						
+									</li>
+	  							</ul>
+							</div>
+						</div>
+					{{/each}}			
+				</div>
+			{{/with}}
+			
 			{{#if listView}}
 				{{> listViewTemplate list=list}}			
 			{{/if}}

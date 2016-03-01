@@ -25,8 +25,13 @@ RoommateActions = {
 
 		var query  = {_id: notification.data, owners: notification.messengerId};
 
-		var action = {$push: {owners: user._id}} 
-
+		var action = {
+			$push: {
+				owners: user._id,
+				roommates: {username: user.username, email: user.emails[0].address}			
+			}
+		}
+				
 		UserLists.update(query, action, function(err, status){
 
 			if(err)

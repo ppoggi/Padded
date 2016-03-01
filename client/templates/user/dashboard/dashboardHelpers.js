@@ -62,6 +62,15 @@ Template.dashboard.helpers({
 	},
 
 	lists: function(){
+		
 		return UserLists.find();
+	},
+
+	roommate: function(list){
+		
+		if(!list)
+			return;
+
+		return list.roommates;
 	}
 });
