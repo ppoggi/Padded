@@ -1,4 +1,5 @@
 Template.dashboard.events({
+
     'submit #url_form': function (e) {
         
         e.preventDefault();
@@ -72,11 +73,21 @@ Template.dashboard.events({
     'click #url-form-submit': function(e){
         
         $('#url_form').submit();
+    },
+
+    'click #add-roommate-button': function(e){
+
+        var roommate = $('#new-roomate').val();
+
+        if(roommate == "" || roommate == " ")
+            return;
+
+        var currentListId = Session.get("currentListId");
+
+        Meteor.call('inviteRoommateToList', roommate, currentListId);
     }
 
 });
-
-
 
     // 'click .image-container': function(e){
     //     e.stopImmediatePropagation();        

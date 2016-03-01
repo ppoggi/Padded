@@ -1,7 +1,8 @@
 RealtorActions = {
 
-	realtorStates        : ["trial","inactive","active"],
-	realtorPaymentStates : ["goodStanding", "paymentProcessing", "paymentDeclined"],
+	realtorStates           : ["trial","inactive","active"],
+	realtorPaymentStates    : ["goodStanding", "paymentProcessing", "paymentDeclined"],
+	realtorInviteMessageType: "realtor.invite",
 	
 	generateRandomId:function(){
 		return Random.id(40);
@@ -89,7 +90,7 @@ RealtorActions = {
 
 	addClient: function(user, clientEmail){
 
-		var alert = AlertActions.createAddClientAlertObj(user, clientEmail);
+		var alert = AlertActions.createAlertObj(user, clientEmail, this.realtorInviteMessageType);
 		
 		Meteor.users.update({'emails.address':clientEmail}, {$push:{'profile.alerts': alert}}, function(err, status){
 			if(err)
@@ -104,10 +105,10 @@ RealtorActions = {
 	addRealtorToLists: function(user, message, callback){
 
 		UserLists.update( {owners : {$in:[user._id]}}, {$push:{realtors: message.messengerId }},(err, status)=>{
-				if(err)
-					throw new Meteor.Error("RealtorActions.addRealtorToLists.UserLists.update", err);
-				if(status == 0)
-					throw new Meteor.Error("RealtorActions.addRealtorToLists.UserLists.updat", "Couldnt update realtor to lists");
+			if(err)
+				throw new Meteor.Error("RealtorActions.addRealtorToLists.UserLists.update", err);
+			if(status == 0)
+				throw new Meteor.Error("RealtorActions.addRealtorToLists.UserLists.updat", "Couldnt update realtor to lists");
 
 			callback(user, message);
 		});
@@ -142,19 +143,9 @@ RealtorActions = {
 				if(status == 0)
 					throw new Meteor.Error("RealtorActions.acceptClient.RealtorData.update", "Couldnt update realtor");
 
-				this.addRealtorToLists(Meteor.user(), message, this.removeClientMessage);
+				this.addRealtorToLists(Meteor.user(), message, AlertActions.removeNotification);
 			});				
 		});			
-	},
-
-	removeClientMessage: function(user, message){
-		
-		Meteor.users.update(user, {$pull: {'profile.alerts':message}}, function(err, status){
-			if(err)
-				throw new Meteor.Error("RealtorsActions.declineClient.update", err);
-			if(status == 0)
-				throw new Meteor.Error("RealtorsActions.declineClient.update", 'Client Message Not Removed');
-		});
 	},
 
 	insertPropertyToList: function(userId, property, listId){

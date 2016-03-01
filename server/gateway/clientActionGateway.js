@@ -21,15 +21,5 @@ Meteor.methods({
 			throw new Meteor.Error("ClientActionGateway.clientAccept", "Must be logged in to accept");
 
 		RealtorActions.acceptClient(user, message);
-	},
-
-	clientDecline: function(message){
-
-		var user = Meteor.user();
-
-		if(!user)
-			throw new Meteor.Error("ClientActionGateway.clientDecline", "Must be logged in to decline");
-
-		RealtorActions.removeClientMessage(user, message);
 	}
 });

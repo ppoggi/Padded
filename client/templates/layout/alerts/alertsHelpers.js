@@ -11,9 +11,10 @@ Template.alerts.helpers({
 	alertText: function(messageType, messengerEmail, messengerUserName){
 		
 		//create helper for this
-		if(messageType =="realtor.invite"){
-			var message = messengerUserName +"("+messengerEmail+") would like to add you as a client"			
-			return message;
-		}		
+		if(messageType == "realtor.invite")
+			return messengerUserName +"("+messengerEmail+") would like to add you as a client";
+			
+		else if( messageType== "roommate.invite")
+			return messengerUserName +"("+messengerEmail+") would like to add you as a roommate";
 	}
 })

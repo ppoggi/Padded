@@ -8,7 +8,5 @@ Meteor.methods({
 			throw new Meteor.Error('GenericListGateway.createGenericList', 'Invalid User');
 
 		RealtorActions.createGenericList(user, name);
-
 	}
-
 });
