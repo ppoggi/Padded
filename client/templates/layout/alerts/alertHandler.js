@@ -5,7 +5,7 @@ AlertHandler = {
 		var messageType = alert.messageType;
 
 		if(messageType == 'realtor.invite')
-			Meteor.call('clientAccept', this);
+			Meteor.call('clientAccept', alert);
 		else if(messageType == 'roommate.invite')
 			Meteor.call('addRoommateToList', alert);
 	}
