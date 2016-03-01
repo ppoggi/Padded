@@ -1,50 +1,34 @@
 Template.realtorDetail.helpers({
-	item: function(){
-
-		var list = "list" + FlowRouter.getParam("listNumber");
-		var id = FlowRouter.getParam("id");
-
-		if(!this)
-			return;		
-		
-		var places = this.list;	
-		
-		if( !places)
-			return;
 	
-		for(var i =0; i< places.length; i++)			
-			if(places[i]._id == id)
-				return places[i];		
+	currentPerson: function(){
+		return FlowRouter.getParam('email');
 	},
 
-	comments: function(){
+	property: function(){
+		
+		var id = FlowRouter.getParam('id');
 
-		var commentListId = FlowRouter.getParam("listNumber");		
-		var propertyId = FlowRouter.getParam("id");		
+		var currentListId = Session.get('currentListId');
 
-		var commentsObject = UserComments.findOne({});
-
-		if(!commentsObject)
+		var list = UserLists.findOne({_id:currentListId}, {fields: {properties:1}});
+		
+		if(!list)
 			return;
 
-		var commentsList = commentsObject.commentsList;		
+		var properties = list.properties;
 
-		for(var i = 0; i < commentsList.length; i++){
-			if(commentsList[i].propertyId == propertyId)		
-				return commentsList[i].commentArray;							
+		for(var i = 0; i <properties.length; i++){
+			if(properties[i]._id == id){
+				console.log(properties[i])
+				return properties[i];
+			}
+				
 		}
-
-		return [];		
 	},
 
 	time: function(timestamp){
 
 		var time = DateHelpers.dateString(timestamp)
 		return time;		
-	},
-	
-	currentPerson: function(){
-
-		return FlowRouter.getParam("email");
 	}
 });

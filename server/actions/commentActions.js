@@ -17,8 +17,13 @@ CommentActions = {
 
 		var commentObject = this.newComment(user, text);
 
-		var query = {_id: currentList, owners: user._id, 'properties._id': propertyId}
+		var query = {_id: currentList, 'properties._id': propertyId}
 
-		UserLists.update(query, {$push: {'properties.$.comments': commentObject}});
+		UserLists.update(query, {$push: {'properties.$.comments': commentObject}}, function(err, status){
+			if(err)
+				throw new Meteor.Error('CommentActions.insertComment.update', err)
+			if(status ==0)
+				throw new Meteor.Error('CommentActions.insertComment.update', 'Could not insert')
+		});
 	}
 }

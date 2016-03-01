@@ -70,13 +70,6 @@ Template.realtorDash.helpers({
 		return UserLists.find();
 	},
 
-	detailLink: function(){
-		  	    	    	    	   
-	    //var path = "/realtor/dashboard/"+FlowRouter.getParam("email")+"/detail/"+Session.get("currentList")+"/"+this._id;
-
-	    return path;
-	},
-
 	currentPerson: function(){
 		return FlowRouter.getParam("email");
 	}

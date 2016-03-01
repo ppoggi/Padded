@@ -7,6 +7,9 @@ Template.gridView.helpers({
 	},
 
 	detailLink: function(){
-		return "/detail/"+this._id;		
+		if(FlowRouter.getRouteName() == 'realtorDashboard')
+			return "/realtor/dashboard/"+FlowRouter.getParam("email")+"/detail/"+this._id;
+		else
+			return "/detail/"+this._id;		
 	}
 })

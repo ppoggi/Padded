@@ -1,5 +1,3 @@
 Template.detail.onCreated(function(){
 	
-
-      
 });

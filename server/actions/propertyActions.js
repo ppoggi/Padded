@@ -26,14 +26,14 @@ PropertyActions = {
 		return options;		
 	},
 
-	createProperty: function(userId, property, listId, property, callback){
+	createProperty: function(userId, property, listId, callback){
 
 		PropertiesCollection.insert(property, (err, id) => {
 			if(err)
 				throw new Meteor.Error('PropertyActions.createProperty', err);
 		
 			property._id = id;
-			
+						
 			callback(userId, property, listId);
 		})
 	},

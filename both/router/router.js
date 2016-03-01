@@ -33,7 +33,7 @@ FlowRouter.route('/realtor/dashboard/:email', {
     }
 });
 
-FlowRouter.route('/realtor/dashboard/:email/detail/:listNumber/:id', {
+FlowRouter.route('/realtor/dashboard/:email/detail/:id', {
     name:"realtorDetail",
     action: function(){        
         BlazeLayout.render('main', {content: 'realtorDash'});

@@ -22,6 +22,7 @@ UserActions = {
 				throw new Meteor.Error('UserActions.createUserList.insert', 'Could not insert');
 		});
 	},
+	
 	insertPropertyToList: function(userId, property, listId){
 
 		var query = {_id: listId, owners:userId};
@@ -37,7 +38,7 @@ UserActions = {
 
 	addPropertyToList: function(userId, property, listId){
 
-		PropertyActions.createProperty(userId, property, listId, property, this.insertPropertyToList);
+		PropertyActions.createProperty(userId, property, listId, this.insertPropertyToList);
 	},
 
 	updateListName: function(user, listId, newListName){
@@ -77,9 +78,13 @@ UserActions = {
 	},
 
 	initialize: function(user, options){
-				
+	
+		user = this.addUserData(user);			
+		
 		UserHistoryActions.createHistory(user);
+		
 		this.createUserList(user);		
-		return this.addUserData(user);
+		
+		return user;
 	}
 }

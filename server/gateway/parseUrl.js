@@ -1,5 +1,5 @@
 Meteor.methods({
-	parseUrl: function(url, listId, method, email){	
+	parseUrl: function(url, listId, method){	
 			
 		var userId = Meteor.userId();
 		
@@ -30,7 +30,7 @@ Meteor.methods({
 				RealtorActions.updateGenericListProperty(userId, property, listId);
 			
 			else if (method == 3)
-				RealtorActions.updateClientDash(userId, property, email, listId);	
+				RealtorActions.updateClientList(userId, property, listId);	
 		});	
 
 	}

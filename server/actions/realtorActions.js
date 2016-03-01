@@ -142,7 +142,7 @@ RealtorActions = {
 				if(status == 0)
 					throw new Meteor.Error("RealtorActions.acceptClient.RealtorData.update", "Couldnt update realtor");
 
-				this.addRealtorToLists(Meteor.user(), message, mthis.removeClientMessage);
+				this.addRealtorToLists(Meteor.user(), message, this.removeClientMessage);
 			});				
 		});			
 	},
@@ -157,11 +157,18 @@ RealtorActions = {
 		});
 	},
 
-	updateClientDash: function(userId, property, email, listId){
+	insertPropertyToList: function(userId, property, listId){
 
-		// property.listId = listId;
-		// property.fromRealtor = true;
-		// property.isLiked = false;
-		// property.realtorId = userId;
+		UserLists.update({_id: listId, realtors:{$in:[userId]}}, {$push: {properties: property}}, function(err, status){
+			if(err)
+				throw new Meteor.Error("RealtorsActions.updateClientList.update", err);
+			if(status == 0)
+				throw new Meteor.Error("RealtorsActions.updateClientList.update", 'List not updated');
+		});
+	},
+
+	updateClientList: function(userId, property, listId){
+
+		PropertyActions.createProperty(userId, property, listId, this.insertPropertyToList);
 	}		
 }

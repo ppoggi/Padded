@@ -15,7 +15,7 @@ Template.realtorDash.events({
         var currentListId = Session.get("currentListId");
         var currentListName = Session.get("currentList");
         
-        Meteor.call("parseUrl", url, currentList, 3, email);
+        Meteor.call("parseUrl", url, currentListId, 3, currentListName);
     },
     
     'click .link-back':function(e){
