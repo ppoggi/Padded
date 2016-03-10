@@ -1,0 +1,1 @@
+UserMetaData = new Mongo.Collection('usermetadata')

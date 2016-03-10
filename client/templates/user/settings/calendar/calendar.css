@@ -1,0 +1,11 @@
+.big-title.calendar-popup{
+	background-color:white;
+	position: absolute;
+	z-index:1000 !important;
+	margin-left:-20px;
+}
+
+.popover-content{
+	text-align: right;
+	margin: 15px;
+}

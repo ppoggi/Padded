@@ -91,13 +91,12 @@ RealtorActions = {
 	addClient: function(user, clientEmail){
 
 		var alert = AlertActions.createAlertObj(user, clientEmail, this.realtorInviteMessageType);
-		
+
 		Meteor.users.update({'emails.address':clientEmail}, {$push:{'profile.alerts': alert}}, function(err, status){
 			if(err)
 				throw new Meteor.Error('RealtorActions.addClient', err);
 
-			if(status == 0)
-				
+			if(status == 0)				
 				throw new Meteor.Error('RealtorActions.addClient', 'Could not update');
 		});
 	},
@@ -127,9 +126,10 @@ RealtorActions = {
 
 	acceptClient: function(user, message){
 
-		var clientObj = this.createClientObject(user);	
+		var clientObj = this.createClientObject(user);
+		var realtorObj = { username: message.messengerUserName, email: message.messengerEmail, realtorId: message.messengerId};
 
-		Meteor.users.update(user, {$push:{'profile.realtors': message.messengerId}},(err,status)=>{
+		Meteor.users.update(user, {$push:{'profile.realtors': realtorObj}},(err,status)=>{
 
 			if(err)
 				throw new Meteor.Error("Realtor.Actions.Users.update.realtors", err);

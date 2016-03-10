@@ -22,3 +22,8 @@ Meteor.publish('realtorDash', function(clientId){
 
 	return UserLists.find({ owners:clientId});
 });
+
+Meteor.publish('calendarData', function(clientId){
+
+	return Calendar.find({ owner: this.userId});
+});
