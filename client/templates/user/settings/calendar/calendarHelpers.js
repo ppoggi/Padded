@@ -2,44 +2,60 @@ Template.calendar.helpers({
 
 	options: function(){
 
-		return {
+    	return{
 			
 			id:'availabilityCalendar',			
-			
+										
 			dayClick: function(date, event, view){
 								
-				$('.fc-day-number').popover('hide');
-				$('td').popover('hide');
-				$('div').popover('hide');
-	    		$('a').popover('hide');
-	    		$('td').popover('hide');
-
-				$(event.target).popover({
-
-					html: true,
-					trigger:'click',					
-					container:'body',
-            		title: 'Add Availability',
-           			placement: 'top',
-           			content: CalendarHelper.popupContent(date.format('X'))
-        		});
+				$(event.target).popover('toggle');
+				
 			},
 
 			eventClick: function(eventObject, event, view){
 
-				$('.fc-day').popover('hide');
-				$('.fc-day-number').popover('hide');
-				$('td').popover('hide');
-				
-				$(event.target).popover({
+				$(event.target).popover('toggle');
+			},
 
-					html: true,
-					trigger:'click',					
-					container:'body',            		
-           			placement: 'bottom',
-           			content: CalendarHelper.eventContent(eventObject)
-				});
-			}
-        }
+			viewRender: function(){
+
+				CalendarHelper.initializeDayPopups('top');
+
+				var calendarEvents = Calendar.find({}).fetch();				
+
+				setTimeout(function(){
+					$('#availabilityCalendar').fullCalendar('removeEvents');		
+					CalendarHelper.renderEvents(calendarEvents, 'right');							
+				}, 100);				
+			}	
+    	}
+    },
+
+    mobileOptions: function(){
+
+    	return{
+			
+			id:'availabilityCalendar',
+
+			defaultView:'basicDay',										
+
+			eventClick: function(eventObject, event, view){
+
+				$(event.target).popover('toggle');
+			},
+
+			viewRender: function(){
+
+				MobileCalendarHelper.onHover();
+			
+				var calendarEvents = Calendar.find({}).fetch();				
+
+				setTimeout(function(){
+					CalendarHelper.initializeDayPopups('top');
+					$('#availabilityCalendar').fullCalendar('removeEvents');		
+					CalendarHelper.renderEvents(calendarEvents, 'bottom');							
+				}, 100);				
+			}	
+    	}
     }
 });

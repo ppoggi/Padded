@@ -33,14 +33,27 @@
 	  							</ul>
 							</div>
 							<div class="btn-group">											
-								<button type="button" class="btn btn-default list-btn {{#if listView}} active-button {{/if}} "><span class="glyphicon glyphicon-align-justify"></span></button>
-								<button type="button" class="btn btn-default image-tile-btn {{#if imageTile}} active-button {{/if}} "><span class="glyphicon glyphicon-th"></span></button>
-								<button type="button" class="btn btn-default detail-list-btn {{#if detailList}} active-button {{/if}} "><span class="glyphicon glyphicon-th-list"></span></button>						
+								<button type="button" class="btn btn-default list-btn {{#if listView}} active-button {{/if}} ">
+									<span class="glyphicon glyphicon-align-justify"></span>
+								</button>
+								<button type="button" class="btn btn-default image-tile-btn {{#if imageTile}} active-button {{/if}} ">
+									<span class="glyphicon glyphicon-th"></span>
+								</button>
+								<button type="button" class="btn btn-default detail-list-btn {{#if detailList}} active-button {{/if}} ">
+									<span class="glyphicon glyphicon-th-list"></span>
+								</button>
+								<button type="button" class="btn btn-default calendar-btn {{#if calendar}} active-button {{/if}} ">
+									<span class="glyphicon glyphicon-calendar"></span>
+								</button>
+								<button type="button" class="btn btn-default guide-btn {{#if guide}} active-button {{/if}} ">
+									<i class="fa fa-map"></i>
+								</button>
 							</div>
 						</div>					
 					</div>	
 				</div>			
 			</div>
+			
 			{{#if listView}}
 				{{> listViewTemplate list=list}}
 			{{/if}}
@@ -51,6 +64,14 @@
 
 			{{#if detailList}}
 				{{> detailListView list=list}}	
+			{{/if}}
+
+			{{#if calendar }}
+				{{> realtorCalendar owners=list.owners}}
+			{{/if}}
+
+			{{#if guide}}
+				guide working
 			{{/if}}
 
 		{{/if}}

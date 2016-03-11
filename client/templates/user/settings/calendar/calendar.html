@@ -1,5 +1,14 @@
 <template name="calendar">
 
-	{{> fullcalendar options}}
+	
+	{{#unless isMobile}}
+
+		{{> fullcalendar options}}		
+
+	{{else}}
+
+		{{> fullcalendar mobileOptions}}
+
+	{{/unless}}
 
 </template>

@@ -9,7 +9,7 @@ body .alert{
 	top:0px;
 }
 
-.list-btn.active-button,.image-tile-btn.active-button,.detail-list-btn.active-button{
+.active-button{
 	color:orangered !important;
 }
 

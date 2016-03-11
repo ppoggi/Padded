@@ -1,10 +1,59 @@
 Template.calendar.onRendered(function(){
 	
+	MobileCalendarHelper = {
+		
+		onHover: function() {
+			
+			(function(){
+		
+				$('.fc-day').on('mouseover', function(event){
+
+					$(event.target).popover('toggle');	
+				});	
+			})();
+		}
+	}
+
+
 	CalendarHelper = {
+
+		initializeEventPopups: function(eventObject, position){
+
+			$('.fc-content').popover({
+
+					html: true,
+					trigger:'manual',					
+					container:'body',            		
+           			placement: position,
+           			content: CalendarHelper.eventContent(eventObject)
+			});
+
+		},
+
+		initializeDayPopups: function(position){
+
+
+			$('.fc-day').popover('destroy');
+
+			$('.fc-day').each(function(){
+				
+				var date = moment($(this).attr('data-date'));
+
+				$(this).popover({
+
+					html: true,
+					trigger:'manual',					
+					container:'body',            		
+           			placement: position,
+           			content: CalendarHelper.popupContent( date.format('X'))
+				});
+			})
+
+		},
 
 		popupContent: function(date){
 
-	    	var content = '<form class="availabilityForm"><input class="calendarDate" type="hidden" value ='+date+'><div class="row"><label>Start '+
+	    	var content = '<div class="pull-left close-popup">X</div><form class="availabilityForm"><input class="calendarDate" type="hidden" value ='+date+'><div class="row"><label>Start '+
 	    	'</label><select class="timeSelectStart"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>'+
 	    	'7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select></div>' +	
 	    	'<div class="row"><label>AM or PM </label><select class="meridiemSelectStart"><option value="am">AM</option><option value="pm">PM</option></select></div>'+    
@@ -15,7 +64,9 @@ Template.calendar.onRendered(function(){
 			'<div class="row"><span class="flat sm blue">Add</span></div></form><script>$("span.flat.sm.blue").on("click", function(e)'+			
 			'{ e.stopImmediatePropagation();CalendarHelper.submitForm([$(this).parent().parent().children(".calendarDate").val(),$(this).parent()'+
 			'.parent().find(".timeSelectStart").val(),$(this).parent().parent().find(".meridiemSelectStart").val(),'+
-			'$(this).parent().parent().find(".timeSelectEnd").val(),$(this).parent().parent().find(".meridiemSelectEnd").val(),$(this).parent().parent().find(".rate").val()])})</script>';
+			'$(this).parent().parent().find(".timeSelectEnd").val(),$(this).parent().parent().find(".meridiemSelectEnd").val(),$(this).parent().parent().find(".rate").val()])}); '+
+			'$(".close-popup").on("click", function(){ $(".fc-day").popover("hide") });'+
+			'</script>';
 			
 			return content;
 	    },
@@ -73,6 +124,7 @@ Template.calendar.onRendered(function(){
 			eventObject.color      = color;
 			eventObject.eventStart = eventTime.start,
 			eventObject.eventEnd   = eventTime.end;
+			eventObject.username   = Meteor.user().username;
 
 			return eventObject;
 		},
@@ -87,21 +139,19 @@ Template.calendar.onRendered(function(){
 				return "orangered";
 		},
 
-	    renderEvents: function(events){
+	    renderEvents: function(events, position){
 	    	
 	    	if(!Array.isArray(events))
 	    		return;
 	    	
 	    	for(var i = 0; i < events.length; i++){	    		
 				$('#availabilityCalendar').fullCalendar('renderEvent', events[i]);
+				this.initializeEventPopups(events[i],position);
 	    	}
-
-			$('.fc-day').popover('hide');
-			$('.fc-day-number').popover('hide');    	
 	    },
 
 	    eventContent: function(eventObject){
-
+	    
 	    	var startHour   = this.getHourFromTimestamp(eventObject.eventStart);
 	    	var startString = this.formatEventDateFromHour(startHour);
 	    	
@@ -172,7 +222,7 @@ Template.calendar.onRendered(function(){
 		var calendarEvents = Calendar.find({}).fetch();
 		
 		$('#availabilityCalendar').fullCalendar('removeEvents');		
-		CalendarHelper.renderEvents(calendarEvents);
+		CalendarHelper.renderEvents(calendarEvents,'bottom');
 	})	
 });
 

@@ -6,19 +6,14 @@ Template.settings.events({
 		$(e.currentTarget.parentElement).addClass('active');
 		$('.tabs_container .show').removeClass('show').addClass('hidden');
 		$('#'+e.currentTarget.pathname.slice(1)).removeClass('hidden').addClass('show');
-		
-		$('.fc-day').popover('hide');
-		$('.fc-event').popover('hide');
-		$('.fc-content').popover('hide');
+
+		$('.fc-day').popover('destroy');
+		$('.fc-content').popover('destroy');
+
 	},
 
 	'click .tab-2': function(e){
 		
-		$('#availabilityCalendar').fullCalendar('render');
-		
-		var calendarEvents = Calendar.find({}).fetch();
-		
-		$('#availabilityCalendar').fullCalendar('removeEvents');		
-		CalendarHelper.renderEvents(calendarEvents);
+		$('#availabilityCalendar').fullCalendar('render');		
 	}
 });

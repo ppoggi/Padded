@@ -27,3 +27,12 @@ Meteor.publish('calendarData', function(clientId){
 
 	return Calendar.find({ owner: this.userId});
 });
+
+
+Meteor.publish('RealtorCalendarData', function(clientIds){
+
+	if( clientIds == null)
+		return null;
+	
+	return Calendar.find({ owner: {$in: clientIds}});
+});

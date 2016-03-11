@@ -29,7 +29,9 @@ Template.realtorDash.onCreated(function(){
 	Session.set('listView', true);
     Session.set('imageTile', false);
     Session.set('detailList', false);
-    Session.set('currentList', null);   
+    Session.set('currentList', null);
+    Session.set('calendar', false);
+    Session.set('guide', false);
          
 });
 

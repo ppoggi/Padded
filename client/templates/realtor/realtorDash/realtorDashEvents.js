@@ -1,6 +1,6 @@
 Template.realtorDash.events({
 
-	    'submit #url_form': function (e) {
+	'submit #url_form': function (e) {
         
         e.preventDefault();
         e.stopImmediatePropagation();        
@@ -28,6 +28,8 @@ Template.realtorDash.events({
         Session.set('listView', true);
         Session.set('imageTile', false);
         Session.set('detailList', false);
+        Session.set('calendar', false);
+        Session.set('guide', false);
     },
 
     'click .image-tile-btn': function(e){
@@ -35,6 +37,8 @@ Template.realtorDash.events({
         Session.set('listView', false);
         Session.set('imageTile', true);
         Session.set('detailList', false);
+        Session.set('calendar', false);
+        Session.set('guide', false);
     },
 
     'click .detail-list-btn': function(){        
@@ -42,7 +46,27 @@ Template.realtorDash.events({
         Session.set('listView', false);
         Session.set('imageTile', false);
         Session.set('detailList', true);
+        Session.set('calendar', false);
+        Session.set('guide', false);
 
+    },
+
+    'click .calendar-btn': function(){
+
+        Session.set('listView', false);
+        Session.set('imageTile', false);
+        Session.set('detailList', false);
+        Session.set('calendar', true);
+        Session.set('guide', false);
+    },
+
+    'click .guide-btn': function(){
+
+        Session.set('listView', false);
+        Session.set('imageTile', false);
+        Session.set('detailList', false);
+        Session.set('calendar', false);
+        Session.set('guide', true);
     },
 
     'click .list-name-li': function(e){

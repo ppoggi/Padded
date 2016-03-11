@@ -25,6 +25,16 @@ Template.realtorDash.helpers({
 		return Session.get("detailList");		
 	},
 
+	calendar: function(){
+
+		return Session.get("calendar");
+	},
+
+	guide: function(){
+
+		return Session.get("guide")
+	},
+
 	currentList: function(){
 
 		return Session.get("currentList");
@@ -63,7 +73,15 @@ Template.realtorDash.helpers({
 		
 		var currentListId = Session.get('currentListId');
 
-		return UserLists.findOne({_id:currentListId});
+		
+		var list = UserLists.findOne({_id:currentListId});
+
+		if(!list)
+			return;
+
+		Session.set('listOwners', list.owners);
+		
+		return list;
 	},
 
 	lists: function(){

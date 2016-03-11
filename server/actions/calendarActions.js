@@ -7,7 +7,8 @@ CalendarActions = {
 			end        : Number,
 			color      : String,			
 			eventStart : Number,
-			eventEnd   : Number
+			eventEnd   : Number,
+			username   : String
 	},
 
 	checkAvailabilityObject: function(obj){
