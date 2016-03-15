@@ -48,10 +48,15 @@ FlowRouter.route('/settings', {
 });
 
 //open
-FlowRouter.route('/:listId', {
+FlowRouter.route('/generic/:listId', {
     name:"genericList",
     action:function(){              
         BlazeLayout.render('open', {content: 'genericList'});           
     }    
 });
 
+FlowRouter.route('/login', {    
+    action:function(){              
+        BlazeLayout.render('open', {content: 'login'});           
+    }    
+});

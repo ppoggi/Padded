@@ -14,7 +14,6 @@ Template.calendar.onRendered(function(){
 		}
 	}
 
-
 	CalendarHelper = {
 
 		initializeEventPopups: function(eventObject, position){

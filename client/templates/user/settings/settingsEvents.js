@@ -9,7 +9,6 @@ Template.settings.events({
 
 		$('.fc-day').popover('destroy');
 		$('.fc-content').popover('destroy');
-
 	},
 
 	'click .tab-2': function(e){

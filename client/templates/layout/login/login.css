@@ -1,0 +1,15 @@
+div.col-center i.fa.fa-facebook{
+	background-color:#103480;	
+}
+
+div.col-center i.fa.fa-facebook:hover{
+	background-color:darkgrey;	
+}
+
+div.col-center i.fa.fa-google{
+	background-color:#4285F4;	
+}
+
+div.col-center i.fa.fa-google:hover{
+	background-color:darkgrey;	
+}

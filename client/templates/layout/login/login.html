@@ -1,0 +1,175 @@
+<template name='login'>
+	<div class="col-md-12">
+				
+		{{#if isNewLogin}}
+			<h2>Create A New Account</h2>			
+			<div id="confirm">
+				<form id="new-user-form" class="row form1">
+					<div class="success" style="display: none;">
+						<div class="success_txt">Contact form submitted!<br>
+							<strong> We will be in touch soon.</strong>
+						</div>
+					</div>
+					<fieldset>
+						<div class="row">
+						<div class="link-form col-md-12">					        
+							<div class="row">
+						        <div class="col-xs-4 bot-60">
+						          <div class="circle-icon">
+						            <div class="icon-box center style-side-2 animated fadeInUp" data-animation-type="fadeInUp" data-animation-delay="0" style="animation-duration: 1s; visibility: visible;">
+						              <div class="col-center"><i class="fa fa-facebook"></i></div>
+						              <div class="center">
+						                <h4 class="box-title"><a href="#">Facebook sign in</a></h4>                
+						              </div>
+						            </div>
+						          </div>
+						        </div>
+						        <div class="col-xs-4 bot-60">
+						          <div class="circle-icon">
+						            <div class="icon-box center style-side-2 animated fadeInUp" data-animation-type="fadeInUp" data-animation-delay="0.5" style="animation-duration: 1s; animation-delay: 0.5s; visibility: visible;">
+						              <div class="col-center"><i class="fa fa-google"></i></div>
+						              <div class="center">
+						                <h4 class="box-title"><a href="#">Google sign in</a></h4>                
+						              </div>
+						            </div>
+						          </div>
+						        </div>
+						        <div class="col-sm-4 bot-60">
+						          <div class="circle-icon">
+						            <div class="icon-box center style-side-2">
+						              <a id="returning-user" class="btn style4 pull-right" href="#" data-type="reset">Returning User?</a>
+						            </div>
+						          </div>
+						        </div>						        
+						    </div>
+						</div>
+					</div>
+						
+						<div class="row">	
+						<label class="name col-md-12">							
+							<label>Name</label>
+							<input type="text">
+							<span class="error" style="display: none;">*This is not a valid name.</span>
+							<span class="empty" style="display: none;">*This field is required.</span> 
+						</label>
+						</div>
+						<div class="row">
+						<label class="email col-md-12">
+							<label>Email</label>
+							<input type="text">
+							<span class="error" style="display: none;">*This is not a valid email address.</span>
+							<span class="empty" style="display: none;">*This field is required.
+							</span>
+						</label>
+						</div>
+						<div class="row">
+						<label class="phone col-md-12">
+							<label>Phone Number(optional)</label>
+							<input type="text">
+							<span class="error" style="display: none;">*This is not a valid phone number.</span>
+							<span class="empty" style="display: none;">*Please enter Phone</span>
+						</label>
+						</div>
+						<div class="row">					
+						<label class="col-md-12">
+							<label>Password</label>
+							<input id="password-2" type="password">
+							<span class="error" style="display: none;">*This is not a valid phone number.</span>
+							<span class="empty" style="display: none;">*Please enter Phone</span>
+						</label>
+						</div>
+						<div class="row">
+						<label class="col-md-12">
+							<label>Password(Again)</label>
+							<input id="password-2" type="password">
+							<span class="error" style="display: none;">*This is not a valid phone number.</span>
+							<span class="empty" style="display: none;">*Please enter Phone</span>
+						</label>
+						</div>
+						<div class="row">
+															
+						<div class="clear"></div>
+						<div class="link-form col-md-12">
+							<a class="btn style4" href="#" data-type="reset">Clear</a>
+							<a class="btn style1" href="#" data-type="submit">Create Account</a>
+						</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		
+		{{else}}
+			<h2>Sign in</h2>			
+			<div id="confirm">
+				<form id="login-form" class="row form1">
+					<div class="success" style="display: none;">
+						<div class="success_txt">Contact form submitted!<br>
+							<strong> We will be in touch soon.</strong>
+						</div>
+					</div>
+					<fieldset>
+						<div class="row">
+						<div class="link-form col-md-12">					        
+							<div class="row">
+						        <div class="col-sm-4 bot-60">
+						          <div class="circle-icon">
+						            <div class="icon-box center style-side-2 animated fadeInUp" data-animation-type="fadeInUp" data-animation-delay="0" style="animation-duration: 1s; visibility: visible;">
+						              <div class="col-center"><i class="fa fa-facebook"></i></div>
+						              <div class="center">
+						                <h4 class="box-title"><a href="#">Facebook sign in</a></h4>                
+						              </div>
+						            </div>
+						          </div>
+						        </div>
+						        <div class="col-sm-4 bot-60">
+						          <div class="circle-icon">
+						            <div class="icon-box center style-side-2 animated fadeInUp" data-animation-type="fadeInUp" data-animation-delay="0.5" style="animation-duration: 1s; animation-delay: 0.5s; visibility: visible;">
+						              <div class="col-center"><i class="fa fa-google"></i></div>
+						              <div class="center">
+						                <h4 class="box-title"><a href="#">Google sign in</a></h4>                
+						              </div>
+						            </div>
+						          </div>
+						        </div>
+						        <div class="col-sm-4 bot-60">
+						          <div class="circle-icon">
+						            <div class="icon-box center style-side-2">
+						              <a  id="new-user" class="btn style4 pull-right" href="#" data-type="reset">New User?</a>              
+						            </div>
+						          </div>
+						        </div>
+						    </div>
+						</div>
+						</div>	
+						<div class="row">
+						<label class="col-md-12">
+							<label>Email</label>
+							<input id="login-email" type="text">
+							<span class="error" style="display: none;">*This is not a valid email address.</span>
+							<span class="empty" style="display: none;">*This field is required.
+							</span>
+						</label>
+						</div>
+						<div class="row">
+						<label class="col-md-12">
+							<label>Password</label>
+							<input id="login-password" type="password">
+							<span class="error" style="display: none;">*This is not a valid phone number.</span>
+							<span class="empty" style="display: none;">*Please enter Phone</span>
+						</label>
+						</div>
+						<div class="clear"></div>
+						<div class="row">
+						<div class="link-form col-md-12">
+							<a class="btn style4" href="#" data-type="reset">Back</a>
+							<a id="login-submit" class="btn style1 pull-right" href="#" data-type="submit" type="submit">Sign in</a>
+						</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+
+		{{/if}}
+
+	</div>
+</template>
