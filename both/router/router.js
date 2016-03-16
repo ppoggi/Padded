@@ -55,7 +55,7 @@ FlowRouter.route('/generic/:listId', {
     }    
 });
 
-FlowRouter.route('/login', {    
+FlowRouter.route('/signin', {    
     action:function(){              
         BlazeLayout.render('open', {content: 'login'});           
     }    

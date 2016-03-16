@@ -1,6 +1,12 @@
 <template name='login'>
 	<div class="col-md-12">
 				
+
+		{{#if authInProcess}}
+		
+			{{>loadingSpinner}}
+		{{else}}
+
 		{{#if isNewLogin}}
 			<h2>Create A New Account</h2>			
 			<div id="confirm">
@@ -46,26 +52,26 @@
 					</div>
 						
 						<div class="row">	
-						<label class="name col-md-12">							
-							<label>Name</label>
-							<input type="text">
+						<label class="col-md-12">							
+							<label>Username</label>
+							<input id="new-user-name" type="text">
 							<span class="error" style="display: none;">*This is not a valid name.</span>
 							<span class="empty" style="display: none;">*This field is required.</span> 
 						</label>
 						</div>
 						<div class="row">
-						<label class="email col-md-12">
+						<label class="col-md-12">
 							<label>Email</label>
-							<input type="text">
+							<input id="new-user-email" type="text">
 							<span class="error" style="display: none;">*This is not a valid email address.</span>
 							<span class="empty" style="display: none;">*This field is required.
 							</span>
 						</label>
 						</div>
 						<div class="row">
-						<label class="phone col-md-12">
+						<label class="col-md-12">
 							<label>Phone Number(optional)</label>
-							<input type="text">
+							<input id="new-user-phone" type="tel">
 							<span class="error" style="display: none;">*This is not a valid phone number.</span>
 							<span class="empty" style="display: none;">*Please enter Phone</span>
 						</label>
@@ -73,7 +79,7 @@
 						<div class="row">					
 						<label class="col-md-12">
 							<label>Password</label>
-							<input id="password-2" type="password">
+							<input id="password-1" type="password">
 							<span class="error" style="display: none;">*This is not a valid phone number.</span>
 							<span class="empty" style="display: none;">*Please enter Phone</span>
 						</label>
@@ -90,8 +96,8 @@
 															
 						<div class="clear"></div>
 						<div class="link-form col-md-12">
-							<a class="btn style4" href="#" data-type="reset">Clear</a>
-							<a class="btn style1" href="#" data-type="submit">Create Account</a>
+							<a class="btn style4" href="/" data-type="reset">Back</a>
+							<a id="create-account-submit" class="btn style1 pull-right" href="#" data-type="submit">Create Account</a>
 						</div>
 						</div>
 					</fieldset>
@@ -143,7 +149,7 @@
 						</div>	
 						<div class="row">
 						<label class="col-md-12">
-							<label>Email</label>
+							<label>Email or Username</label>
 							<input id="login-email" type="text">
 							<span class="error" style="display: none;">*This is not a valid email address.</span>
 							<span class="empty" style="display: none;">*This field is required.
@@ -161,7 +167,7 @@
 						<div class="clear"></div>
 						<div class="row">
 						<div class="link-form col-md-12">
-							<a class="btn style4" href="#" data-type="reset">Back</a>
+							<a class="btn style4" href="/" data-type="reset">Back</a>
 							<a id="login-submit" class="btn style1 pull-right" href="#" data-type="submit" type="submit">Sign in</a>
 						</div>
 						</div>
@@ -170,6 +176,6 @@
 			</div>
 
 		{{/if}}
-
+		{{/if}}
 	</div>
 </template>
