@@ -60,3 +60,10 @@ FlowRouter.route('/signin', {
         BlazeLayout.render('open', {content: 'login'});           
     }    
 });
+
+
+FlowRouter.route('/resetpassword', {    
+    action:function(){              
+        BlazeLayout.render('open', {content: 'resetPassword'});           
+    }    
+});

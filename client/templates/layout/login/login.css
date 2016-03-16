@@ -13,3 +13,7 @@ div.col-center i.fa.fa-google{
 div.col-center i.fa.fa-google:hover{
 	background-color:darkgrey;	
 }
+
+.circle-icon.forgot-password{
+	margin-top: 57px;
+}

@@ -31,3 +31,5 @@ fortawesome:fontawesome
 rzymek:fullcalendar
 momentjs:moment
 dispatch:spinner
+wylio:mandrill
+force-ssl
