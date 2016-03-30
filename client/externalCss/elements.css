@@ -301,7 +301,7 @@ blockquote.red { background: url("../img/icons/qoute.png") no-repeat scroll 10px
 /* Buttons                               */
 /* ===================================== */
 
-.btn { border:none; color:#fff; cursor:pointer; padding:0 30px; white-space:nowrap; text-transform: capitalize; font-weight:600; background:#3451c6; font-size: 14px; line-height: 33px; -webkit-border-radius: 33px; -moz-border-radius: 33px; -ms-border-radius: 33px; border-radius: 33px; margin-right:5px; -moz-transition:all 0.2s ease 0s; -o-transition:all 0.2s ease 0s; -webkit-transition:all 0.2s ease 0s; -ms-transition:all 0.2s ease 0s; transition:all 0.2s ease 0s; box-shadow:none; vertical-align:baseline }
+.btn { border:none; color:#fff; cursor:pointer; padding:0 30px; white-space:nowrap; text-transform: capitalize; font-weight:600; background:#3451c6; font-size: 14px; line-height: 33px; -webkit-border-radius: 33px; -moz-border-radius: 33px; -ms-border-radius: 33px; border-radius: 33px; margin-right:3px; -moz-transition:all 0.2s ease 0s; -o-transition:all 0.2s ease 0s; -webkit-transition:all 0.2s ease 0s; -ms-transition:all 0.2s ease 0s; transition:all 0.2s ease 0s; box-shadow:none; vertical-align:baseline }
 
 .btn i { margin-right:5px }
 

@@ -1,0 +1,5 @@
+Template.payment.onRendered(function(){
+
+
+
+});

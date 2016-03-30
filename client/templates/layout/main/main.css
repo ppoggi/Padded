@@ -2,7 +2,7 @@
 body{
 	min-height:95vh;
 }
-div,button,img,textarea,span,input,li{
+div,img,textarea,span,input,li{
 	border-radius: 0px !important;
 }
 

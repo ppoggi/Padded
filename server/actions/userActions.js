@@ -72,11 +72,14 @@ UserActions = {
 			city: null,
 		}
 
+
+		var stripe = null;
+
 		user.profile        = properties;
 		user.userData       = data;
-		
+		user.stripe         = stripe;
 		return user;
-	},
+	},	
 
 	initialize: function(user, options){
 	

@@ -1,0 +1,157 @@
+	<template name="payment">
+
+	<h2>Billing Information</h2>
+	
+		
+			<div class="row">
+				<div class="col-md-6">
+					
+					<h2><small>Patrick Poggi</small></h2>
+					<p>Padded</p>
+
+					<p>7862392476</p>
+					<p>ppoggi92@gmail.com</p>
+
+					<p>5285 sw 84 street</p>
+					<p>Miami, Fl 33134</p>
+					<p>USA</p>
+					<a id="toggle-edit-contact-info" class="hdn" href="#"><em>Edit billing info</em></a>
+				</div>
+
+
+				
+				<div class="col-md-6">
+					
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Payment Method</h3>
+					</div>
+					<div class="panel-body">
+						<p>xxxx-xxxx-xxxx-xxxx</p>
+					</div>					
+					<div class="btn-group" role="group">
+						<button id="toggle-edit-card-info" type="button" class="btn btn-default hdn">Edit</button>
+					</div>
+				</div>
+
+				</div>
+			</div>
+				<div class="row">	
+					<div id="edit-contact-info" class="box-style cont-pad hidden">
+						<button id="close-edit-contact-info" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		              <form>
+		                <h2>Billing Info</h2>
+		                <hr class="colorgraph">
+		                <div class="row">
+		                  <div class="col-xs-6 col-sm-6 col-md-6">
+		                    <div class="form-group">
+		                      <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
+		                    </div>
+		                  </div>
+		                  <div class="col-xs-6 col-sm-6 col-md-6">
+		                    <div class="form-group">
+		                      <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2">
+		                    </div>
+		                  </div>
+		                </div>
+		                <div class="form-group">
+		                  <input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Display Name" tabindex="3">
+		                </div>
+		                <div class="form-group">
+		                  <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
+		                </div>
+		                <div class="row">
+		                  <div class="col-xs-6 col-sm-6 col-md-6">
+		                    <div class="form-group">
+		                      <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
+		                    </div>
+		                  </div>
+		                  <div class="col-xs-6 col-sm-6 col-md-6">
+		                    <div class="form-group">
+		                      <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
+		                    </div>
+		                  </div>
+		                </div>
+		                <div class="row">
+		                  <div class="col-xs-1 col-sm-1 col-md-1"> <span class="button-checkbox">
+		                    <input type="checkbox" name="t_and_c" id="t_and_c" class="o-hidden" value="1">
+		                    </span> </div>
+		                </div>
+		                <hr class="colorgraph">
+		                <div class="row">
+		                  <div class="col-xs-6 col-md-6">
+		                    <input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7">
+		                  </div>
+		                  <div class="col-xs-6 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">Sign In</a></div>
+		                </div>
+		              </form>
+		            </div>
+		        </div>
+				<div class="row">	
+					<div id="edit-card-info" class="box-style cont-pad hidden">
+						<button id="close-edit-card-info" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		              <form id="payment-method-form">
+		                <h2>Payment Method</h2>		                
+		                <div class="row">
+		                  <div class="col-xs-8 col-sm-8 col-md-8">
+		                    <div class="form-group">
+		                    	<span>Card Number</span>
+		                      <input type="text" size="20" class="form-control input-lg" data-stripe="number"/>
+		                    </div>
+		                  </div>
+		                  <div class="col-xs-2 col-sm-2 col-md-2">
+		                    <div class="form-group">
+		                    	<span>CVC</span>
+      							<input type="text" size="4" class="form-control input-lg" data-stripe="cvc"/>		                      
+		                    </div>
+		                  </div>
+		                </div>
+		                <div class="row">
+		                	<div class="col-xs-3 col-sm-3 col-md-3">
+				                <div class="form-group">
+				                	<span>Expiration (MM/YYYY)</span>
+		      						<input type="text" size="2" class="form-control input-lg" data-stripe="exp-month"/>
+		      					</div>
+		      				</div>
+	      					<div class="col-xs-3 col-sm-3 col-md-3">
+	      						<div class="form-group">
+	      							<span> / </span>
+									<input type="text" size="4" class="form-control input-lg" data-stripe="exp-year"/>	                  
+								</div>
+			                </div>	
+		                </div>
+		                <div class="row">		                  
+		                  <div class="col-xs-6 col-md-6">
+		                  	<button id="payment-method-submit" type="submit" class="btn btn-success btn-block btn-lg">Submit Payment</button>
+		                  </div>
+		                </div>
+		              </form>
+		            </div>
+		        </div>
+		        <div class="row">
+					<div class="col-md-6">												
+						<p><h3 class="notifications-heading">Notifications</h3></p>
+						<p>Receipts and billing alerts will be sent to <bold>ppoggi92@gmail.com</bold></p>
+					<a id="toggle-edit-notification-address" class="hdn" href="#"><em>Change notification email address</em></a>
+					</div>
+				</div>
+				<div class="row">
+					<div id="edit-notification-address" class="box-style cont-pad hidden">
+						<button id="close-edit-notification-address" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		              <form>
+		                <h2>Email Address</h2>		
+		                <div class="row">                
+		                <div class="form-group">
+		                  <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
+		                </div>
+	                	</div>   
+		                <div class="row">
+		                  <div class="col-xs-6 col-md-6">
+		                    <input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7">
+		                  </div>
+		                  <div class="col-xs-6 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">Accept</a></div>
+		                </div>
+		              </form>
+		            </div>
+				</div>
+</template>

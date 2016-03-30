@@ -4,7 +4,7 @@ Meteor.methods({
 		var userId = Meteor.userId();
 		
 		if(!userId)
-			throw new Meteor.Error('Meteor.methods.parseUrl','err');							
+			throw new Meteor.Error('Meteor.methods.parseUrl','Must Be logged in');
 
 		var scraper = LibHelpers.checkUrl(url);
 
@@ -16,7 +16,7 @@ Meteor.methods({
 			
 			if(err){
 				
-				throw new Meteor.Error('Meteor.methods.parseUrl','err');							
+				throw new Meteor.Error('Meteor.methods.parseUrl',err);
 			}									
 
 			var scrapedListing = scraper.scrapeResponse(response, url);			

@@ -19,7 +19,7 @@ body .alert{
 
 .list-view-container .col-xs-5{
 	max-height:146px;
-	overflow:scroll;	
+
 }
 
 .list-view-container{
@@ -92,9 +92,7 @@ body .alert{
 	max-height:200px;
 	max-width:200px;	
 }
-li.list-group-item{
-	overflow:scroll;
-}
+
 
 .list-name-li{
 	/*border: thin solid #ddd;*/
@@ -150,13 +148,11 @@ li.list-group-item{
 @media (min-width: 992px) {
 
 	li.list-group-item{
-		max-height:52px;
-		min-height:52px;
-		overflow: scroll;
+		
+		min-height:52px;		
 	}
 
-	.panel-heading{
-		overflow: scroll;
+	.panel-heading{		
 		max-height:296px;
 	}
 

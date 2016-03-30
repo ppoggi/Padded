@@ -91,8 +91,17 @@ Template.calendar.onRendered(function(){
 		},
 
 		createTimestampForEvent: function(timestamp, hour, meridiem){
+			
+
+			var currentDate = new Date();
+			var utcDifferenceMinutes = currentDate.getTimezoneOffset();
+
+			var utcDifferenceMilliseconds = utcDifferenceMinutes * 60 * 1000;
 
 			var timestamp = timestamp *1000;			
+
+			timestamp = timestamp - utcDifferenceMilliseconds;
+
 			var time;
 			
 			if(meridiem == "am"){
@@ -144,6 +153,7 @@ Template.calendar.onRendered(function(){
 	    		return;
 	    	
 	    	for(var i = 0; i < events.length; i++){	    		
+	    		
 				$('#availabilityCalendar').fullCalendar('renderEvent', events[i]);
 				this.initializeEventPopups(events[i],position);
 	    	}

@@ -1,3 +1,4 @@
 .log-in.pull-right,.log-out.pull-right{
 	margin-top: 30px;
+	cursor: pointer;
 }

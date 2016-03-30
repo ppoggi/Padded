@@ -85,7 +85,10 @@ RealtorCom = {
 		if(!details)
 			throw new Meteor.Error('Error.scrapeResponse', 'Invalid detiails');		
 
-		var img = $('img')['0'].attribs.src +"";
+		var img = $('img')['0'].attribs.src + "";
+
+		if(!img)
+			img = $('img')['1'].attribs.src + "";
 				
 		if(!img)
 			img = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png";

@@ -18,6 +18,11 @@ Meteor.publish('realtorData', function(){
 	return Meteor.users.find({ _id:this.userId}, {fields:{realtorData:1}});
 });
 
+Meteor.publish('stripe', function(){
+
+	return Meteor.users.find({ _id:this.userId}, {fields:{stripe:1}});
+});
+
 Meteor.publish('realtorDash', function(clientId){
 
 	return UserLists.find({ owners:clientId});
