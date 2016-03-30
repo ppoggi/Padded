@@ -71,9 +71,10 @@ Template.realtorDash.events({
 
     'click .list-name-li': function(e){
         
-        e.preventDefault();
+        e.preventDefault();                
         
-        Session.set("currentList",this.value)
+        Session.set("currentList",this.name);
+        Session.set('currentListId', this._id);
     },
 
     'click #realtor-add-property-input': function(){
