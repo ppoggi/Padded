@@ -31,5 +31,7 @@ StripeActions = {
 			if(status == 0)
 				throw new Meteor.Error('StripeActions.addUserToken', err);
 		});
-	}
+	},
+
+
 }

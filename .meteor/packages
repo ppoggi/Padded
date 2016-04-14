@@ -32,6 +32,5 @@ momentjs:moment
 dispatch:spinner
 wylio:mandrill
 force-ssl
-mrgalaxy:stripe
 standard-minifier-css
 standard-minifier-js
